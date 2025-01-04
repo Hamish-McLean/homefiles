@@ -44,33 +44,29 @@
     ...
   }@inputs:
     let
-      inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
+      # inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
 
-      # creates a nixos system config
       homeSystem =
         system: hostname: username:
         let
           pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
           unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
-          # pkgs = genPkgs system;
-          # unstablePkgs = genUnstablePkgs system;
         in
         home-manager.lib.homeManagerConfiguration {
-          # inherit system;
           pkgs = pkgs;
           # useGlobalPkgs = true;
           # useUserPackages = true;
           # backupFileExtension = "backup";
           # home.username = username;
           extraSpecialArgs = {
-            inherit inputs username;
+            inherit inputs pkgs system hostname username;
           };
           modules = [
             # Allow unfree packages
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}.nix
             catppuccin.homeManagerModules.catppuccin
-            hyprland.homeManagerModules.default
+            # hyprland.homeManagerModules.default
             nixvim.homeManagerModules.nixvim
             plasma-manager.homeManagerModules.plasma-manager
             {

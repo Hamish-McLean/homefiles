@@ -37,9 +37,9 @@
         };
 
         # Theme
-        "org/gnome/shell/extensions/user-theme" = {
-          name = "catppuccin-${cat-flavour}-${cat-accent}-standard";
-        };
+        # "org/gnome/shell/extensions/user-theme" = {
+        #   name = "catppuccin-${cat-flavour}-${cat-accent}-standard";
+        # };
 
         # GNOME shell settings
         "org/gnome/shell" = {

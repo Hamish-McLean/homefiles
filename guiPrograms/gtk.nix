@@ -11,7 +11,7 @@
   config = lib.mkIf config.gtk_config.enable {
     gtk = {
       enable = true;
-      theme.name = "Adwaita-dark";
+      theme.name = "Adwaita:dark";
       # catppuccin = {
       #   enable = true;
       #   cursor.enable = true;

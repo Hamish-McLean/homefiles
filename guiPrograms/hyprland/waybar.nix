@@ -34,7 +34,7 @@
             "custom/rofi"
             "hyprland/workspaces"
             "wlr/taskbar"
-            "hyprland/window"
+            # "hyprland/window"
           ];
           modules-center = [
             "custom/music"

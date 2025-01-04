@@ -1,8 +1,10 @@
 {
   config,
   hyprland-plugins,
+  inputs,
   lib,
   pkgs,
+  system,
   ...
 }:
 {
@@ -20,8 +22,10 @@
     home.packages = with pkgs; [ 
       brightnessctl
       hyprcursor
+      hypridle
       hyprlock
       hyprpaper
+      hyprsunset
       networkmanagerapplet
       pavucontrol
     ];
@@ -31,15 +35,21 @@
       settings = {};
     };
 
+    services.hypridle = {
+      enable = true;
+      settings = {};
+    };
+
     services.hyprpaper = {
       enable = true;
       settings = {
-        ipc = "on";
-        splash = true;
+        ipc = "true";
+        splash = false;
         preload = [ "${../../wallpapers/rainbow.png}" ];
         wallpaper = ", ${../../wallpapers/rainbow.png}";
-      };
+      }; 
     };
+
 
     rofi.enable = true;
     waybar.enable = true;
@@ -48,10 +58,11 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
+      # package = inputs.hyprland.packages.${system}.hyprland;
       systemd.enable = true;
-      # plugins = with hyprland-plugins.packages."${pkgs.system}"; [
-      #   borders-plus-plus  
-      #   hyprbars
+      # plugins = with inputs.hyprland-plugins.packages."${system}"; [
+      # plugins = with pkgs; [
+      #   borders-plus-plus
       #   # hyprspace
       #   hyprtrails
       # ];
@@ -62,9 +73,17 @@
         ];
         input = {
           kb_layout = "gb";
+          touchpad = {
+            natural_scroll = true;
+          };
         };
         general = {
+          border_size = 2;
           "col.active_border" = "rgb(74c7ec)";
+          resize_on_border = true;
+          snap = {
+            enabled = true;
+          };
         };
         decoration = {
           rounding = 12;
@@ -76,8 +95,19 @@
           };
         };
         gestures = {
-          workspace_swipe = "on";
+          workspace_swipe = "true";
+
         };
+        # plugins
+        plugin = {
+          borders-plus-plus = {
+            add_borders = 2;
+            natural_rounding = "yes";
+          };
+          # hyprspace # nix instruction at "https://github.com/hyprwm/Hyprland"
+          hyprtrails.color = "rgb(74c7ec)";
+        };
+
         "$mod" = "SUPER";
         bind =
           [
@@ -160,11 +190,6 @@
           "$mod, SUPER_L, exec, killall rofi || rofi -show drun"
         ];
 
-        # plugins
-        "plugin:borders-plus-plus" = {
-          add_borders = 1;
-          natural_rounding = "yes";
-        };
       };
     };
   };
