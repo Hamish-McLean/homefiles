@@ -18,4 +18,9 @@
   # Disable specific modules
   hyprland.enable = true;
 
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
+  };
+
 }
