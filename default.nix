@@ -1,5 +1,10 @@
 # Cycad's default home manager module which imports other home manager modules
-{ pkgs, username, inputs, ... }:
+{ 
+  pkgs, 
+  username, 
+  inputs, 
+  ... 
+}:
 {
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
@@ -26,6 +31,11 @@
     enable = true;
     flavor = "mocha";
     accent = "sapphire";
+    cursors = {
+      enable = true;
+      flavor = "mocha";
+      accent = "sapphire";
+    };
   };
   # home.packages = [
   #   (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })

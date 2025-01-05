@@ -12,23 +12,6 @@
     gtk = {
       enable = true;
       theme.name = "Adwaita:dark";
-      # catppuccin = {
-      #   enable = true;
-      #   cursor.enable = true;
-      # };
-    };
-    catppuccin = {
-      # gtk = {
-      #   enable = true;
-      #   size = "standard";
-      #   gnomeShellTheme = true;
-      #   icon.enable = true;
-      # };
-      cursors = {
-        enable = true;
-        flavor = "mocha";
-        accent = "sapphire";
-      };
     };
 
     # Now symlink the `~/.config/gtk-4.0/` folder declaratively:
