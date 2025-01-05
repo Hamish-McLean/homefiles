@@ -50,7 +50,6 @@
       }; 
     };
 
-
     rofi.enable = true;
     waybar.enable = true;
 
@@ -61,11 +60,11 @@
       # package = inputs.hyprland.packages.${system}.hyprland;
       systemd.enable = true;
       # plugins = with inputs.hyprland-plugins.packages."${system}"; [
-      # plugins = with pkgs; [
-      #   borders-plus-plus
-      #   # hyprspace
-      #   hyprtrails
-      # ];
+      plugins = with pkgs.hyprlandPlugins; [
+        # borders-plus-plus
+        # hyprspace
+        hyprtrails
+      ];
       settings = {
         monitor = [
           "eDP-1,preferred,auto,1" # Scaling for laptop screen
@@ -100,11 +99,11 @@
         };
         # plugins
         plugin = {
-          borders-plus-plus = {
-            add_borders = 2;
-            natural_rounding = "yes";
-          };
-          # hyprspace # nix instruction at "https://github.com/hyprwm/Hyprland"
+          # borders-plus-plus = {
+          #   add_borders = 0;
+          #   natural_rounding = "yes";
+          # };
+          # hyprspace # nix instruction at "https://github.com/KZDKM/Hyprspace"
           hyprtrails.color = "rgb(74c7ec)";
         };
 
