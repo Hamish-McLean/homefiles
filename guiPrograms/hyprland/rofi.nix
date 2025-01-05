@@ -24,6 +24,18 @@
         sidebar-mode=true;
         show-icons = true;
       };
+      theme = 
+      let
+        inherit (config.lib.formats.rasi) mkLiteral;
+      in  {
+        "*" = lib.mkForce {
+          border-radius = mkLiteral "12px";
+        };
+        "window" = lib.mkForce {
+          border = mkLiteral "2px";
+          border-color = mkLiteral "#74c7ec";
+        };
+      };
     };
   };
 }
