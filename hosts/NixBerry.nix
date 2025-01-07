@@ -7,7 +7,7 @@
 {
   imports = [
     ../default.nix
-    ./cliPrograms
+    ../cliPrograms
   ];
 
   # Enable all cliPrograms modules
