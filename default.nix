@@ -10,8 +10,8 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./cliPrograms
-    ./guiPrograms
+    # ./cliPrograms # These are now imported in host
+    # ./guiPrograms
     # inputs.catppuccin.homeManagerModules.catppuccin
   ];
 

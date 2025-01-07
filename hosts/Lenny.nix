@@ -7,6 +7,8 @@
 {
   imports = [
     ../default.nix
+    ../cliPrograms
+    ../guiPrograms
   ];
 
   # Enable all cliPrograms modules
