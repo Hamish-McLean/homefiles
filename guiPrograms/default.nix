@@ -22,13 +22,26 @@
     guiPrograms.enable = lib.mkEnableOption "enables guiPrograms";
   };
   config = lib.mkIf config.guiPrograms.enable {
+
+    # Desktop environments
     gnome_config.enable = lib.mkDefault true;
-    gtk_config.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
-    kitty.enable = lib.mkDefault true;
     plasma.enable = lib.mkDefault false;
+
+    # GUI libraries
+    gtk_config.enable = lib.mkDefault true;
     qt_config.enable = lib.mkDefault true;
+
+    # Programs
+    kitty.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
+
+    # Themes
+    catppuccin.cursors = {
+      enable = true;
+      flavor = "mocha";
+      accent = "sapphire";
+    };
   };
 
 }

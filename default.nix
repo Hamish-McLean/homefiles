@@ -39,13 +39,5 @@
     enable = true;
     flavor = "mocha";
     accent = "sapphire";
-    cursors = {
-      enable = true;
-      flavor = "mocha";
-      accent = "sapphire";
-    };
   };
-  # home.packages = [
-  #   (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  # ];
 }
