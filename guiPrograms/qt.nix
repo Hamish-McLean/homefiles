@@ -19,6 +19,15 @@
       libsForQt5.qt5ct
       # catppuccin-cursors.mochaSapphire
     ];
+    # GTK QT
+    # qt = {
+    #   enable = true;
+    #   platformTheme.name = "gtk";
+    #   style.name = "adwaita-dark";
+    #   style.package = pkgs.adwaita-qt;
+    # };
+
+    # Catppuccin qt via kvantum
     qt = {
       enable = true;
       platformTheme.name = "kvantum";
