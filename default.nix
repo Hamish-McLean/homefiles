@@ -19,9 +19,17 @@
     username = username;
     homeDirectory = /home/cycad;
     packages = with pkgs; [
-      nerdfonts
+      (nerdfonts.override { 
+        fonts = [ 
+          "CodeNewRoman"
+          "DroidSansMono"
+          "FantasqueSansMono"
+          "FiraCode"
+        ]; 
+      })
     ];
   };
+
   # Fonts
   fonts.fontconfig.enable = true;
 
