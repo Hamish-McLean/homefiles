@@ -79,6 +79,7 @@
         general = {
           border_size = 2;
           "col.active_border" = "rgb(74c7ec)";
+          "col.inactive_border" = "rgb(313244)";
           resize_on_border = true;
           snap = {
             enabled = true;
@@ -86,11 +87,20 @@
         };
         decoration = {
           rounding = 12;
+          active_opacity = 1;
+          inactive_opacity = 0.9;
           blur = {
             enabled = true;
             size = 16;
             passes = 2;
             ignore_opacity = true;
+          };
+          shadow = {
+            enabled = true;
+            range = 10;
+            render_power = 1000;
+            color = "rgb(74c7ec)";
+            color_inactive = "rgba(00000000)";
           };
         };
         gestures = {

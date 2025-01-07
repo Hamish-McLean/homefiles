@@ -1,6 +1,6 @@
 * {
   font-family: FiraCode Nerd Font;
-  font-size: 17px;
+  font-size: 16px;
   min-height: 0;
 }
 
@@ -52,7 +52,8 @@
 }
 
 #custom-rofi {
-  color: @sapphire;
+  color: @base;
+  background-color: @sapphire;
   border-radius: 1rem;
   margin-left: 1rem;
   margin-right: 1rem;

@@ -33,7 +33,7 @@
           modules-left = [
             "custom/rofi"
             "hyprland/workspaces"
-            "wlr/taskbar"
+            # "wlr/taskbar"
             # "hyprland/window"
           ];
           modules-center = [
