@@ -94,8 +94,8 @@
             tooltip-format="{percent}%";
             format-icons = [ "" "" "" "" "" "" "" "" "" ];
             interval = 2;
-            on-scroll-up = "brightnessctl set +1%";
-            on-scroll-down = "brightnessctl set -1%";
+            on-scroll-up = "brightnessctl set 5%+";
+            on-scroll-down = "brightnessctl set 5%-";
           };
           battery = {
             states = {
@@ -108,7 +108,7 @@
             format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
             format-charging = "{icon}󱐋";
             format-full = "󱟢 ";
-            on-click = "rofi-power-profiles";
+            on-click = "rofi-power-profiles"; # -location 3";
           };
           clock = {
             timezone = "Europe/London";
@@ -123,7 +123,7 @@
           };
           "custom/power" = {
             tooltip = false;
-            on-click = "rofi -show p -modi p:'rofi-power-menu' -location 3 -xoffset -20 -yoffset 50 -theme-str 'window {width: 10em;} listview {lines: 6;}'";
+            on-click = "rofi -show p -modi p:'rofi-power-menu' -location 3 -theme-str 'window {width: 11em; height: 14em;} inputbar {enabled: false;}'";
             format = "⏻ ";
           };
           network = {
@@ -134,13 +134,13 @@
             format-disconnected = "󰤮 ";
             format-ethernet = "󰈁";
             tooltip-format = "{essid}";
-            on-click = "ronema";
+            on-click = "ronema"; # -location 3";
           };
           bluetooth = {
             format-connected = "󰂰";
             format-on = "󰂯";
             format-off="󰂲";
-            on-click = "rofi-bluetooth -location 3 -xoffset -100 -yoffset 50"; # -theme-str 'window {width: 50%;}'"; #listview {lines: 6;}'";
+            on-click = "rofi-bluetooth"; # -location 3 -xoffset -100 -yoffset 50"; # -theme-str 'window {width: 50%;}'"; #listview {lines: 6;}'";
             tooltip-format-connected = "{device_enumerate}";
             tooltip-device-enumerate-connected = "{device_alias}";
           };

@@ -12,7 +12,14 @@
     services.dunst = {
       enable = true;
       # iconTheme = {};
-      # settings = {};
+      settings = {
+        global = {
+          font = "JetBrainsMono Nerd Font 10";
+          frame_color = "#74c7ec";
+          gap_size = 10;
+          corner_radius = 10;
+        };
+      };
     };
   };
 }

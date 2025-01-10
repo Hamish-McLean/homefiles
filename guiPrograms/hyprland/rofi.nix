@@ -21,7 +21,7 @@
       location = "center";
       terminal = "${pkgs.kitty}/bin/kitty";
       # plugins = [];
-      # font = "Fira Code 12";
+      # font = "Fira Code 12"; # Theme seems to override this
       extraConfig = {
         display-drun = "   Apps ";
         display-run = "   Run ";
@@ -35,13 +35,16 @@
         inherit (config.lib.formats.rasi) mkLiteral;
       in  
       {
-        "*" = lib.mkForce {
+        "*" = {
           border-radius = mkLiteral "10px";
           font = "JetBrainsMono Nerd Font 10";
         };
-        window = lib.mkForce {
+        window = {
           border = mkLiteral "2px";
           border-color = mkLiteral "#74c7ec";
+        };
+        element-icon = {
+          size = mkLiteral "2.5ch";
         };
       };
 
@@ -51,7 +54,12 @@
           enable = true;
           theme = {
             "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-
+            configuration = { location = 3; };
+            inputbar = { enabled = false; };
+            window = {
+              width = "5em";
+              height = "10em";
+            };
           };
         };
         favorites = {
@@ -65,12 +73,16 @@
           enable = true;
           theme = {
             "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+            configuration = { location = 3; };
+            inputbar = { enabled = false; };
           };
         };
         ronema = {
           enable = true;
           theme = {
             "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+            configuration = { location = 3; };
+            inputbar = { enabled = false; };
           };
         };
         quicklinks = {
