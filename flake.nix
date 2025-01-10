@@ -2,13 +2,15 @@
   description = "home-manager flake";
 
   inputs = {
+
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Update version
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Packages
     catppuccin.url = "github:catppuccin/nix";
     helix = {
@@ -21,13 +23,17 @@
       inputs.hyprland.follows = "hyprland";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
+      url = "github:nix-community/nixvim/nixos-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
-    }; # Change URL to "github:nix-community/nixvim/nixos-24.05" when available
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
+    };
+    rofi-applets = {
+      url = "gitlab:Zhaith-Izaliel/rofi-applets";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -37,10 +43,11 @@
     home-manager,
     catppuccin,
     # helix,
-    nixvim,
-    plasma-manager,
     hyprland,
     hyprland-plugins,
+    nixvim,
+    plasma-manager,
+    rofi-applets,
     ...
   }@inputs:
     let
@@ -69,6 +76,7 @@
             # hyprland.homeManagerModules.default
             nixvim.homeManagerModules.nixvim
             plasma-manager.homeManagerModules.plasma-manager
+            rofi-applets.homeManagerModules.default
             {
               # home-manager.useGlobalPkgs = true;
               # home-manager.useUserPackages = true;

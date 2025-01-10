@@ -3,7 +3,10 @@
   This imports Cycad's default home manager module which imports the other modules.
   Modules can be enabled or disabled here.
 */
-{ ... }:
+{ 
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../default.nix
@@ -24,5 +27,9 @@
     enable = true;
     indicator = true;
   };
-
+  # Extra programs
+  home.packages = with pkgs; [
+    gimp
+    inkscape
+  ];
 }

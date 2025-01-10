@@ -5,12 +5,23 @@
   lib,
   pkgs,
   system,
+  username,
   ...
 }:
+let 
+  accent = "rgb(74c7ec)";
+  base = "rgb(1e1e2e)";
+  green = "rgb(a6e3a1)";
+  red = "rgb(f38ba8)";
+  surface0 = "rgb(313244)";
+  text = "rgb(cdd6f4)";
+in 
 {
   imports = [
-    ./waybar.nix
+    ./dunst.nix
+    ./hyprlock.nix
     ./rofi.nix
+    ./waybar.nix
   ];
 
   options = {
@@ -19,27 +30,35 @@
 
   config = lib.mkIf config.hyprland.enable {
 
+    # Custom options
+    dunst.enable = true;
+    hyprlock.enable = true;
+    rofi.enable = true;
+    waybar.enable = true;
+
+    # catppuccin.hyprland.enable = true;
+
     home.packages = with pkgs; [ 
       brightnessctl
-      hyprcursor
-      hypridle
-      hyprlock
-      hyprpaper
+      # hyprcursor
+      # hypridle
+      # hyprlock
+      # hyprpaper
       hyprsunset
       networkmanagerapplet
       pavucontrol
     ];
 
-    programs.hyprlock = {
-      enable = true;
-      settings = {};
-    };
+    # Hyprcursor options not yet in home-manager stable
+    # home.pointerCursor.hyprcursor = {
+    #   enable = true;
+    #   # size = 30;
+    # };
 
     services.hypridle = {
       enable = true;
       settings = {};
     };
-
     services.hyprpaper = {
       enable = true;
       settings = {
@@ -50,10 +69,6 @@
       }; 
     };
 
-    rofi.enable = true;
-    waybar.enable = true;
-
-    # catppuccin.hyprland.enable = true;
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -65,26 +80,33 @@
         # hyprspace
         hyprtrails
       ];
+
       settings = {
+
         monitor = [
           "eDP-1,preferred,auto,1" # Scaling for laptop screen
           "HDMI-A-2,preferred,auto,1" # Scaling for external monitor
         ];
+
         input = {
           kb_layout = "gb";
           touchpad = {
             natural_scroll = true;
+            tap-to-click = true;
           };
+          sensitivity = 0.5; # -1.0 ≤ x ≤ 1.0
         };
+
         general = {
           border_size = 2;
-          "col.active_border" = "rgb(74c7ec)";
-          "col.inactive_border" = "rgb(313244)";
+          "col.active_border" = accent;
+          "col.inactive_border" = surface0;
           resize_on_border = true;
           snap = {
             enabled = true;
           };
         };
+
         decoration = {
           rounding = 12;
           active_opacity = 1;
@@ -99,14 +121,15 @@
             enabled = true;
             range = 10;
             render_power = 1000;
-            color = "rgb(74c7ec)";
+            color = accent;
             color_inactive = "rgba(00000000)";
           };
         };
+
         gestures = {
           workspace_swipe = "true";
-
         };
+        
         # plugins
         plugin = {
           # borders-plus-plus = {
@@ -114,7 +137,7 @@
           #   natural_rounding = "yes";
           # };
           # hyprspace # nix instruction at "https://github.com/KZDKM/Hyprspace"
-          hyprtrails.color = "rgb(74c7ec)";
+          hyprtrails.color = accent;
         };
 
         "$mod" = "SUPER";
@@ -126,6 +149,7 @@
             "$mod, E, exec, nautilus"
             "$mod, F, exec, firefox"
             "$mod, K, exec, kitty"
+            "$mod, L, exec, pidof hyprlock || hyprlock"
             "$mod, M, exit"
             "$mod, R, exec, hyprctl reload"
             "$mod, V, exec, codium"
@@ -142,10 +166,14 @@
             "$mod CTRL, down, movewindow, d"
             "$mod SHIFT, left, movetoworkspace, -1"
             "$mod SHIFT, right, movetoworkspace, +1"
-            "$mod, tab, workspace, e+1"
-            "$mod SHIFT, tab, workspace, e-1"
             "$mod, COMMA, togglesplit"
             "$mod, PERIOD, togglefloating"
+
+            # Workspaces
+            "$mod, tab, workspace, e+1"
+            "$mod SHIFT, tab, workspace, e-1"
+            "$mod, mouse_up, workspace, e+1"
+            "$mod, mouse_down, workspace, e-1"
 
             # Media
             ", XF86AudioPlay, exec, playerctl play-pause"

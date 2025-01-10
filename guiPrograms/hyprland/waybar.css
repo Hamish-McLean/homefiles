@@ -1,5 +1,5 @@
 * {
-  font-family: FiraCode Nerd Font;
+  /* font-family: FiraCode Nerd Font; */
   font-size: 16px;
   min-height: 0;
 }
@@ -98,11 +98,9 @@
 #battery {
   color: @green;
 }
-
 #battery.charging {
   color: @green;
 }
-
 #battery.warning:not(.charging) {
   color: @red;
 }
@@ -117,6 +115,15 @@
 
 #bluetooth {
   color: @blue;
+}
+#bluetooth.on {
+  color: @blue;
+}
+#bluetooth.off {
+  color: @red;
+}
+#bluetooth.connected {
+  color: @green;
 }
 
 #network {

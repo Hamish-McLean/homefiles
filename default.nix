@@ -17,7 +17,7 @@
 
   home = {
     username = username;
-    homeDirectory = /home/cycad;
+    homeDirectory = /home/${username};
     packages = with pkgs; [
       (nerdfonts.override { 
         fonts = [ 
@@ -25,13 +25,23 @@
           "DroidSansMono"
           "FantasqueSansMono"
           "FiraCode"
+          "FiraMono"
+          "JetBrainsMono"
         ]; 
       })
     ];
   };
 
   # Fonts
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      emoji = [ "JetBrainsMono" ];
+      monospace = [ "JetBrainsMono" ];
+      sansSerif = [ "JetBrainsMono" ];
+      serif = [ "JetBrainsMono" ];
+    };
+  };
 
   xdg.enable = true;
 
