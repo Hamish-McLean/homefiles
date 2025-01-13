@@ -12,12 +12,16 @@
     
     programs.kitty = {
       enable = true;
-      shellIntegration.enableFishIntegration = true;
+      font.name = "JetBrainsMono Nerd Font";
+      shellIntegration = {
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+      };
       settings = {
         hide_window_decorations = false; # Toggle white top bar
       };
     };
     
-    # catppuccin.kitty.enable = true;
+    catppuccin.kitty.enable = true;
   };
 }

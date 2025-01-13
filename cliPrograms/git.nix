@@ -9,9 +9,11 @@
       userEmail = "HamishMcLean94@gmail.com";
       userName = "Hamish McLean";
       diff-so-fancy.enable = true;
+      delta.enable = true;
       extraConfig = {
         init.defaultBranch = "main";
       };
     };
+    catppuccin.delta.enable = true;
   };
 }

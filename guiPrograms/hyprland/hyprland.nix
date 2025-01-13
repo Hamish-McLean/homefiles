@@ -22,6 +22,7 @@ in
     ./hyprlock.nix
     ./rofi.nix
     ./waybar.nix
+    ./wlogout.nix
   ];
 
   options = {
@@ -35,6 +36,7 @@ in
     hyprlock.enable = true;
     rofi.enable = true;
     waybar.enable = true;
+    wlogout.enable = true;
 
     # catppuccin.hyprland.enable = true;
 
