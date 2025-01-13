@@ -9,7 +9,7 @@
   # Cli programs to import
   imports = [
     ./freetube.nix
-    ./ghostty.nix
+    # ./ghostty.nix
     ./gnome.nix
     ./gtk.nix
     ./hyprland/hyprland.nix
@@ -36,7 +36,7 @@
 
     # Programs
     freetube.enable = lib.mkDefault true;
-    ghostty.enable = lib.mkDefault true;
+    # ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
 
