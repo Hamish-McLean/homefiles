@@ -17,6 +17,7 @@
     ./plasma.nix
     ./qt.nix
     ./vscodium.nix
+    ./zathura.nix
   ];
 
   # Option to enable all guiPrograms modules
@@ -39,6 +40,7 @@
     # ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
+    zathura.enable = lib.mkDefault true;
 
     # Themes
     catppuccin.cursors = {
