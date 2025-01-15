@@ -19,6 +19,8 @@
       };
       settings = {
         hide_window_decorations = false; # Toggle white top bar
+        cursor_trail = 3;
+        cursor_trail_decay = "0.1 0.4";
       };
     };
     
