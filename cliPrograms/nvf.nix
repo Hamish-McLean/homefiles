@@ -19,6 +19,8 @@
       settings = {
         vim = {
           
+          git.enable = true;
+          
           languages = {
             enableFormat = true;
             enableLSP = true;
@@ -54,6 +56,7 @@
           statusline.lualine.enable = true;
           tabline.nvimBufferline.enable = true;
           telescope.enable = true;
+          terminal.toggleterm.enable = true;
           ui.noice.enable = true;
           visuals.nvim-web-devicons.enable = true;
         
