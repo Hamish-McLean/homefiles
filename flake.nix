@@ -18,11 +18,11 @@
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland.url = "github:hyprwm/Hyprland"; # Switched to nixpkgs version for now
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,25 +40,16 @@
       url = "gitlab:Zhaith-Izaliel/rofi-applets";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  
   };
 
   outputs = {
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    nix-flatpak,
-    catppuccin,
-    # helix,
-    hyprland,
-    hyprland-plugins,
-    nixvim,
-    plasma-manager,
-    rofi-applets,
     ...
   }@inputs:
     let
-      # inputs = { inherit nixpkgs nixpkgs-unstable home-manager; };
-
       homeSystem =
         system: hostname: username:
         let
@@ -67,30 +58,19 @@
         in
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
-          # useGlobalPkgs = true;
-          # useUserPackages = true;
-          # backupFileExtension = "backup";
-          # home.username = username;
           extraSpecialArgs = {
-            inherit inputs pkgs system hostname username;
+            inherit inputs pkgs unstablePkgs system hostname username;
           };
           modules = [
             # Allow unfree packages
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}.nix
-            nix-flatpak.homeManagerModules.nix-flatpak
-            catppuccin.homeManagerModules.catppuccin
-            # hyprland.homeManagerModules.default
-            nixvim.homeManagerModules.nixvim
-            plasma-manager.homeManagerModules.plasma-manager
-            rofi-applets.homeManagerModules.default
-            {
-              # home-manager.useGlobalPkgs = true;
-              # home-manager.useUserPackages = true;
-              # home-manager.backupFileExtension = "backup";
-              # home-manager.extraSpecialArgs = {
-            }
-
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
+            inputs.catppuccin.homeManagerModules.catppuccin
+            # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
+            inputs.nixvim.homeManagerModules.nixvim
+            inputs.plasma-manager.homeManagerModules.plasma-manager
+            inputs.rofi-applets.homeManagerModules.default
           ];
         };
 
