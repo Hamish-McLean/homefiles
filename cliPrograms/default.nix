@@ -4,7 +4,11 @@
   All can be enabled by setting cliPrograms = true.
   Modules are enabled by default so can be disabled by setting them to false.
 */
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 {
   # Cli programs to import
   imports = [
@@ -22,6 +26,7 @@
     ./gitui.nix
     ./helix.nix
     ./nixvim-config.nix
+    ./nvf.nix
     ./pandoc.nix
     ./skim.nix
     ./spotify-player.nix
@@ -50,7 +55,8 @@
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
-    nixvim-config.enable = lib.mkDefault true;
+    nixvim-config.enable = lib.mkDefault false;
+    nvf.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
     skim.enable = lib.mkDefault true;
     spotify-player.enable = lib.mkDefault true;

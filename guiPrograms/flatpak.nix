@@ -13,6 +13,7 @@
       enable = true;
       packages = [
         "app.zen_browser.zen" # Zen browser
+        "com.github.tchx84.Flatseal" # Flatseal flatpak manager
       ];
     };
   };

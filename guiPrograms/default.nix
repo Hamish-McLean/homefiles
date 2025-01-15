@@ -8,6 +8,7 @@
 {
   # Cli programs to import
   imports = [
+    ./flatpak.nix
     ./freetube.nix
     # ./ghostty.nix
     ./gnome.nix
@@ -36,6 +37,7 @@
     qt_config.enable = lib.mkDefault true;
 
     # Programs
+    flatpak.enable = lib.mkDefault true;
     freetube.enable = lib.mkDefault true;
     # ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
