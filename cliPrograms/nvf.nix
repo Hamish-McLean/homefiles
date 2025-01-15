@@ -56,7 +56,13 @@
           statusline.lualine.enable = true;
           tabline.nvimBufferline.enable = true;
           telescope.enable = true;
-          terminal.toggleterm.enable = true;
+          terminal.toggleterm = {
+            enable = true;
+            lazygit = {
+              enable = true;
+              package = null; # Null to use PATH
+            };
+          };
           ui.noice.enable = true;
           visuals.nvim-web-devicons.enable = true;
         

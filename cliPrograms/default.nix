@@ -24,7 +24,7 @@
     ./gh-dash.nix
     ./git.nix
     ./gitui.nix
-    ./helix.nix
+    # ./helix.nix
     ./lazygit.nix
     ./nixvim-config.nix
     ./nvf.nix
@@ -33,8 +33,8 @@
     ./spotify-player.nix
     ./starship.nix
     ./tmux.nix
-    # ./warp.nix
     ./yazi.nix
+    ./zellij.nix
     ./zoxide.nix
   ];
 
@@ -65,7 +65,7 @@
     starship.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     yazi.enable = lib.mkDefault true;
-    # warp.enable = lib.mkDefault true; # Does this have a home manager module?
+    zellij.enable = lib.mkDefault false;
     zoxide.enable = lib.mkDefault true;
   };
 
