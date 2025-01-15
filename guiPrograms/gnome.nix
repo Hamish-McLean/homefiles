@@ -14,8 +14,8 @@
     # This requires gnome-tweaks, maybe assert this?
     dconf.settings =
       let # Find a way to read these values from home-manager.catppuccin
-        cat-flavour = "mocha";
-        cat-accent = "sapphire";
+        # cat-flavour = "mocha";
+        # cat-accent = "sapphire";
         user-font = "CodeNewRoman Nerd Font";
         user-font-size = "11";
         wallpaper = pkgs.fetchurl {
