@@ -13,14 +13,16 @@
       settings = {
         add_newline = true;
         format = "$all";
-        # palette = "catppuccin_${flavour}";
-
-        # character = {
-        #   success_symbol = "[➜](bold green)";
-        #   error_symbol = "[➜](bold red)";
-        # };
-
-        # package.disabled = true;
+        os = {
+          symbols.NixOS = "  ";
+          style = "sapphire";
+          disabled = false;
+        };
+        shell = {
+          bash_indicator = " ";
+          fish_indicator = "󰈺 "; #    󰈺
+          disabled = false;
+        };
       };
     };
     catppuccin.starship.enable = true;
