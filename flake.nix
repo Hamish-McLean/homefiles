@@ -10,6 +10,7 @@
       url = "github:nix-community/home-manager/release-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     # Packages
     catppuccin.url = "github:catppuccin/nix";
@@ -41,6 +42,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
+    nix-flatpak,
     catppuccin,
     # helix,
     hyprland,
@@ -72,6 +74,7 @@
             # Allow unfree packages
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}.nix
+            nix-flatpak.homeManagerModules.nix-flatpak
             catppuccin.homeManagerModules.catppuccin
             # hyprland.homeManagerModules.default
             nixvim.homeManagerModules.nixvim
