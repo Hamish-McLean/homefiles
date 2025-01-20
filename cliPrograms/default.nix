@@ -27,6 +27,7 @@
     ./gitui.nix
     # ./helix.nix
     ./lazygit.nix
+    ./nh.nix
     ./nixvim-config.nix
     ./nvf.nix
     ./pandoc.nix
@@ -58,7 +59,8 @@
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
-    lazygit.enable = true;
+    lazygit.enable = lib.mkDefault true;
+    nh.enable = lib.mkDefault true;
     nixvim-config.enable = lib.mkDefault false;
     nvf.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;

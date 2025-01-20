@@ -8,7 +8,7 @@
 }:
 {
   imports = [
-    ../cliPrograms.nix
+    ../cliPrograms
   ];
 
   # Enable all cliPrograms modules
