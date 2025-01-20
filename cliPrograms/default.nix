@@ -12,6 +12,7 @@
 {
   # Cli programs to import
   imports = [
+    ./bash.nix
     ./bat.nix
     ./bottom.nix
     ./btop.nix
@@ -43,6 +44,7 @@
     cliPrograms.enable = lib.mkEnableOption "enables cliPrograms";
   };
   config = lib.mkIf config.cliPrograms.enable {
+    bash.enable = lib.mkDefault true;
     bat.enable = lib.mkDefault true;
     bottom.enable = lib.mkDefault true;
     btop.enable = lib.mkDefault true;

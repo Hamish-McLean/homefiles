@@ -14,6 +14,7 @@
       packages = [
         "app.zen_browser.zen" # Zen browser
         "com.github.tchx84.Flatseal" # Flatseal flatpak manager
+        "com.play0ad.zeroad" # 0 A.D.
       ];
     };
   };

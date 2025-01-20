@@ -23,6 +23,10 @@
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
+    hyprpanel = { 
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +44,10 @@
       url = "gitlab:Zhaith-Izaliel/rofi-applets";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   
   };
 
@@ -53,7 +61,7 @@
       homeSystem =
         system: hostname: username:
         let
-          pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+          pkgs = import nixpkgs { inherit system; config.allowUnfree = true; overlays = [inputs.hyprpanel.overlay];};
           unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
         in
         home-manager.lib.homeManagerConfiguration {
@@ -68,6 +76,7 @@
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.catppuccin.homeManagerModules.catppuccin
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
+            inputs.hyprpanel.homeManagerModules.hyprpanel
             inputs.nixvim.homeManagerModules.nixvim
             inputs.plasma-manager.homeManagerModules.plasma-manager
             inputs.rofi-applets.homeManagerModules.default

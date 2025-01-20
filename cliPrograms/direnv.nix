@@ -6,6 +6,8 @@
   config = lib.mkIf config.direnv.enable {
     programs.direnv = {
       enable = true;
+      enableBashIntegration = true;
+      # enableFishIntegration = true; # Already enabled
       nix-direnv.enable = true;
     };
   };

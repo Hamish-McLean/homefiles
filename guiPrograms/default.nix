@@ -43,6 +43,7 @@
     kitty.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
+    zen.enable = lib.mkDefault true;
 
     # Themes
     catppuccin.cursors = {

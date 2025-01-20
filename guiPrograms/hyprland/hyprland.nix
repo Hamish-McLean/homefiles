@@ -20,6 +20,7 @@ in
   imports = [
     ./dunst.nix
     ./hyprlock.nix
+    ./hyprpanel.nix
     ./rofi.nix
     ./waybar.nix
     ./wlogout.nix
@@ -32,13 +33,14 @@ in
   config = lib.mkIf config.hyprland.enable {
 
     # Custom options
-    dunst.enable = true;
+    # dunst.enable = true;
     hyprlock.enable = true;
+    hyprpanel.enable = true;
     rofi.enable = true;
-    waybar.enable = true;
+    # waybar.enable = true;
     wlogout.enable = true;
 
-    # catppuccin.hyprland.enable = true;
+    catppuccin.hyprland.enable = true;
 
     home.packages = with pkgs; [ 
       brightnessctl
