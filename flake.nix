@@ -96,6 +96,9 @@
         # NixOS hosts
         "cycad@Lenny" = homeSystem "x86_64-linux" "Lenny" "cycad";
         "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
+
+        # nix-on-droid hosts
+        "nix-on-droid@Pixel5" = homeSystem "aarch64-linux" "Pixel5" "nix-on-droid"; # Username must be set to nix-on-droid
       };
     };
 }
