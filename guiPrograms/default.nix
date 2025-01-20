@@ -6,7 +6,7 @@
 */
 { lib, config, ... }:
 {
-  # Cli programs to import
+  # GUI programs to import
   imports = [
     ./flatpak.nix
     ./freetube.nix

@@ -74,7 +74,7 @@ in
                 };
               };
             };
-            powermenu.avatar.image = "${../../pictures/mice.jpg}";
+            # powermenu.avatar.image = "${../../pictures/mice.jpg}";
           };
         };
         theme = {
