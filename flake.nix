@@ -98,7 +98,7 @@
         "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
 
         # nix-on-droid hosts
-        "nix-on-droid@Pixel5" = homeSystem "aarch64-linux" "Pixel5" "nix-on-droid"; # Username must be set to nix-on-droid
+        "nix-on-droid@localhost" = homeSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid
       };
     };
 }
