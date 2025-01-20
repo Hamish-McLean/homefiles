@@ -14,6 +14,12 @@
 
     # Packages
     catppuccin.url = "github:catppuccin/nix";
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        # home-manager.follows = "home-manager";
+      };
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,11 +79,12 @@
             # Allow unfree packages
             { nixpkgs.config.allowUnfree = true; }
             ./hosts/${hostname}.nix
-            inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.catppuccin.homeManagerModules.catppuccin
+            inputs.cosmic-manager.homeManagerModules.cosmic-manager
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
             inputs.hyprpanel.homeManagerModules.hyprpanel
             inputs.nixvim.homeManagerModules.nixvim
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeManagerModules.plasma-manager
             inputs.rofi-applets.homeManagerModules.default
           ];

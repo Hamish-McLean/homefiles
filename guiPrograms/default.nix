@@ -19,6 +19,7 @@
     ./qt.nix
     ./vscodium.nix
     ./zathura.nix
+    ./zen.nix
   ];
 
   # Option to enable all guiPrograms modules
