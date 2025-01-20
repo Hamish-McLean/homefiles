@@ -20,6 +20,7 @@
         nixpkgs.follows = "nixpkgs";
         # home-manager.follows = "home-manager";
       };
+    };
     helix = {
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
