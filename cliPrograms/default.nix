@@ -22,6 +22,7 @@
     ./fastfetch.nix
     ./fish.nix
     ./fzf.nix
+    ./gh.nix
     ./gh-dash.nix
     ./git.nix
     ./gitui.nix
@@ -55,6 +56,7 @@
     fastfetch.enable = lib.mkDefault true; # Only in home-manager unstable
     fish.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
+    gh.enable = lib.mkDefault true;
     gh-dash.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
