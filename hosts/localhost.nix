@@ -5,6 +5,7 @@
 */
 {
   username,
+  pkgs,
   ...
 }:
 {
@@ -16,10 +17,34 @@
   cliPrograms.enable = true;
 
   # Disable specific modules
+  bash.enable = false;
 
-
+  home.stateVersion = "24.05";
   home = {
     username = username;
-    homeDirectory = "data/data/com.termux.nix/files/home";
+    homeDirectory = /data/data/com.termux.nix/files/home;
   };
+  # Fonts
+  home.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = [ "FiraCode" "JetBrainsMono" ];
+    })
+  ];
+
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      emoji = [ "JetBrainsMono" ];
+      monospace = [ "JetBrainsMono" ];
+      sansSerif = [ "JetBrainsMono" ];
+      serif = [ "JetBrainsMono" ];
+    };
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "sapphire";
+  };
+
 }
