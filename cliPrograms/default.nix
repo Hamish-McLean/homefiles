@@ -7,6 +7,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -35,6 +36,7 @@
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix
+    ./thefuck.nix
     ./tmux.nix
     ./yazi.nix
     ./zellij.nix
@@ -46,6 +48,17 @@
     cliPrograms.enable = lib.mkEnableOption "enables cliPrograms";
   };
   config = lib.mkIf config.cliPrograms.enable {
+
+    home.packages = with pkgs; [
+      ddgr
+      du-dust
+      github-copilot-cli
+      imagemagick
+      prettyping
+      progress
+    ];
+
+    # Custom options
     bash.enable = lib.mkDefault true;
     bat.enable = lib.mkDefault true;
     bottom.enable = lib.mkDefault true;
@@ -57,7 +70,7 @@
     fish.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     gh.enable = lib.mkDefault true;
-    gh-dash.enable = lib.mkDefault true;
+    # gh-dash.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
@@ -69,6 +82,7 @@
     skim.enable = lib.mkDefault true;
     spotify-player.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
+    thefuck.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     yazi.enable = lib.mkDefault true;
     zellij.enable = lib.mkDefault false;

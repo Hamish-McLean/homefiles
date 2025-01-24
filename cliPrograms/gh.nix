@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -11,7 +12,9 @@
   config = lib.mkIf config.gh.enable {
     programs.gh = {
       enable = true;
-      # extensions = [ ]; # https://github.com/topics/gh-extension
+      extensions = with pkgs; [
+        gh-dash
+      ]; # https://github.com/topics/gh-extension
     };
   };
 }

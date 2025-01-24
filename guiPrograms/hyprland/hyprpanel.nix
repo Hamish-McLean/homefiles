@@ -11,12 +11,12 @@ Configuration: https://hyprpanel.com/getting_started/installation.html#nixos-hom
   ...
 }:
 let 
-  base = "#1e1e2e";
-  green = "#a6e3a1";
-  red = "#f38ba8";
+  # base = "#1e1e2e";
+  # green = "#a6e3a1";
+  # red = "#f38ba8";
   sapphire = "#74c7ec";
-  surface0 = "#313244";
-  text = "#cdd6f4";
+  # surface0 = "#313244";
+  # text = "#cdd6f4";
 in 
 {
   options = {

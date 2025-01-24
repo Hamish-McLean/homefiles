@@ -4,7 +4,13 @@
   All can be enabled by setting guiPrograms = true.
   Modules are enabled by default so can be disabled by setting them to false.
 */
-{ lib, config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  # unstablePkgs,
+  ...
+}:
 {
   # GUI programs to import
   imports = [
@@ -15,6 +21,7 @@
     ./gtk.nix
     ./hyprland/hyprland.nix
     ./kitty.nix
+    ./nixcord.nix
     ./plasma.nix
     ./qt.nix
     ./vscodium.nix
@@ -27,6 +34,12 @@
     guiPrograms.enable = lib.mkEnableOption "enables guiPrograms";
   };
   config = lib.mkIf config.guiPrograms.enable {
+
+     home.packages = with pkgs; [
+    #   betterdiscord-installer
+    #   discord
+      qalculate-gtk
+    ];
 
     # Desktop environments
     gnome_config.enable = lib.mkDefault true;
@@ -42,6 +55,7 @@
     freetube.enable = lib.mkDefault true;
     # ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
+    # nixcord.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
     zen.enable = lib.mkDefault true;

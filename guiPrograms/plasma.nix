@@ -6,7 +6,7 @@
   config,
   lib,
   pkgs,
-  plasma-manager,
+  # plasma-manager,
   ...
 }:
 {

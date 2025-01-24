@@ -1,20 +1,20 @@
 {
   config,
-  hyprland-plugins,
-  inputs,
+  # hyprland-plugins,
+  # inputs,
   lib,
   pkgs,
-  system,
-  username,
+  # system,
+  # username,
   ...
 }:
 let 
   accent = "rgb(74c7ec)";
-  base = "rgb(1e1e2e)";
-  green = "rgb(a6e3a1)";
-  red = "rgb(f38ba8)";
+  # base = "rgb(1e1e2e)";
+  # green = "rgb(a6e3a1)";
+  # red = "rgb(f38ba8)";
   surface0 = "rgb(313244)";
-  text = "rgb(cdd6f4)";
+  # text = "rgb(cdd6f4)";
 in 
 {
   imports = [
@@ -63,16 +63,20 @@ in
       enable = true;
       settings = {};
     };
-    services.hyprpaper = {
+
+    services.hyprpaper =
+    let
+      wallpaper = ../../wallpapers/minimalist-black-hole.png;
+    in
+    {
       enable = true;
       settings = {
         ipc = "true";
         splash = false;
-        preload = [ "${../../wallpapers/rainbow.png}" ];
-        wallpaper = ", ${../../wallpapers/rainbow.png}";
+        preload = [ "${wallpaper}" ];
+        wallpaper = ", ${wallpaper}";
       }; 
     };
-
 
     wayland.windowManager.hyprland = {
       enable = true;

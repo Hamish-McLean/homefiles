@@ -2,7 +2,7 @@
 { 
   pkgs, 
   username, 
-  inputs, 
+  # inputs, 
   ... 
 }:
 {
