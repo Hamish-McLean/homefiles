@@ -34,6 +34,10 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
@@ -84,6 +88,7 @@
             # inputs.cosmic-manager.homeManagerModules.cosmic-manager
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
             inputs.hyprpanel.homeManagerModules.hyprpanel
+            inputs.nixcord.homeManagerModules.nixcord
             inputs.nixvim.homeManagerModules.nixvim
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeManagerModules.plasma-manager
