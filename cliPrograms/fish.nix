@@ -15,11 +15,26 @@
         set -U fish_greeting ""
       '';
       plugins = [
-        { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
-        { name = "done"; src = pkgs.fishPlugins.done.src; } 
-        { name = "pisces"; src = pkgs.fishPlugins.pisces.src; } 
-        { name = "puffer"; src = pkgs.fishPlugins.puffer.src; } 
-        { name = "sponge"; src = pkgs.fishPlugins.sponge.src; } 
+        {
+          name = "colored-man-pages";
+          src = pkgs.fishPlugins.colored-man-pages.src;
+        }
+        {
+          name = "done";
+          src = pkgs.fishPlugins.done.src;
+        }
+        {
+          name = "pisces";
+          src = pkgs.fishPlugins.pisces.src;
+        }
+        {
+          name = "puffer";
+          src = pkgs.fishPlugins.puffer.src;
+        }
+        {
+          name = "sponge";
+          src = pkgs.fishPlugins.sponge.src;
+        }
       ];
     };
     catppuccin.fish.enable = true;

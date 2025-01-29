@@ -1,7 +1,7 @@
-{ 
-  config, 
-  lib, 
-  ... 
+{
+  config,
+  lib,
+  ...
 }:
 {
   options = {

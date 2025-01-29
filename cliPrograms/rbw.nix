@@ -1,9 +1,9 @@
 /*
-rbw Bitwarden cli client
+  rbw Bitwarden cli client
 
-https://github.com/doy/rbw
+  https://github.com/doy/rbw
 
-Needs to be authenticated with an API key using `rbw register` 
+  Needs to be authenticated with an API key using `rbw register`
 */
 {
   config,
@@ -15,7 +15,7 @@ Needs to be authenticated with an API key using `rbw register`
   options = {
     rbw.enable = lib.mkEnableOption "enables rbw";
   };
-  
+
   config = lib.mkIf config.rbw.enable {
     programs.rbw = {
       enable = true;

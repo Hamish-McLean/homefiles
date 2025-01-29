@@ -1,45 +1,54 @@
 /*
-HyprPanel
+  HyprPanel
 
-Flake: https://github.com/Jas-SinghFSU/HyprPanel
+  Flake: https://github.com/Jas-SinghFSU/HyprPanel
 
-Configuration: https://hyprpanel.com/getting_started/installation.html#nixos-home-manager
+  Configuration: https://hyprpanel.com/getting_started/installation.html#nixos-home-manager
 */
 {
   config,
   lib,
   ...
 }:
-let 
+let
   # base = "#1e1e2e";
   # green = "#a6e3a1";
   # red = "#f38ba8";
   sapphire = "#74c7ec";
-  # surface0 = "#313244";
-  # text = "#cdd6f4";
-in 
+in
+# surface0 = "#313244";
+# text = "#cdd6f4";
 {
   options = {
     hyprpanel.enable = lib.mkEnableOption "enables hyprpanel";
   };
-  
+
   config = lib.mkIf config.hyprpanel.enable {
     programs.hyprpanel = {
       enable = true;
       hyprland.enable = true;
       overwrite.enable = true; # Allows gui configuration to be overwritten by home-manager
       theme = "catppuccin_mocha"; # catppuccin_mocha, catppuccin_mocha_split, catppuccin_mocha_vivid
-      override = { # Can override specific colours etc
+      override = {
+        # Can override specific colours etc
         theme.bar = {
           # background = surface0;
           buttons.dashboard.icon = sapphire;
         };
       };
-      layout = { # https://hyprpanel.com/configuration/panel.html
-        "bar.layouts" = { 
+      layout = {
+        # https://hyprpanel.com/configuration/panel.html
+        "bar.layouts" = {
           "*" = {
-            left = [ "dashboard" "workspaces" "windowtitle" ];
-            middle = [ "cava" "media" ];
+            left = [
+              "dashboard"
+              "workspaces"
+              "windowtitle"
+            ];
+            middle = [
+              "cava"
+              "media"
+            ];
             right = [
               "volume"
               "network"
@@ -61,14 +70,23 @@ in
         #   right = [ "volume" "clock" "notifications" ];
         # };
         "bar.systray" = {
-          customIcons = { #  
-            "[Ss]team" = { icon = " "; }; # 󰓓     
-            "[Ss]potify*" = { icon = " "; }; # 󰓇
-            "KDE*" = { icon = " "; }; # 󰬒  󰰉  󰰋
-            "zap*" = { icon = " "; };
+          customIcons = {
+            # 
+            "[Ss]team" = {
+              icon = " ";
+            }; # 󰓓    
+            "[Ss]potify*" = {
+              icon = " ";
+            }; # 󰓇
+            "KDE*" = {
+              icon = " ";
+            }; # 󰬒  󰰉  󰰋
+            "zap*" = {
+              icon = " ";
+            };
           };
         };
-      }; 
+      };
       settings = {
         bar = {
           clock.format = "%a %Y-%m-%d %H:%M";

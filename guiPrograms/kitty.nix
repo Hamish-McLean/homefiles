@@ -1,7 +1,7 @@
-{ 
-  config, 
-  lib, 
-  ... 
+{
+  config,
+  lib,
+  ...
 }:
 {
   options = {
@@ -9,7 +9,7 @@
   };
 
   config = lib.mkIf config.kitty.enable {
-    
+
     programs.kitty = {
       enable = true;
       font.name = "JetBrainsMono Nerd Font";
@@ -23,7 +23,7 @@
         cursor_trail_decay = "0.1 0.4";
       };
     };
-    
+
     catppuccin.kitty.enable = true;
   };
 }

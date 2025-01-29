@@ -10,7 +10,7 @@
   };
 
   config = lib.mkIf config.tmux.enable {
-    
+
     programs.tmux = {
 
       enable = true;
@@ -39,14 +39,14 @@
         set -g @catppuccin_pane_border_status "yes"
         set -g @catppuccin_window_flags "icon" # none, icon, or text
       '';
-        # set -agF status-right "#{E:@catppuccin_status_cpu}"
-        # set -agF status-right "#{E:@catppuccin_status_battery}"
-        # set -g @catppuccin_date_time "%H:%M"
-        # set -g @catppuccin_flavour 'mocha'
-        # set -g @catppuccin_window_tabs_enabled on
+      # set -agF status-right "#{E:@catppuccin_status_cpu}"
+      # set -agF status-right "#{E:@catppuccin_status_battery}"
+      # set -g @catppuccin_date_time "%H:%M"
+      # set -g @catppuccin_flavour 'mocha'
+      # set -g @catppuccin_window_tabs_enabled on
     };
 
     catppuccin.tmux.enable = true;
-  
+
   };
 }

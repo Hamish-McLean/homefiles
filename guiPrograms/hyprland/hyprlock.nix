@@ -1,22 +1,22 @@
-{ 
-  config, 
+{
+  config,
   lib,
   username,
-  ... 
+  ...
 }:
-let 
+let
   accent = "rgb(74c7ec)";
   base = "rgb(1e1e2e)";
   green = "rgb(a6e3a1)";
   red = "rgb(f38ba8)";
   surface0 = "rgb(313244)";
   text = "rgb(cdd6f4)";
-in 
+in
 {
   options = {
     hyprlock.enable = lib.mkEnableOption "enables hyprlock";
   };
-  
+
   config = lib.mkIf config.hyprlock.enable {
     programs.hyprlock = {
       enable = true;
@@ -50,7 +50,8 @@ in
           halign = "center";
           valign = "center";
         };
-        label = { # Greeting
+        label = {
+          # Greeting
           text = "Welcome, ${username}";
           color = accent;
           font_size = 20;

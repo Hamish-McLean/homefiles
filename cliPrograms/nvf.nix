@@ -10,17 +10,17 @@
   options = {
     nvf.enable = lib.mkEnableOption "enables nvf";
   };
-  
+
   config = lib.mkIf config.nvf.enable {
     programs.nvf = {
-      
+
       enable = true;
-      
+
       settings = {
         vim = {
-          
+
           git.enable = true;
-          
+
           languages = {
             enableFormat = true;
             enableLSP = true;
@@ -43,7 +43,7 @@
             python.enable = true;
             r.enable = true;
           };
-          
+
           theme = {
             enable = true;
             name = "catppuccin";
@@ -65,7 +65,7 @@
           };
           ui.noice.enable = true;
           visuals.nvim-web-devicons.enable = true;
-        
+
         };
       };
 

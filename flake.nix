@@ -30,7 +30,7 @@
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
-    hyprpanel = { 
+    hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -55,6 +55,10 @@
       url = "gitlab:Zhaith-Izaliel/rofi-applets";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,26 +67,41 @@
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  
+
   };
 
-  outputs = {
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    ...
-  }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ...
+    }@inputs:
     let
       homeSystem =
         system: hostname: username:
         let
-          pkgs = import nixpkgs { inherit system; config.allowUnfree = true; overlays = [inputs.hyprpanel.overlay];};
-          unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+            overlays = [ inputs.hyprpanel.overlay ];
+          };
+          unstablePkgs = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
         in
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           extraSpecialArgs = {
-            inherit inputs pkgs unstablePkgs system hostname username;
+            inherit
+              inputs
+              pkgs
+              unstablePkgs
+              system
+              hostname
+              username
+              ;
           };
           modules = [
             # Allow unfree packages
@@ -97,6 +116,7 @@
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeManagerModules.plasma-manager
             inputs.rofi-applets.homeManagerModules.default
+            inputs.sops-nix.homeManagerModules.sops
             inputs.spicetify-nix.homeManagerModules.default
           ];
         };

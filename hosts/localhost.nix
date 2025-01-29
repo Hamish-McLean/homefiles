@@ -27,7 +27,10 @@
   # Fonts
   home.packages = with pkgs; [
     (nerdfonts.override {
-      fonts = [ "FiraCode" "JetBrainsMono" ];
+      fonts = [
+        "FiraCode"
+        "JetBrainsMono"
+      ];
     })
   ];
 

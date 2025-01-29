@@ -1,6 +1,4 @@
-/* 
-Nix Helper
-*/
+# Nix Helper
 {
   config,
   lib,
@@ -10,7 +8,7 @@ Nix Helper
   options = {
     nh.enable = lib.mkEnableOption "enables nh";
   };
-  
+
   config = lib.mkIf config.nh.enable {
     programs.nh = {
       enable = true;

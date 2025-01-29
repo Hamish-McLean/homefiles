@@ -1,6 +1,6 @@
 /*
-Cosmic manager
-https://heitoraugustoln.github.io/cosmic-manager/
+  Cosmic manager
+  https://heitoraugustoln.github.io/cosmic-manager/
 */
 {
   config,
@@ -11,7 +11,7 @@ https://heitoraugustoln.github.io/cosmic-manager/
   options = {
     cosmic.enable = lib.mkEnableOption "enables cosmic";
   };
-  
+
   config = lib.mkIf config.cosmic.enable {
     programs.cosmic-files = {
       enable = true;

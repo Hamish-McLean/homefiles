@@ -35,7 +35,7 @@
           disabled = false;
         };
       };
-    
+
     };
 
     catppuccin.starship.enable = true;

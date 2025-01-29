@@ -36,7 +36,7 @@
   };
   config = lib.mkIf config.guiPrograms.enable {
 
-     home.packages = with pkgs; [
+    home.packages = with pkgs; [
       # spotify
       qalculate-gtk # Calculator
       zapzap # Whatsapp client

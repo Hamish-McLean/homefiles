@@ -1,9 +1,9 @@
 # Cycad's default home manager module which imports other home manager modules
-{ 
-  pkgs, 
-  username, 
-  # inputs, 
-  ... 
+{
+  pkgs,
+  username,
+  # inputs,
+  ...
 }:
 {
   home.stateVersion = "23.11";
@@ -15,19 +15,25 @@
     # inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "sapphire";
+  };
+
   home = {
     username = username;
     homeDirectory = /home/${username};
     packages = with pkgs; [
-      (nerdfonts.override { 
-        fonts = [ 
+      (nerdfonts.override {
+        fonts = [
           "CodeNewRoman"
           "DroidSansMono"
           "FantasqueSansMono"
           "FiraCode"
           "FiraMono"
           "JetBrainsMono"
-        ]; 
+        ];
       })
     ];
   };
@@ -43,11 +49,10 @@
     };
   };
 
-  xdg.enable = true;
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "sapphire";
+  sops = {
+    age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+    defaultSopsFile = secrets/secrets.yaml;
   };
+
+  xdg.enable = true;
 }

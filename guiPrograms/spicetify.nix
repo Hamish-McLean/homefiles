@@ -1,7 +1,7 @@
 /*
-Spicetify-Nix
+  Spicetify-Nix
 
-https://github.com/Gerg-L/spicetify-nix
+  https://github.com/Gerg-L/spicetify-nix
 */
 {
   config,
@@ -14,7 +14,7 @@ https://github.com/Gerg-L/spicetify-nix
   options = {
     spicetify.enable = lib.mkEnableOption "enables spicetify";
   };
-  
+
   config = lib.mkIf config.spicetify.enable {
     programs.spicetify =
       let

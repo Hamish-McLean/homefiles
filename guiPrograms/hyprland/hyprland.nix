@@ -8,14 +8,14 @@
   # username,
   ...
 }:
-let 
+let
   accent = "rgb(74c7ec)";
   # base = "rgb(1e1e2e)";
   # green = "rgb(a6e3a1)";
   # red = "rgb(f38ba8)";
   surface0 = "rgb(313244)";
-  # text = "rgb(cdd6f4)";
-in 
+in
+# text = "rgb(cdd6f4)";
 {
   imports = [
     ./dunst.nix
@@ -42,7 +42,7 @@ in
 
     catppuccin.hyprland.enable = true;
 
-    home.packages = with pkgs; [ 
+    home.packages = with pkgs; [
       brightnessctl
       # hyprcursor
       # hypridle
@@ -61,22 +61,22 @@ in
 
     services.hypridle = {
       enable = true;
-      settings = {};
+      settings = { };
     };
 
     services.hyprpaper =
-    let
-      wallpaper = ../../wallpapers/minimalist-black-hole.png;
-    in
-    {
-      enable = true;
-      settings = {
-        ipc = "true";
-        splash = false;
-        preload = [ "${wallpaper}" ];
-        wallpaper = ", ${wallpaper}";
-      }; 
-    };
+      let
+        wallpaper = ../../wallpapers/minimalist-black-hole.png;
+      in
+      {
+        enable = true;
+        settings = {
+          ipc = "true";
+          splash = false;
+          preload = [ "${wallpaper}" ];
+          wallpaper = ", ${wallpaper}";
+        };
+      };
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -137,7 +137,7 @@ in
         gestures = {
           workspace_swipe = "true";
         };
-        
+
         # plugins
         plugin = {
           # borders-plus-plus = {

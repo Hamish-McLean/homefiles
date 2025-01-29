@@ -9,10 +9,10 @@
     rofi.enable = lib.mkEnableOption "enables rofi";
   };
   config = lib.mkIf config.rofi.enable {
-    home.packages = with pkgs; [  
+    home.packages = with pkgs; [
       # rofi
       # rofi-bluetooth
-      rofi-power-menu 
+      rofi-power-menu
     ];
     # catppuccin.rofi.enable = true;
     programs.rofi = {
@@ -30,23 +30,23 @@
         sidebar-mode = true;
         show-icons = true;
       };
-      theme = 
-      let
-        inherit (config.lib.formats.rasi) mkLiteral;
-      in  
-      {
-        "*" = {
-          border-radius = mkLiteral "10px";
-          font = "JetBrainsMono Nerd Font 10";
+      theme =
+        let
+          inherit (config.lib.formats.rasi) mkLiteral;
+        in
+        {
+          "*" = {
+            border-radius = mkLiteral "10px";
+            font = "JetBrainsMono Nerd Font 10";
+          };
+          window = {
+            border = mkLiteral "2px";
+            border-color = mkLiteral "#74c7ec";
+          };
+          element-icon = {
+            size = mkLiteral "2.5ch";
+          };
         };
-        window = {
-          border = mkLiteral "2px";
-          border-color = mkLiteral "#74c7ec";
-        };
-        element-icon = {
-          size = mkLiteral "2.5ch";
-        };
-      };
 
       # Applets from rofi-applets https://github.com/Zhaith-Izaliel/rofi-applets
       applets = {
@@ -54,8 +54,12 @@
           enable = true;
           theme = {
             "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-            configuration = { location = 3; };
-            inputbar = { enabled = false; };
+            configuration = {
+              location = 3;
+            };
+            inputbar = {
+              enabled = false;
+            };
             window = {
               width = "5em";
               height = "10em";
@@ -73,16 +77,24 @@
           enable = true;
           theme = {
             "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-            configuration = { location = 3; };
-            inputbar = { enabled = false; };
+            configuration = {
+              location = 3;
+            };
+            inputbar = {
+              enabled = false;
+            };
           };
         };
         ronema = {
           enable = true;
           theme = {
             "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-            configuration = { location = 3; };
-            inputbar = { enabled = false; };
+            configuration = {
+              location = 3;
+            };
+            inputbar = {
+              enabled = false;
+            };
           };
         };
         quicklinks = {

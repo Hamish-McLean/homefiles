@@ -84,15 +84,29 @@
             format = "{icon}";
             tooltip-format = "{node_name} {volume}%";
             format-muted = " ";
-            format-icons = [ " " " " " " ];
+            format-icons = [
+              " "
+              " "
+              " "
+            ];
             on-click = "pavucontrol";
             on-click-right = "qpwgraph";
           };
           backlight = {
             # device = "intel_backlight";
             format = "{icon}";
-            tooltip-format="{percent}%";
-            format-icons = [ "" "" "" "" "" "" "" "" "" ];
+            tooltip-format = "{percent}%";
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
             interval = 2;
             on-scroll-up = "brightnessctl set 5%+";
             on-scroll-down = "brightnessctl set 5%-";
@@ -105,7 +119,19 @@
             };
             format = "{icon}";
             tooltip-format = "{capacity}%";
-            format-icons = ["󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            format-icons = [
+              "󰂃"
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
             format-charging = "{icon}󱐋";
             format-full = "󱟢 ";
             on-click = "rofi-power-profiles"; # -location 3";
@@ -129,7 +155,12 @@
           network = {
             format-wifi = "{icon}";
             format-icons = {
-              wifi = [ "󰤟 " "󰤢 " "󰤥 " "󰤨 " ];
+              wifi = [
+                "󰤟 "
+                "󰤢 "
+                "󰤥 "
+                "󰤨 "
+              ];
             };
             format-disconnected = "󰤮 ";
             format-ethernet = "󰈁";
@@ -139,7 +170,7 @@
           bluetooth = {
             format-connected = "󰂰";
             format-on = "󰂯";
-            format-off="󰂲";
+            format-off = "󰂲";
             on-click = "rofi-bluetooth"; # -location 3 -xoffset -100 -yoffset 50"; # -theme-str 'window {width: 50%;}'"; #listview {lines: 6;}'";
             tooltip-format-connected = "{device_enumerate}";
             tooltip-device-enumerate-connected = "{device_alias}";
