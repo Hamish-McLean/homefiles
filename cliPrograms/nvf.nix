@@ -51,7 +51,7 @@
           };
 
           # Plugins
-          autocomplete.nvim-cmp.enable = true;
+          autocomplete.nvim-cmp.enable = true; # Swap for blink when available
           filetree.neo-tree.enable = true;
           statusline.lualine.enable = true;
           tabline.nvimBufferline.enable = true;

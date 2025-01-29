@@ -24,6 +24,7 @@
     ./nixcord.nix
     ./plasma.nix
     ./qt.nix
+    ./spicetify.nix
     ./vscodium.nix
     ./zathura.nix
     ./zen.nix
@@ -36,9 +37,10 @@
   config = lib.mkIf config.guiPrograms.enable {
 
      home.packages = with pkgs; [
-    #   betterdiscord-installer
-    #   discord
-      qalculate-gtk
+      # spotify
+      qalculate-gtk # Calculator
+      zapzap # Whatsapp client
+      zotero
     ];
 
     # Desktop environments
@@ -55,8 +57,9 @@
     freetube.enable = lib.mkDefault true;
     # ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
-    # nixcord.enable = lib.mkDefault true;
+    nixcord.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
+    spicetify.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
     zen.enable = lib.mkDefault true;
 

@@ -33,6 +33,7 @@
     ./nixvim-config.nix
     ./nvf.nix
     ./pandoc.nix
+    ./rbw.nix
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix

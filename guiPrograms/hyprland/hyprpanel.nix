@@ -26,7 +26,6 @@ in
   config = lib.mkIf config.hyprpanel.enable {
     programs.hyprpanel = {
       enable = true;
-      # systemd.enable = true; # Obsolete
       hyprland.enable = true;
       overwrite.enable = true; # Allows gui configuration to be overwritten by home-manager
       theme = "catppuccin_mocha"; # catppuccin_mocha, catppuccin_mocha_split, catppuccin_mocha_vivid
@@ -36,11 +35,47 @@ in
           buttons.dashboard.icon = sapphire;
         };
       };
-      # layout = {}; # https://hyprpanel.com/configuration/panel.html
+      layout = { # https://hyprpanel.com/configuration/panel.html
+        "bar.layouts" = { 
+          "*" = {
+            left = [ "dashboard" "workspaces" "windowtitle" ];
+            middle = [ "cava" "media" ];
+            right = [
+              "volume"
+              "network"
+              "bluetooth"
+              "systray"
+              "clock"
+              "notifications"
+            ];
+          };
+        };
+        # "1" = {
+        #   left = [ "dashboard" "workspaces" "windowtitle" ];
+        #   middle = [ "media" ];
+        #   right = [ "volume" "clock" "notifications" ];
+        # };
+        # "2" = {
+        #   left = [ "dashboard" "workspaces" "windowtitle" ];
+        #   middle = [ "media" ];
+        #   right = [ "volume" "clock" "notifications" ];
+        # };
+        "bar.systray" = {
+          customIcons = { #  
+            "[Ss]team" = { icon = " "; }; # 󰓓     
+            "[Ss]potify*" = { icon = " "; }; # 󰓇
+            "KDE*" = { icon = " "; }; # 󰬒  󰰉  󰰋
+            "zap*" = { icon = " "; };
+          };
+        };
+      }; 
       settings = {
         bar = {
           clock.format = "%a %Y-%m-%d %H:%M";
+          customModules.cava.showIcon = false;
           launcher.autoDetectIcon = true; # icon = "";
+          # workspaces.showApplicationIcons = true;
+          # workspaces.show_icons = true;
         };
         menus = {
           clock = {
@@ -74,7 +109,7 @@ in
                 };
               };
             };
-            # powermenu.avatar.image = "${../../pictures/mice.jpg}";
+            powermenu.avatar.image = "${../../wallpapers/astronaught.jpg}";
           };
         };
         theme = {

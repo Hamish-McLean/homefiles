@@ -55,6 +55,10 @@
       url = "gitlab:Zhaith-Izaliel/rofi-applets";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:MarceColl/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,6 +97,7 @@
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeManagerModules.plasma-manager
             inputs.rofi-applets.homeManagerModules.default
+            inputs.spicetify-nix.homeManagerModules.default
           ];
         };
 

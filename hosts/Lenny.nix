@@ -20,8 +20,9 @@
   # Enable all guiPrograms modules
   guiPrograms.enable = true;
 
-  # Disable specific modules
+  # Custom options
   hyprland.enable = true;
+  rbw.enable = true; # Bitwarden CLI
 
   services.kdeconnect = {
     enable = true;
