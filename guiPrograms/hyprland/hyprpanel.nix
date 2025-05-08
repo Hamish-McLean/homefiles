@@ -140,8 +140,8 @@ in
               radius = "0.8em";
             };
             floating = true;
-            margin_sides = "1.2em";
-            margin_top = "1em";
+            margin_sides = "10px";
+            margin_top = "10px";
           };
           font = {
             name = "JetBrainsMono Nerd Font";

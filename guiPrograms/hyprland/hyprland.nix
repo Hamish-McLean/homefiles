@@ -94,8 +94,8 @@ in
       settings = {
 
         monitor = [
+          "HDMI-A-2,preferred,0x0,1" # Scaling for external monitor
           "eDP-1,preferred,auto,1" # Scaling for laptop screen
-          "HDMI-A-2,preferred,auto,1" # Scaling for external monitor
         ];
 
         input = {
@@ -108,9 +108,11 @@ in
         };
 
         general = {
-          border_size = 2;
+          border_size = 1;
           "col.active_border" = accent;
           "col.inactive_border" = surface0;
+          gaps_in = 5;
+          gaps_out = 10;
           resize_on_border = true;
           snap = {
             enabled = true;
@@ -129,7 +131,7 @@ in
           };
           shadow = {
             enabled = true;
-            range = 10;
+            range = 5;
             render_power = 1000;
             color = accent;
             color_inactive = "rgba(00000000)";
