@@ -13,10 +13,12 @@
 {
   # Cli programs to import
   imports = [
+    ./atuin.nix
     ./bash.nix
     ./bat.nix
     ./bottom.nix
     ./btop.nix
+    ./carapace.nix
     ./cava.nix
     ./direnv.nix
     ./eza.nix
@@ -31,6 +33,7 @@
     ./lazygit.nix
     # ./nh.nix
     ./nixvim-config.nix
+    ./nushell.nix
     ./nvf.nix
     ./pandoc.nix
     ./rbw.nix
@@ -60,10 +63,12 @@
     ];
 
     # Custom options
+    atuin.enable = lib.mkDefault true;
     bash.enable = lib.mkDefault true;
     bat.enable = lib.mkDefault true;
     bottom.enable = lib.mkDefault true;
     btop.enable = lib.mkDefault true;
+    carapace.enable = lib.mkDefault true;
     cava.enable = lib.mkDefault true;
     direnv.enable = lib.mkDefault true;
     eza.enable = lib.mkDefault true;
@@ -78,6 +83,7 @@
     lazygit.enable = lib.mkDefault true;
     # nh.enable = lib.mkDefault true;
     nixvim-config.enable = lib.mkDefault false;
+    nushell.enable = lib.mkDefault true;
     nvf.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
     skim.enable = lib.mkDefault true;

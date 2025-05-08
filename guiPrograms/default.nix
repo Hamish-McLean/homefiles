@@ -14,6 +14,7 @@
 {
   # GUI programs to import
   imports = [
+    ./feh.nix
     ./flatpak.nix
     ./freetube.nix
     # ./ghostty.nix
@@ -21,6 +22,7 @@
     ./gtk.nix
     ./hyprland/hyprland.nix
     ./kitty.nix
+    ./librewolf.nix
     ./nixcord.nix
     ./plasma.nix
     ./qt.nix
@@ -37,8 +39,12 @@
   config = lib.mkIf config.guiPrograms.enable {
 
     home.packages = with pkgs; [
+      endless-sky
+      resources
       # spotify
+      superTuxKart
       qalculate-gtk # Calculator
+      qbittorrent
       zapzap # Whatsapp client
       zotero
     ];
@@ -53,9 +59,11 @@
     qt_config.enable = lib.mkDefault true;
 
     # Programs
+    feh.enable = lib.mkDefault true;
     flatpak.enable = lib.mkDefault true;
     freetube.enable = lib.mkDefault true;
     # ghostty.enable = lib.mkDefault true;
+    librewolf.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;

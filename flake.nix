@@ -10,7 +10,6 @@
       url = "github:nix-community/home-manager/release-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     # Packages
     catppuccin.url = "github:catppuccin/nix";
@@ -21,14 +20,18 @@
     #     # home-manager.follows = "home-manager";
     #   };
     # };
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # helix = {
+    #   url = "github:helix-editor/helix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # hyprland.url = "github:hyprwm/Hyprland"; # Switched to nixpkgs version for now
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
+    # };
+    # hyprland-virtual-desktops = {
+    #   url = "github:levnikmyskin/hyprland-virtual-desktops";
+    #   inputs.hyprland.follows = "nixpkgs";
     # };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
@@ -42,6 +45,7 @@
       url = "github:nix-community/nixvim/nixos-24.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

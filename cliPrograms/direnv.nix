@@ -8,6 +8,7 @@
       enable = true;
       enableBashIntegration = true;
       # enableFishIntegration = true; # Already enabled
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
   };

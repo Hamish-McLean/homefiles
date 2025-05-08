@@ -11,6 +11,7 @@
     programs.eza = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
       colors = "auto";
       icons = "auto";
       git = true;

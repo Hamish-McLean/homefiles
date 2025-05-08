@@ -13,6 +13,7 @@
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
 
       settings = {
         add_newline = true;

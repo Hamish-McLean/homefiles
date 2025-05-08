@@ -19,6 +19,7 @@ in
 {
   imports = [
     ./dunst.nix
+    ./hyprland-virtual-desktops.nix
     ./hyprlock.nix
     ./hyprpanel.nix
     ./rofi.nix
@@ -34,6 +35,7 @@ in
 
     # Custom options
     # dunst.enable = true;
+    # hyprland-virtual-desktops.enable = true;
     hyprlock.enable = true;
     hyprpanel.enable = true;
     rofi.enable = true;
@@ -200,8 +202,10 @@ in
             # Brightness
             ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
             ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-            ", xf86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set 33%+"
-            ", xf86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
+            # ", xf86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set 33%+"
+            # ", xf86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
+            # ", XF86Keyboard, exec, brightnessctl -d tpacpi::kbd_backlight set 1+%"
+            ", XF86Keyboard, exec, ${config.home.homeDirectory}/.config/hypr/scripts/cycle-kbd-backlight.sh" # Script defined later
 
           ]
           ++ (
@@ -236,6 +240,18 @@ in
         ];
 
       };
+    };
+    # Scripts
+    # keyboard backlight
+    home.file.".config/hypr/scripts/cycle-kbd-backlight.sh" = {
+      text = ''
+        #!/usr/bin/env bash
+        current=$(brightnessctl -d tpacpi::kbd_backlight get)
+        max=2
+        next=$(( (current + 1) % (max + 1) ))
+        brightnessctl -d tpacpi::kbd_backlight set $next
+      '';
+      executable = true;  # Make the script executable
     };
   };
 }

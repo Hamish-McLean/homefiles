@@ -15,8 +15,8 @@
         package = pkgs.magnetic-catppuccin-gtk;
         name = "Catppuccin-GTK-Dark";
       };
-      gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+      # gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+      # gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
     };
 
     # Now symlink the `~/.config/gtk-4.0/` folder declaratively:

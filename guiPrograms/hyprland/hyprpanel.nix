@@ -53,6 +53,7 @@ in
               "volume"
               "network"
               "bluetooth"
+              "battery"
               "systray"
               "clock"
               "notifications"
