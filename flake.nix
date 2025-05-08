@@ -132,6 +132,9 @@
         "cycad@Lenny" = homeSystem "x86_64-linux" "Lenny" "cycad";
         "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
 
+	# NixOS-WSL hosts
+	"cycad@Roger" = homeSystem "x86_64-linux" "Roger" "cycad";
+
         # nix-on-droid hosts
         "nix-on-droid@localhost" = homeSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid
       };
