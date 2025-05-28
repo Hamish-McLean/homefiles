@@ -24,29 +24,31 @@
   home = {
     username = username;
     homeDirectory = /home/${username};
-    packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "CodeNewRoman"
-          "DroidSansMono"
-          "FantasqueSansMono"
-          "FiraCode"
-          "FiraMono"
-          "JetBrainsMono"
-        ];
-      })
-    ];
   };
 
   # Fonts
+  home.packages = with pkgs.nerd-fonts; [
+    code-new-roman
+    droid-sans-mono
+    fantasque-sans-mono
+    fira-code
+    fira-mono
+    jetbrains-mono
+  ];
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      emoji = [ "JetBrainsMono" ];
-      monospace = [ "JetBrainsMono" ];
-      sansSerif = [ "JetBrainsMono" ];
-      serif = [ "JetBrainsMono" ];
+      emoji = [ "JetBrainsMono Nerd Font" ];
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
     };
+    # defaultFonts = {
+    #   emoji = [ "jetbrains-mono" ];
+    #   monospace = [ "jetbrains-mono" ];
+    #   sansSerif = [ "jetbrains-mono" ];
+    #   serif = [ "jetbrains-mono" ];
+    # };
   };
 
   sops = {

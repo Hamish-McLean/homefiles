@@ -28,7 +28,7 @@ in
       enable = true;
       hyprland.enable = true;
       overwrite.enable = true; # Allows gui configuration to be overwritten by home-manager
-      theme = "catppuccin_mocha"; # catppuccin_mocha, catppuccin_mocha_split, catppuccin_mocha_vivid
+      systemd.enable = true;
       override = {
         # Can override specific colours etc
         theme.bar = {
@@ -36,7 +36,7 @@ in
           buttons.dashboard.icon = sapphire;
         };
       };
-      layout = {
+      settings.layout = {
         # https://hyprpanel.com/configuration/panel.html
         "bar.layouts" = {
           "*" = {
@@ -132,6 +132,7 @@ in
           };
         };
         theme = {
+          name = "catppuccin_mocha"; # catppuccin_mocha, catppuccin_mocha_split, catppuccin_mocha_vivid
           bar = {
             # background = surface0;
             border_radius = "0.8em";

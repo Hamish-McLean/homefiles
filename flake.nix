@@ -4,10 +4,10 @@
   inputs = {
 
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; # Update version
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05"; # Update version
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11"; # Update version
+      url = "github:nix-community/home-manager/release-25.05"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11"; # Update version
+      url = "github:nix-community/nixvim/nixos-25.05"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -84,24 +84,24 @@
     let
       homeSystem =
         system: hostname: username:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [ inputs.hyprpanel.overlay ];
-          };
-          unstablePkgs = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        in
+        # let
+        #   pkgs = import nixpkgs {
+        #     inherit system;
+        #     config.allowUnfree = true;
+        #     overlays = [ inputs.hyprpanel.overlay ];
+        #   };
+        #   unstablePkgs = import nixpkgs-unstable {
+        #     inherit system;
+        #     config.allowUnfree = true;
+        #   };
+        # in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
+          pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = {
             inherit
               inputs
-              pkgs
-              unstablePkgs
+              # pkgs
+              # unstablePkgs
               system
               hostname
               username
@@ -109,13 +109,27 @@
           };
           modules = [
             # Allow unfree packages
-            { nixpkgs.config.allowUnfree = true; }
+            {
+              nixpkgs.config.allowUnfree = true;
+              # Overlay to make unstable packages available as `pkgs.unstable.<package>`
+              nixpkgs.overlays = [
+                # This overlay adds an 'unstable' attribute to pkgs,
+                # which contains packages from the nixpkgs-unstable input.
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    inherit system;
+                    config.allowUnfree = true; # Allow unfree in unstable pkgs as well
+                  };
+                })
+                inputs.hyprpanel.overlay
+              ];
+            }
             ./hosts/${hostname}.nix
-            inputs.catppuccin.homeManagerModules.catppuccin
+            inputs.catppuccin.homeModules.catppuccin
             # inputs.cosmic-manager.homeManagerModules.cosmic-manager
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
             inputs.hyprpanel.homeManagerModules.hyprpanel
-            inputs.nixcord.homeManagerModules.nixcord
+            inputs.nixcord.homeModules.nixcord
             inputs.nixvim.homeManagerModules.nixvim
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeManagerModules.plasma-manager
@@ -132,8 +146,8 @@
         "cycad@Lenny" = homeSystem "x86_64-linux" "Lenny" "cycad";
         "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
 
-	# NixOS-WSL hosts
-	"cycad@Roger" = homeSystem "x86_64-linux" "Roger" "cycad";
+        # NixOS-WSL hosts
+        "cycad@Roger" = homeSystem "x86_64-linux" "Roger" "cycad";
 
         # nix-on-droid hosts
         "nix-on-droid@localhost" = homeSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid

@@ -20,10 +20,10 @@
         vim = {
 
           git.enable = true;
+          lsp.enable = true;
 
           languages = {
             enableFormat = true;
-            enableLSP = true;
             enableTreesitter = true;
             # Languages
             bash.enable = true;

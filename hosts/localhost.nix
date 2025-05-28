@@ -25,15 +25,19 @@
     homeDirectory = /data/data/com.termux.nix/files/home;
   };
   # Fonts
-  home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-      ];
-    })
-  ];
+  # home.packages = with pkgs; [
+    # (nerdfonts.override {
+    #   fonts = [
+    #     "FiraCode"
+    #     "JetBrainsMono"
+    #   ];
+    # })
+  # ];
 
+  home.packages = with pkgs.nerd-fonts; [
+    fira-code
+    jetbrains-mono
+  ];
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {

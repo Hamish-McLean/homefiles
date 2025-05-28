@@ -88,7 +88,7 @@ in
       plugins = with pkgs.hyprlandPlugins; [
         # borders-plus-plus
         # hyprspace
-        hyprtrails
+        # hyprtrails
       ];
 
       settings = {
@@ -149,7 +149,7 @@ in
           #   natural_rounding = "yes";
           # };
           # hyprspace # nix instruction at "https://github.com/KZDKM/Hyprspace"
-          hyprtrails.color = accent;
+          # hyprtrails.color = accent;
         };
 
         "$mod" = "SUPER";
