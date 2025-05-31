@@ -27,14 +27,13 @@ in
     programs.hyprpanel = {
       enable = true;
       hyprland.enable = true;
+      overlay.enable = true;
       overwrite.enable = true; # Allows gui configuration to be overwritten by home-manager
-      systemd.enable = true;
       override = {
         # Can override specific colours etc
-        theme.bar = {
+        # As of nixpkgs 25.05 the attribute set must be enclosed in a string to avoid conflicting with settings section
+        "theme.bar.buttons.dashboard.icon" = sapphire;
           # background = surface0;
-          buttons.dashboard.icon = sapphire;
-        };
       };
       settings.layout = {
         # https://hyprpanel.com/configuration/panel.html
@@ -134,10 +133,8 @@ in
         theme = {
           name = "catppuccin_mocha"; # catppuccin_mocha, catppuccin_mocha_split, catppuccin_mocha_vivid
           bar = {
-            # background = surface0;
             border_radius = "0.8em";
             buttons = {
-              # dashboard.icon = sapphire;
               radius = "0.8em";
             };
             floating = true;

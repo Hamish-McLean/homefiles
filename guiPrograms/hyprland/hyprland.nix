@@ -20,6 +20,7 @@ in
   imports = [
     ./dunst.nix
     ./hyprland-virtual-desktops.nix
+    ./hypridle.nix
     ./hyprlock.nix
     ./hyprpanel.nix
     ./rofi.nix
@@ -36,6 +37,7 @@ in
     # Custom options
     # dunst.enable = true;
     # hyprland-virtual-desktops.enable = true;
+    hypridle.enable = true;
     hyprlock.enable = true;
     hyprpanel.enable = true;
     rofi.enable = true;
@@ -61,14 +63,9 @@ in
     #   # size = 30;
     # };
 
-    services.hypridle = {
-      enable = true;
-      settings = { };
-    };
-
     services.hyprpaper =
       let
-        wallpaper = ../../wallpapers/minimalist-black-hole.png;
+        wallpaper = "${../../wallpapers/minimalist-black-hole.png}";
       in
       {
         enable = true;
