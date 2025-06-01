@@ -29,10 +29,11 @@
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
-    # hyprland-virtual-desktops = {
-    #   url = "github:levnikmyskin/hyprland-virtual-desktops";
-    #   inputs.hyprland.follows = "nixpkgs";
-    # };
+    hyprland-virtual-desktops = {
+      url = "github:levnikmyskin/hyprland-virtual-desktops";
+      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.hyprland.follows = "nixpkgs";
+    };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";

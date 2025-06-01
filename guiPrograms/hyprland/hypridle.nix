@@ -25,20 +25,20 @@
 
         # Screen off after 20 seconds
         {
-          timeout = 2 * 60; # in seconds
+          timeout = 10 * 60; # in seconds
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on"; # Turn screen on when activity resumes
         }
 
         # Lock after 30 seconds
         {
-          timeout = 5 * 60; # in seconds
+          timeout = 20 * 60; # in seconds
           on-timeout = "pidof hyprlock || hyprlock"; # Lock session
         }
 
         # Sleep after 60 seconds (30 seconds after lock)
         {
-          timeout = 30 * 60; # in seconds
+          timeout = 60 * 60; # in seconds
           on-timeout = "systemctl suspend"; # Command to put the system to sleep
         }
       ];

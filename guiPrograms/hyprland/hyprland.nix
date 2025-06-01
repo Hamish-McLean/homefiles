@@ -23,6 +23,7 @@ in
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpanel.nix
+    ./hyprpaper.nix
     ./rofi.nix
     ./waybar.nix
     ./wlogout.nix
@@ -40,6 +41,7 @@ in
     hypridle.enable = true;
     hyprlock.enable = true;
     hyprpanel.enable = true;
+    hyprpaper.enable = true;
     rofi.enable = true;
     # waybar.enable = true;
     wlogout.enable = true;
@@ -49,33 +51,16 @@ in
     home.packages = with pkgs; [
       brightnessctl
       # hyprcursor
-      # hypridle
-      # hyprlock
-      # hyprpaper
       hyprsunset
       networkmanagerapplet
       pavucontrol
     ];
 
-    # Hyprcursor options not yet in home-manager stable
-    # home.pointerCursor.hyprcursor = {
-    #   enable = true;
-    #   # size = 30;
-    # };
-
-    services.hyprpaper =
-      let
-        wallpaper = "${../../wallpapers/minimalist-black-hole.png}";
-      in
-      {
-        enable = true;
-        settings = {
-          ipc = "true";
-          splash = false;
-          preload = [ "${wallpaper}" ];
-          wallpaper = ", ${wallpaper}";
-        };
-      };
+    home.pointerCursor.hyprcursor = {
+      enable = true;
+      size = lib.mkForce 30;
+    };
+    home.sessionVariables.HYPRCURSOR_SIZE = lib.mkForce 30;
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -84,7 +69,7 @@ in
       # plugins = with inputs.hyprland-plugins.packages."${system}"; [
       plugins = with pkgs.hyprlandPlugins; [
         # borders-plus-plus
-        # hyprspace
+        hyprspace
         # hyprtrails
       ];
 
@@ -149,11 +134,30 @@ in
           # hyprtrails.color = accent;
         };
 
+        # Hyprspace
+        "plugin:overview:autodrag" = true; # Drag windows between workspaces
+        "plugin:overview:autoScroll" = true; # Scroll on the panel to pan workspaces
+        "plugin:overview:exitOnClick" = true; # Click without dragging to exit
+        "plugin:overview:exitOnSwitch" = true; # Exit overview when switching workspaces
+        "plugin:overview:showNewWorkspace" = true; # Show an empty workspace for new ones
+        "plugin:overview:centerAligned" = true; # KDE/macOS style centering
+        # Styling options
+        "plugin:overview:workspaceBorderColor" = "#74c7ec"; # "rgba(ee4b55ff)";
+        "plugin:overview:workspaceBorderThickness" = 4;
+        "plugin:overview:panelBackground" = "#1e1e2e"; # "rgba(1a1a1aee)"; # Panel background color with alpha
+        "plugin:overview:panelPadding" = 10;
+        "plugin:overview:padding" = 5; # Padding around workspaces
+        "plugin:overview:gap" = 5; # Gap between workspaces
+        "plugin:overview:reverseSwipe" = false; # Reverse touchpad swipe direction
+        # Blacklist specific workspaces from showing in the overview
+        # "plugin:overview:blacklistedWorkspaces" = [ "special" "10" ]; # Example
+
         "$mod" = "SUPER";
         bind =
           [
             # "$mod, exec, rofi -show drun, release"
             "$mod, SPACE, exec, rofi -show drun"
+            "$mod, TAB, exec, hyprctl dispatch overview:toggle"
             "$mod, C, killactive"
             "$mod, E, exec, nautilus"
             "$mod, F, exec, firefox"
@@ -179,8 +183,8 @@ in
             "$mod, PERIOD, togglefloating"
 
             # Workspaces
-            "$mod, tab, workspace, e+1"
-            "$mod SHIFT, tab, workspace, e-1"
+            # "$mod, tab, workspace, e+1"
+            # "$mod SHIFT, tab, workspace, e-1"
             "$mod, mouse_up, workspace, e+1"
             "$mod, mouse_down, workspace, e-1"
 

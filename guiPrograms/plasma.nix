@@ -32,7 +32,7 @@
         workspace = {
           cursor = {
             theme = "Catppuccin-Mocha-Sapphire";
-            size = 32;
+            size = lib.mkDefault 32;
           };
           # iconTheme = "Papirus-Dark";
           wallpaper = "${wallpaper}";

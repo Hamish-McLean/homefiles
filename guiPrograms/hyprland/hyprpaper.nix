@@ -18,8 +18,8 @@
         settings = {
           ipc = "true";
           splash = false;
-          preload = [ "${wallpaper}" ];
-          wallpaper = ", ${wallpaper}";
+          preload = [ "../../wallpapers/minimalist-black-hole.png" ];
+          wallpaper = [ ",../../wallpapers/minimalist-black-hole.png" ];
         };
       };
   };
