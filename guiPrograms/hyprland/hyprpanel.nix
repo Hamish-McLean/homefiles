@@ -35,6 +35,9 @@ in
         "theme.bar.buttons.dashboard.icon" = sapphire;
           # background = surface0;
       };
+
+      # Layout
+
       settings.layout = {
         # https://hyprpanel.com/configuration/panel.html
         "bar.layouts" = {
@@ -87,6 +90,9 @@ in
           };
         };
       };
+
+      # Settings
+
       settings = {
         bar = {
           clock.format = "%a %Y-%m-%d %H:%M";
@@ -94,49 +100,46 @@ in
           launcher.autoDetectIcon = true; # icon = "";
           # workspaces.showApplicationIcons = true;
           # workspaces.show_icons = true;
+          workspaces.show_numbered = true;
         };
         menus = {
-          clock = {
-            time = {
-              military = true;
-              hideSeconds = true;
+          clock.time = {
+            military = true;
+            hideSeconds = true;
+          };
+          clock.weather = {
+            key = "62a54738d47e4b4dad9203040251601"; # Use nix-sops to hide this
+            location = "Tunbridge Wells";
+            unit = "metric";
+          };
+          dashboard.shortcuts.left = {
+            shortcut1 = {
+              command = "codium";
+              icon = "";
+              tooltip = "Vscodium";
             };
-            weather = {
-              key = builtins.getEnv "WEATHERAPI"; # In direnv. Consider using sops-nix
-              location = "Tunbridge Wells";
-              unit = "metric";
+            shortcut2 = {
+              command = "firefox";
+              icon = "󰈹";
+              tooltip = "Firefox";
+            };
+            shortcut3 = {
+              command = "kitty";
+              icon = "󰄛";
+              tooltip = "Kitty";
             };
           };
-          dashboard = {
-            shortcuts = {
-              left = {
-                shortcut1 = {
-                  command = "codium";
-                  icon = "";
-                  tooltip = "Vscodium";
-                };
-                shortcut2 = {
-                  command = "firefox";
-                  icon = "󰈹";
-                  tooltip = "Firefox";
-                };
-                shortcut3 = {
-                  command = "kitty";
-                  icon = "󰄛";
-                  tooltip = "Kitty";
-                };
-              };
-            };
-            powermenu.avatar.image = "${../../wallpapers/astronaught.jpg}";
-          };
+          dashboard.powermenu.avatar.image = "${../../wallpapers/astronaught.jpg}";
         };
+
+        # Theme
+
         theme = {
           name = "catppuccin_mocha"; # catppuccin_mocha, catppuccin_mocha_split, catppuccin_mocha_vivid
           bar = {
             border_radius = "0.8em";
-            buttons = {
-              radius = "0.8em";
-            };
+            buttons.radius = "0.8em";
+            enableShadow = true;
             floating = true;
             margin_sides = "10px";
             margin_top = "10px";

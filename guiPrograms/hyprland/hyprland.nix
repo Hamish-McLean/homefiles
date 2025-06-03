@@ -1,10 +1,10 @@
 {
   config,
   # hyprland-plugins,
-  # inputs,
+  inputs,
   lib,
   pkgs,
-  # system,
+  system,
   # username,
   ...
 }:
@@ -35,7 +35,16 @@ in
 
   config = lib.mkIf config.hyprland.enable {
 
+    # Hyprland cachix so hyprland and dependencies don't have to be compiled
+    # https://wiki.hyprland.org/Nix/Cachix/
+    # nix.settings = {
+    #   substituters = ["https://hyprland.cachix.org"];
+    #   trusted-substituters = ["https://hyprland.cachix.org"];
+    #   trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    # };
+
     # Custom options
+
     # dunst.enable = true;
     # hyprland-virtual-desktops.enable = true;
     hypridle.enable = true;
@@ -63,10 +72,14 @@ in
     home.sessionVariables.HYPRCURSOR_SIZE = lib.mkForce 30;
 
     wayland.windowManager.hyprland = {
+
       enable = true;
       # package = inputs.hyprland.packages.${system}.hyprland;
+      # package = inputs.hyprland.packages.${system}.hyprland; # ${pkgs.stdenv.hostPlatform.system}
+      # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
       systemd.enable = true;
       # plugins = with inputs.hyprland-plugins.packages."${system}"; [
+      # plugins = with inputs.hyprland-plugins.packages.${system}; [
       plugins = with pkgs.hyprlandPlugins; [
         # borders-plus-plus
         hyprspace
@@ -82,10 +95,8 @@ in
 
         input = {
           kb_layout = "gb";
-          touchpad = {
-            natural_scroll = true;
-            tap-to-click = true;
-          };
+          touchpad.natural_scroll = true;
+          touchpad.tap-to-click = true;
           sensitivity = 0.5; # -1.0 ≤ x ≤ 1.0
         };
 
@@ -96,9 +107,7 @@ in
           gaps_in = 5;
           gaps_out = 10;
           resize_on_border = true;
-          snap = {
-            enabled = true;
-          };
+          snap.enabled = true;
         };
 
         decoration = {
@@ -120,11 +129,10 @@ in
           };
         };
 
-        gestures = {
-          workspace_swipe = "true";
-        };
+        gestures.workspace_swipe = "true";
 
-        # plugins
+        # Plugins
+
         plugin = {
           # borders-plus-plus = {
           #   add_borders = 0;
@@ -151,6 +159,8 @@ in
         "plugin:overview:reverseSwipe" = false; # Reverse touchpad swipe direction
         # Blacklist specific workspaces from showing in the overview
         # "plugin:overview:blacklistedWorkspaces" = [ "special" "10" ]; # Example
+
+        # keybinds
 
         "$mod" = "SUPER";
         bind =
@@ -244,6 +254,7 @@ in
 
       };
     };
+
     # Scripts
     # keyboard backlight
     home.file.".config/hypr/scripts/cycle-kbd-backlight.sh" = {
