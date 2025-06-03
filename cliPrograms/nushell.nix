@@ -14,6 +14,9 @@
       configFile.text = ''
         $env.config.show_banner = false
       '';
+      shellAliases = {
+        pping = "prettyping --nolegend";
+      };
     };
     # catppuccin.nushell.enable = true;
   };
