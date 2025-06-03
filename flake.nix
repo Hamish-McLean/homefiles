@@ -24,15 +24,18 @@
     #   url = "github:helix-editor/helix";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # hyprland.url = "github:hyprwm/Hyprland"; # Switched to nixpkgs version for now
-    # hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
+    hyprland = {
+      url = "github:hyprwm/Hyprland"; # Switched to nixpkgs version for now
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     hyprland-virtual-desktops = {
       url = "github:levnikmyskin/hyprland-virtual-desktops";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.hyprland.follows = "nixpkgs";
+      inputs.hyprland.follows = "hyprland";
     };
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";

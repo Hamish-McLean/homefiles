@@ -6,8 +6,10 @@
 */
 {
   config,
+  inputs,
   lib,
   pkgs,
+  system,
   # unstablePkgs,
   ...
 }:
