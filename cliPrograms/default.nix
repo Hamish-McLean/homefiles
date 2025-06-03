@@ -54,11 +54,11 @@
   config = lib.mkIf config.cliPrograms.enable {
 
     home.packages = with pkgs; [
+      cfspeedtest
       ddgr
       du-dust
       github-copilot-cli
       imagemagick
-      ookla-speedtest
       prettyping
       progress
     ];

@@ -16,6 +16,7 @@
       '';
       shellAliases = {
         pping = "prettyping --nolegend";
+        speedtest = "cfspeedtest";
       };
     };
     # catppuccin.nushell.enable = true;
