@@ -58,6 +58,7 @@
       du-dust
       github-copilot-cli
       imagemagick
+      ookla-speedtest
       prettyping
       progress
     ];
