@@ -14,7 +14,7 @@
       enableBashIntegration = true;
       enableFishIntegration = true;
       installBatSyntax = true;
-      # installVimSyntax = true;
+      installVimSyntax = true;
     };
   };
 }

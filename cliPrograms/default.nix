@@ -24,12 +24,14 @@
     ./eza.nix
     ./fastfetch.nix
     ./fish.nix
+    ./fuzzel.nix
     ./fzf.nix
     ./gh.nix
     ./gh-dash.nix
     ./git.nix
     ./gitui.nix
     # ./helix.nix
+    ./imv.nix
     ./lazygit.nix
     # ./nh.nix
     ./nixvim-config.nix
@@ -75,12 +77,14 @@
     eza.enable = lib.mkDefault true;
     fastfetch.enable = lib.mkDefault true; # Only in home-manager unstable
     fish.enable = lib.mkDefault true;
+    fuzzel.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     gh.enable = lib.mkDefault true;
     # gh-dash.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
+    imv.enable = lib.mkDefault true;
     lazygit.enable = lib.mkDefault true;
     # nh.enable = lib.mkDefault true;
     nixvim-config.enable = lib.mkDefault false;

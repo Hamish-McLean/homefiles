@@ -20,8 +20,8 @@
         format = "$os$all";
 
         os = {
-          symbols.NixOS = "  ";
-          style = "sapphire";
+          symbols.NixOS = "[  ](sapphire)";
+          # style = "sapphire";
           disabled = false;
         };
         nix_shell = {
@@ -32,7 +32,8 @@
         direnv.disabled = false;
         shell = {
           bash_indicator = " ";
-          fish_indicator = "󰈺 "; #    󰈺
+          fish_indicator = "[󰈺 ](peach)"; #    󰈺
+          nu_indicator = "[nu](green)";
           disabled = false;
         };
       };

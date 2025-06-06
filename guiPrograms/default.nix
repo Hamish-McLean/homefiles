@@ -19,7 +19,7 @@
     ./feh.nix
     ./flatpak.nix
     ./freetube.nix
-    # ./ghostty.nix
+    ./ghostty.nix
     ./gnome.nix
     ./gtk.nix
     ./hyprland/hyprland.nix
@@ -31,6 +31,7 @@
     ./spicetify.nix
     ./vscodium.nix
     ./zathura.nix
+    ./zed-editor.nix
     ./zen.nix
   ];
 
@@ -64,13 +65,14 @@
     feh.enable = lib.mkDefault true;
     flatpak.enable = lib.mkDefault true;
     freetube.enable = lib.mkDefault true;
-    # ghostty.enable = lib.mkDefault true;
+    ghostty.enable = lib.mkDefault true;
     librewolf.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
     spicetify.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
+    zed-editor.enable = lib.mkDefault true;
     zen.enable = lib.mkDefault true;
 
     # Themes
