@@ -1,3 +1,8 @@
+/*
+Nushell
+
+A new type of shell.
+*/
 {
   config,
   lib,
@@ -11,14 +16,15 @@
   config = lib.mkIf config.nushell.enable {
     programs.nushell = {
       enable = true;
-      configFile.text = ''
-        $env.config.show_banner = false
-      '';
+      settings = {
+        buffer_editor = "nvim";
+        show_banner = false;
+      };
       shellAliases = {
         pping = "prettyping --nolegend";
         speedtest = "cfspeedtest";
       };
     };
-    # catppuccin.nushell.enable = true;
+    catppuccin.nushell.enable = true;
   };
 }
