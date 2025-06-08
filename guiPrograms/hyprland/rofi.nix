@@ -12,9 +12,9 @@
     home.packages = with pkgs; [
       # rofi
       # rofi-bluetooth
-      rofi-power-menu
+      # rofi-power-menu
     ];
-    # catppuccin.rofi.enable = true;
+    catppuccin.rofi.enable = true;
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
