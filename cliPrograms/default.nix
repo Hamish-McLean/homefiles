@@ -97,7 +97,7 @@
     thefuck.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     yazi.enable = lib.mkDefault true;
-    zellij.enable = lib.mkDefault false;
+    zellij.enable = lib.mkDefault true;
     zoxide.enable = lib.mkDefault true;
   };
 

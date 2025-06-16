@@ -104,7 +104,7 @@
           element = {
             spacing = mkLiteral "10px";
             padding = mkLiteral "5px 10px";
-          }
+          };
           element-icon = {
             size = mkLiteral "2.5ch";
           };
