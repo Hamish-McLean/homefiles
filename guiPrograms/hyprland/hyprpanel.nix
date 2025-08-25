@@ -26,15 +26,15 @@ in
   config = lib.mkIf config.hyprpanel.enable {
     programs.hyprpanel = {
       enable = true;
-      hyprland.enable = true;
-      overlay.enable = true;
-      overwrite.enable = true; # Allows gui configuration to be overwritten by home-manager
-      override = {
-        # Can override specific colours etc
-        # As of nixpkgs 25.05 the attribute set must be enclosed in a string to avoid conflicting with settings section
-        "theme.bar.buttons.dashboard.icon" = sapphire;
-          # background = surface0;
-      };
+      # hyprland.enable = true;
+      # overlay.enable = true;
+      # overwrite.enable = true; # Allows gui configuration to be overwritten by home-manager
+      # override = {
+      #   # Can override specific colours etc
+      #   # As of nixpkgs 25.05 the attribute set must be enclosed in a string to avoid conflicting with settings section
+      #   "theme.bar.buttons.dashboard.icon" = sapphire;
+      #     # background = surface0;
+      # };
 
       # Layout
 
