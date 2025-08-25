@@ -35,12 +35,12 @@
     hyprland-virtual-desktops = {
       url = "github:levnikmyskin/hyprland-virtual-desktops";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.hyprland.follows = "hyprland";
+      # inputs.hyprland.follows = "hyprland";
     };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hyprpanel = {
+    #   url = "github:Jas-SinghFSU/HyprPanel";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,6 +69,10 @@
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    tgt = {
+      url = "github:FedericoBruzzone/tgt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -125,14 +129,14 @@
                     config.allowUnfree = true; # Allow unfree in unstable pkgs as well
                   };
                 })
-                inputs.hyprpanel.overlay
+                # inputs.hyprpanel.overlay
               ];
             }
             ./hosts/${hostname}.nix
             inputs.catppuccin.homeModules.catppuccin
             # inputs.cosmic-manager.homeManagerModules.cosmic-manager
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
-            inputs.hyprpanel.homeManagerModules.hyprpanel
+            # inputs.hyprpanel.homeManagerModules.hyprpanel
             inputs.nixcord.homeModules.nixcord
             inputs.nixvim.homeManagerModules.nixvim
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
