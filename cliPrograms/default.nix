@@ -13,6 +13,7 @@
 {
   # Cli programs to import
   imports = [
+    ./aerc.nix
     ./atuin.nix
     ./bash.nix
     ./bat.nix
@@ -42,6 +43,7 @@
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix
+    ./tgt.nix
     ./thefuck.nix
     ./tmux.nix
     ./yazi.nix
@@ -56,16 +58,22 @@
   config = lib.mkIf config.cliPrograms.enable {
 
     home.packages = with pkgs; [
-      cfspeedtest
-      ddgr
-      du-dust
+      cfspeedtest # cloudflare speedtest
+      ddgr # duck duck go browser
+      du-dust # disk utility
+      # gemini-cli # gemini
       github-copilot-cli
-      imagemagick
-      prettyping
-      progress
+      gping # ping with graph
+      imagemagick # image manipulation
+      mosh # mobile shell (ssh replacement)
+      prettyping # prettier ping
+      progress  # progress bars
+      # Unstable packages
+      unstable.gemini-cli # gemini
     ];
 
     # Custom options
+    aerc.enable = lib.mkDefault true;
     atuin.enable = lib.mkDefault true;
     bash.enable = lib.mkDefault true;
     bat.enable = lib.mkDefault true;
@@ -94,6 +102,7 @@
     skim.enable = lib.mkDefault true;
     spotify-player.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
+    tgt.enable = lib.mkDefault false;
     thefuck.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     yazi.enable = lib.mkDefault true;

@@ -44,6 +44,7 @@
     home.packages = with pkgs; [
       endless-sky
       resources
+      runelite
       # spotify
       superTuxKart
       qalculate-gtk # Calculator
