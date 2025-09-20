@@ -11,8 +11,8 @@
   config = lib.mkIf config.zellij.enable {
     programs.zellij = {
       enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
+      # enableBashIntegration = true;
+      # enableFishIntegration = true;
       settings = {
         # pane_frames = false;
         # simplified_ui = true;
