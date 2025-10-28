@@ -113,61 +113,62 @@
         };
 
       # Applets from rofi-applets https://github.com/Zhaith-Izaliel/rofi-applets
-      applets = {
-        bluetooth = {
-          enable = true;
-          theme = {
-            "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-            configuration = {
-              location = 3;
-            };
-            inputbar = {
-              enabled = false;
-            };
-            window = {
-              width = "5em";
-              height = "10em";
-            };
-          };
-        };
-        favorites = {
-          enable = true;
-          theme = {
-            "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-          };
-        };
-        mpd.enable = false;
-        power-profiles = {
-          enable = true;
-          theme = {
-            "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-            configuration = {
-              location = 3;
-            };
-            inputbar = {
-              enabled = false;
-            };
-          };
-        };
-        ronema = {
-          enable = true;
-          theme = {
-            "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-            configuration = {
-              location = 3;
-            };
-            inputbar = {
-              enabled = false;
-            };
-          };
-        };
-        quicklinks = {
-          enable = true;
-          theme = {
-            "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
-          };
-        };
-      };
+      # This in no longer on github
+      # applets = {
+      #   bluetooth = {
+      #     enable = true;
+      #     theme = {
+      #       "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+      #       configuration = {
+      #         location = 3;
+      #       };
+      #       inputbar = {
+      #         enabled = false;
+      #       };
+      #       window = {
+      #         width = "5em";
+      #         height = "10em";
+      #       };
+      #     };
+      #   };
+      #   favorites = {
+      #     enable = true;
+      #     theme = {
+      #       "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+      #     };
+      #   };
+      #   mpd.enable = false;
+      #   power-profiles = {
+      #     enable = true;
+      #     theme = {
+      #       "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+      #       configuration = {
+      #         location = 3;
+      #       };
+      #       inputbar = {
+      #         enabled = false;
+      #       };
+      #     };
+      #   };
+      #   ronema = {
+      #     enable = true;
+      #     theme = {
+      #       "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+      #       configuration = {
+      #         location = 3;
+      #       };
+      #       inputbar = {
+      #         enabled = false;
+      #       };
+      #     };
+      #   };
+      #   quicklinks = {
+      #     enable = true;
+      #     theme = {
+      #       "@theme" = "/home/cycad/.local/share/rofi/themes/custom";
+      #     };
+      #   };
+      # };
     };
   };
 }

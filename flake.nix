@@ -12,7 +12,7 @@
     };
 
     # Packages
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-25.05";
     # cosmic-manager = {
     #   url = "github:HeitorAugustoLN/cosmic-manager";
     #   inputs = {
@@ -59,10 +59,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    rofi-applets = {
-      url = "gitlab:Zhaith-Izaliel/rofi-applets";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # rofi-applets = {
+    #   url = "gitlab:Zhaith-Izaliel/rofi-applets";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # }; # No longer on github
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -140,8 +140,8 @@
             inputs.nixcord.homeModules.nixcord
             inputs.nixvim.homeManagerModules.nixvim
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
-            inputs.plasma-manager.homeManagerModules.plasma-manager
-            inputs.rofi-applets.homeManagerModules.default
+            inputs.plasma-manager.homeModules.plasma-manager
+            # inputs.rofi-applets.homeManagerModules.default
             inputs.sops-nix.homeManagerModules.sops
             inputs.spicetify-nix.homeManagerModules.default
           ];

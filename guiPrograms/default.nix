@@ -42,6 +42,7 @@
   config = lib.mkIf config.guiPrograms.enable {
 
     home.packages = with pkgs; [
+      blueberry # Bluetooth config tool
       endless-sky
       resources
       runelite
@@ -51,6 +52,9 @@
       qbittorrent
       zapzap # Whatsapp client
       zotero
+
+      # Unstable packages
+      unstable.nmgui # Network manager gui
     ];
 
     # Desktop environments

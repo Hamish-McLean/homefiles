@@ -119,9 +119,11 @@ in
 
         settings = {
 
+          # Monitor config looks like: "name, resolution, position, scale"
+          # List available monitors with `hyprctl monitors all`
           monitor = [
-            "HDMI-A-2,preferred,0x0,1" # Scaling for external monitor
-            "eDP-1,preferred,auto,1" # Scaling for laptop screen
+            "eDP-1, preferred, 0x0, 1"   # Scaling for laptop screen
+            "HDMI-A-2, preferred, auto, 1" # Scaling for external monitor
           ];
 
           input = {
