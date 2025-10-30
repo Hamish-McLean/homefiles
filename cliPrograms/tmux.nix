@@ -18,7 +18,7 @@
       historyLimit = 10000;
       # keyMode = "vi";
       mouse = true;
-      shell = "${pkgs.fish}/bin/fish";
+      shell = "${pkgs.nushell}/bin/nu";
 
       plugins = with pkgs.tmuxPlugins; [
         # catppuccin
