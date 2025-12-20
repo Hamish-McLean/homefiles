@@ -19,7 +19,8 @@
       config = {
         # Options at https://github.com/KaylorBen/nixcord/blob/main/docs/INDEX.md
         themeLinks = [
-          "https://github.com/catppuccin/discord/blob/main/themes/mocha.theme.css"
+          # "https://github.com/catppuccin/discord/blob/main/themes/mocha.theme.css"
+          # "https://raw.githubusercontent.com/catppuccin/discord/main/themes/mocha.theme.css"
           "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
         ];
         enabledThemes = [ "Catppuccin Mocha" ];
@@ -35,16 +36,16 @@
           betterSettings.enable = true;
           betterUploadButton.enable = true;
           biggerStreamPreview.enable = true;
-          clearURLs.enable = true;
+          clearUrLs.enable = true;
           copyFileContents.enable = true;
-          copyUserURLs.enable = true;
+          copyUserUrLs.enable = true;
           crashHandler.enable = true;
           decor.enable = true;
           openInApp.enable = true;
           spotifyControls = {
             enable = true;
-            hoverControls = true;
-            useSpotifyUris = true;
+            # hoverControls = true; # Option does not exist. Has this been replaced?
+            # useSpotifyUris = true; # ditto
           };
           youtubeAdblock.enable = true;
         };

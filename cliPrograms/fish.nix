@@ -11,6 +11,7 @@
   config = lib.mkIf config.fish.enable {
     programs.fish = {
       enable = true;
+      generateCompletions = false;
       interactiveShellInit = ''
         set -U fish_greeting ""
       '';

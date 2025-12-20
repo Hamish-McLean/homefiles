@@ -32,7 +32,7 @@
     ./vscodium.nix
     ./zathura.nix
     ./zed-editor.nix
-    ./zen.nix
+    # ./zen.nix
   ];
 
   # Option to enable all guiPrograms modules
@@ -43,18 +43,22 @@
 
     home.packages = with pkgs; [
       blueberry # Bluetooth config tool
-      endless-sky
-      resources
-      runelite
+      calibre # ebook manager
+      endless-sky # Space game
+      nmgui # Network manager GUI
+      resources # Task manager GUI
+      rpi-imager # Raspberry pi imager
+      runelite # Runescape client
       # spotify
       superTuxKart
       qalculate-gtk # Calculator
-      qbittorrent
+      qbittorrent # Torrent client
+      wasistlos # Whatsapp client
       zapzap # Whatsapp client
       zotero
 
       # Unstable packages
-      unstable.nmgui # Network manager gui
+      # unstable.nmgui # Network manager gui
     ];
 
     # Desktop environments
@@ -64,7 +68,7 @@
 
     # GUI libraries
     gtk_config.enable = lib.mkDefault true;
-    qt_config.enable = lib.mkDefault true;
+    qt_config.enable = lib.mkDefault false;
 
     # Programs
     feh.enable = lib.mkDefault true;
@@ -78,7 +82,7 @@
     spicetify.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
     zed-editor.enable = lib.mkDefault true;
-    zen.enable = lib.mkDefault true;
+    # zen.enable = lib.mkDefault true;
 
     # Themes
     catppuccin.cursors = {

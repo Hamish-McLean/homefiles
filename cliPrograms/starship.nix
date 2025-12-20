@@ -29,7 +29,7 @@
           symbol = "󱄅 ";
           heuristic = true;
         };
-        direnv.disabled = false;
+        # direnv.disabled = false;
         shell = {
           bash_indicator = " ";
           fish_indicator = "[󰈺 ](peach)"; #    󰈺

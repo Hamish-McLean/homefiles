@@ -32,6 +32,6 @@
   home.packages = with pkgs; [
     gimp
     inkscape
-    dwarf-fortress-packages.dwarf-fortress-full
+    # dwarf-fortress-packages.dwarf-fortress-full
   ];
 }

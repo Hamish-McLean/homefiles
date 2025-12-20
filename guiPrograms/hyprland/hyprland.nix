@@ -25,7 +25,7 @@ in
     ./hyprpanel.nix
     ./hyprpaper.nix
     ./rofi.nix
-    ./waybar.nix
+    # ./waybar.nix
     ./wlogout.nix
   ];
 

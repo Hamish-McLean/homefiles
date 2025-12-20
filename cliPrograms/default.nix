@@ -39,12 +39,12 @@
     ./nushell.nix
     ./nvf.nix
     ./pandoc.nix
+    ./pay-respects.nix
     ./rbw.nix
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix
     ./tgt.nix
-    ./thefuck.nix
     ./tmux.nix
     ./yazi.nix
     ./zellij.nix
@@ -60,7 +60,7 @@
     home.packages = with pkgs; [
       cfspeedtest # cloudflare speedtest
       ddgr # duck duck go browser
-      du-dust # disk utility
+      dust # disk utility
       # gemini-cli # gemini
       github-copilot-cli
       gping # ping with graph
@@ -99,11 +99,11 @@
     nushell.enable = lib.mkDefault true;
     nvf.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
+    pay-respects.enable = lib.mkDefault true;
     skim.enable = lib.mkDefault true;
     spotify-player.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
     tgt.enable = lib.mkDefault false;
-    thefuck.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     yazi.enable = lib.mkDefault true;
     # zellij.enable = lib.mkDefault true;

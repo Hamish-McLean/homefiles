@@ -76,15 +76,15 @@
       #   variant = "mocha";
       #   accent = "sapphire";
       # })
-      libsForQt5.qtstyleplugin-kvantum
+      # libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
       # catppuccin-cursors.mochaSapphire
     ];
 
     qt = {
       enable = true;
-      platformTheme.name = "kvantum";
-      style.name = "kvantum";
+      # platformTheme.name = "kvantum";
+      # style.name = "kvantum";
     };
 
     # catppuccin.kvantum = {
@@ -96,24 +96,24 @@
     #   General.theme = "Catppuccin-Mocha-Sapphire";
     # };
 
-    xdg.configFile =
-      let
-        variant = "mocha";
-        accent = "sapphire";
-        kvantumThemePackage = pkgs.catppuccin-kvantum.override {
-          inherit variant accent;
-        };
-      in
-      {
-        "Kvantum/kvantum.kvconfig".text = ''
-          [General]
-          theme=Catppuccin-${variant}-${accent}
-        '';
+    # xdg.configFile =
+    #   let
+    #     variant = "mocha";
+    #     accent = "sapphire";
+    #     kvantumThemePackage = pkgs.catppuccin-kvantum.override {
+    #       inherit variant accent;
+    #     };
+    #   in
+    #   {
+    #     "Kvantum/kvantum.kvconfig".text = ''
+    #       [General]
+    #       theme=Catppuccin-${variant}-${accent}
+    #     '';
 
-        # The important bit is here, links the theme directory from the package to a directory under `~/.config`
-        # where Kvantum should find it.
-        "Kvantum/Catppuccin-${variant}-${accent}".source =
-          "${kvantumThemePackage}/share/Kvantum/Catppuccin-${variant}-${accent}";
-      };
+    #     # The important bit is here, links the theme directory from the package to a directory under `~/.config`
+    #     # where Kvantum should find it.
+    #     "Kvantum/Catppuccin-${variant}-${accent}".source =
+    #       "${kvantumThemePackage}/share/Kvantum/Catppuccin-${variant}-${accent}";
+    #   };
   };
 }

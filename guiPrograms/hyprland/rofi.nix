@@ -17,7 +17,7 @@
     catppuccin.rofi.enable = true;
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
+      # package = pkgs.rofi-wayland; # rofi-wayland has been merged into rofi
       location = "center";
       terminal = "${pkgs.kitty}/bin/kitty";
       plugins = [];

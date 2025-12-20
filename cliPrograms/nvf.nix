@@ -29,7 +29,7 @@
             bash.enable = true;
             julia = {
               enable = true;
-              lsp.package = null;
+              # lsp.package = null; # Option deprecated
             };
             markdown = {
               enable = true;
@@ -37,7 +37,7 @@
             };
             nix = {
               enable = true;
-              format.type = "nixfmt";
+              format.type = ["nixfmt"];
               # lsp.server = "nixd"; # nixd seems to be not available yet
             };
             python.enable = true;

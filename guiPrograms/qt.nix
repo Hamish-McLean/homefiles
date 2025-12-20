@@ -15,7 +15,7 @@
       #   variant = "mocha";
       #   accent = "sapphire";
       # })
-      libsForQt5.qtstyleplugin-kvantum
+      # libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
       # catppuccin-cursors.mochaSapphire
     ];
@@ -30,8 +30,8 @@
     # Catppuccin qt via kvantum
     qt = {
       enable = true;
-      platformTheme.name = "kvantum";
-      style.name = "kvantum";
+      # platformTheme.name = "kvantum";
+      # style.name = "kvantum";
     };
     # environment.variables = {
     #   QT_QPA_PLATFORMTHEME = "qt5ct";

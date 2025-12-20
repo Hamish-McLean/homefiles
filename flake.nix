@@ -4,15 +4,15 @@
   inputs = {
 
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05"; # Update version
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11"; # Update version
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05"; # Update version
+      url = "github:nix-community/home-manager/release-25.11"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Packages
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin.url = "github:catppuccin/nix"; # Update version
     # cosmic-manager = {
     #   url = "github:HeitorAugustoLN/cosmic-manager";
     #   inputs = {
@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05"; # Update version
+      url = "github:nix-community/nixvim"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -75,10 +75,10 @@
       url = "github:FedericoBruzzone/tgt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:MarceColl/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # zen-browser = {
+    #   url = "github:MarceColl/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
 
@@ -90,21 +90,25 @@
       ...
     }@inputs:
     let
+      # renameOverlay = (final: prev: {
+      #   wrapGAppsHook = prev.wrapGAppsHook3 or null; 
+      # });
       homeSystem =
         system: hostname: username:
-        # let
-        #   pkgs = import nixpkgs {
-        #     inherit system;
-        #     config.allowUnfree = true;
-        #     overlays = [ inputs.hyprpanel.overlay ];
-        #   };
-        #   unstablePkgs = import nixpkgs-unstable {
-        #     inherit system;
-        #     config.allowUnfree = true;
-        #   };
-        # in
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+              # packageOverrides = pkgs: {
+              #   wrapGAppsHook = pkgs.wrapGAppsHook3;
+              # };
+            };
+          };
+        in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          # pkgs = nixpkgs.legacyPackages.${system};
+          inherit pkgs;
           extraSpecialArgs = {
             inherit
               inputs
@@ -114,6 +118,7 @@
               hostname
               username
               ;
+              # wrapGAppsHook = pkgs.wrapGAppsHook3;
           };
           modules = [
             # Allow unfree packages
@@ -129,6 +134,9 @@
                     config.allowUnfree = true; # Allow unfree in unstable pkgs as well
                   };
                 })
+                # (final: prev: {
+                #   wrapGAppsHook = prev.wrapGAppsHook3;
+                # })
                 # inputs.hyprpanel.overlay
               ];
             }
@@ -138,7 +146,7 @@
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
             # inputs.hyprpanel.homeManagerModules.hyprpanel
             inputs.nixcord.homeModules.nixcord
-            inputs.nixvim.homeManagerModules.nixvim
+            inputs.nixvim.homeModules.nixvim
             inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeModules.plasma-manager
             # inputs.rofi-applets.homeManagerModules.default
