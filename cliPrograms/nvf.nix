@@ -22,6 +22,9 @@
           git.enable = true;
           lsp.enable = true;
 
+          viAlias = true;
+          vimAlias = true;
+
           languages = {
             enableFormat = true;
             enableTreesitter = true;
@@ -68,7 +71,7 @@
 
         };
       };
-
     };
+    home.sessionVariables.EDITOR = "nvim";
   };
 }
