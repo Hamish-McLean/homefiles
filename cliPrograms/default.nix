@@ -61,6 +61,7 @@
       cfspeedtest # cloudflare speedtest
       ddgr # duck duck go browser
       dust # disk utility
+      dysk # filesystem overview
       # gemini-cli # gemini
       github-copilot-cli
       gping # ping with graph
