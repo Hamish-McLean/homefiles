@@ -129,7 +129,7 @@ in
               tooltip = "Kitty";
             };
           };
-          dashboard.powermenu.avatar.image = "${../../wallpapers/astronaught.jpg}";
+          dashboard.powermenu.avatar.image = "${./../../wallpapers/astronaught.jpg}";
         };
 
         # Theme
@@ -149,7 +149,7 @@ in
             size = "1rem";
           };
         };
-        wallpaper.image = "${../../wallpapers/minimalist-black-hole.png}";
+        wallpaper.image = "${./../../wallpapers/minimalist-black-hole.png}";
       };
     };
   };

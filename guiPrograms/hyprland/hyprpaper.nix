@@ -11,15 +11,15 @@
   config = lib.mkIf config.hyprpaper.enable {
     services.hyprpaper =
       let
-        wallpaper = "${../../wallpapers/minimalist-black-hole.png}";
+        wallpaper = ./../../wallpapers/minimalist-black-hole.png;
       in
       {
         enable = true;
         settings = {
-          ipc = "true";
+          ipc = "on";
           splash = false;
-          preload = [ "../../wallpapers/minimalist-black-hole.png" ];
-          wallpaper = [ ",../../wallpapers/minimalist-black-hole.png" ];
+          preload = [ "${wallpaper}" ];
+          wallpaper = [ ",${wallpaper}" ];
         };
       };
   };
