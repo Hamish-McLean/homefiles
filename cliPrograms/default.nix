@@ -65,6 +65,7 @@
       # gemini-cli # gemini
       github-copilot-cli
       gping # ping with graph
+      has # check presence of tool in path
       imagemagick # image manipulation
       mosh # mobile shell (ssh replacement)
       prettyping # prettier ping
