@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -14,7 +15,17 @@
       enableBashIntegration = true;
       enableFishIntegration = true;
       enableNushellIntegration = true;
-      # plugins = {};
+      plugins = {
+        starship = pkgs.fetchFromGitHub {
+          owner = "Rolv-Apneseth";
+          repo = "starship.yazi";
+          rev = "main";
+          sha256 = "sha256-xcz2+zepICZ3ji0Hm0SSUBSaEpabWUrIdG7JmxUl/ts=";
+        };
+      };
+      initLua = ''
+        require("starship"):setup()
+      '';
       # settings = {};
     };
     catppuccin.yazi.enable = true;
