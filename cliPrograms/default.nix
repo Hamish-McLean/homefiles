@@ -34,7 +34,7 @@
     # ./helix.nix
     ./imv.nix
     ./lazygit.nix
-    # ./nh.nix
+    ./nh.nix
     ./nixvim-config.nix
     ./nushell.nix
     ./nvf.nix
@@ -85,7 +85,7 @@
     cava.enable = lib.mkDefault true;
     direnv.enable = lib.mkDefault true;
     eza.enable = lib.mkDefault true;
-    fastfetch.enable = lib.mkDefault true; # Only in home-manager unstable
+    fastfetch.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
     fuzzel.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
@@ -96,7 +96,7 @@
     # helix.enable = lib.mkDefault true;
     imv.enable = lib.mkDefault true;
     lazygit.enable = lib.mkDefault true;
-    # nh.enable = lib.mkDefault true;
+    nh.enable = lib.mkDefault true;
     nixvim-config.enable = lib.mkDefault false;
     nushell.enable = lib.mkDefault true;
     nvf.enable = lib.mkDefault true;
