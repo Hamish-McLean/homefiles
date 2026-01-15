@@ -44,6 +44,7 @@
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix
+    ./tealdeer.nix
     ./tgt.nix
     ./tmux.nix
     ./yazi.nix
@@ -105,6 +106,7 @@
     skim.enable = lib.mkDefault true;
     spotify-player.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
+    tealdeer.enable = lib.mkDefault true;
     tgt.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     yazi.enable = lib.mkDefault true;
