@@ -15,7 +15,11 @@
       colors = "auto";
       icons = "auto";
       git = true;
-      extraOptions = [ ];
+      extraOptions = [ 
+        "--header"
+        "--hyperlink"
+        "--smart-group"
+      ];
     };
   };
 }

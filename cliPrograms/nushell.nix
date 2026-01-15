@@ -22,6 +22,7 @@ A new type of shell.
         show_banner = false;
       };
       shellAliases = {
+        lss = "ls -ls size"; # list long sort by size
         pping = "prettyping --nolegend";
         speedtest = "cfspeedtest";
       };
