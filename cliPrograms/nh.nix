@@ -1,4 +1,9 @@
-# Nix Helper
+/*
+Nix Helper
+
+nh is configured in the nixos flake.
+This home-manager module should only be enabled on non-NixOS systems.
+*/
 {
   config,
   lib,
@@ -6,7 +11,7 @@
 }:
 {
   options = {
-    nh.enable = lib.mkEnableOption "enables nh";
+    nh.enable = lib.mkEnableOption "enable home-manager nh on non-nixos systems";
   };
 
   config = lib.mkIf config.nh.enable {

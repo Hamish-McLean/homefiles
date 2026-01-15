@@ -96,7 +96,7 @@
     # helix.enable = lib.mkDefault true;
     imv.enable = lib.mkDefault true;
     lazygit.enable = lib.mkDefault true;
-    nh.enable = lib.mkDefault true;
+    nh.enable = lib.mkDefault false; # nh handled by nixos flake. enable on non-nixos systems
     nixvim-config.enable = lib.mkDefault false;
     nushell.enable = lib.mkDefault true;
     nvf.enable = lib.mkDefault true;
