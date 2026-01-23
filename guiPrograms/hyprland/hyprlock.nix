@@ -20,7 +20,7 @@ in
   config = lib.mkIf config.hyprlock.enable {
     programs.hyprlock = {
       enable = true;
-      settings.background.path = "${../../wallpapers/minimalist-black-hole.png}";
+      settings.background.path = "../../wallpapers/catppuccin-black-hole-minimal.png"; #"${../../wallpapers/catppuccin-black-hole-minimal.png}";
       # settings = {
       #   background = {
       #     path = "${../../wallpapers/rainbow.png}";
