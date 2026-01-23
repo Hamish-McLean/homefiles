@@ -59,18 +59,34 @@
   config = lib.mkIf config.cliPrograms.enable {
 
     home.packages = with pkgs; [
+      bluetui # bluetooth tui
       cfspeedtest # cloudflare speedtest
       ddgr # duck duck go browser
       dust # disk utility
       dysk # filesystem overview
+      fd # better find
       # gemini-cli # gemini
       github-copilot-cli
       gping # ping with graph
       has # check presence of tool in path
       imagemagick # image manipulation
+      impala # wifi tui
       mosh # mobile shell (ssh replacement)
       prettyping # prettier ping
       progress  # progress bars
+      ripgrep # better grep
+      sl # steam locomotive
+      terminal-toys # terminal screensaver animations
+      wiremix # audio tui for pipewire
+
+      # Games
+      # dwarf fortress (various packages, find best one)
+      gorched # terminal game based on scorched earth
+      moon-buggy
+      rogue # original rogue game from 1985
+      unnethack # fork of nethack roguelike from 1987
+      vitetris # tetris or try nixpkgs#tetris
+
       # Unstable packages
       unstable.gemini-cli # gemini
     ];

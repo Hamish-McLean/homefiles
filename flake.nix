@@ -13,13 +13,17 @@
 
     # Packages
     catppuccin.url = "github:catppuccin/nix"; # Update version
-    # cosmic-manager = {
-    #   url = "github:HeitorAugustoLN/cosmic-manager";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     # home-manager.follows = "home-manager";
-    #   };
-    # };
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+    catppuccin-cosmic = {
+      url = "github:catppuccin/cosmic-desktop";
+      flake = false;
+    };
     # helix = {
     #   url = "github:helix-editor/helix";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +54,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -142,7 +150,7 @@
             }
             ./hosts/${hostname}.nix
             inputs.catppuccin.homeModules.catppuccin
-            # inputs.cosmic-manager.homeManagerModules.cosmic-manager
+            inputs.cosmic-manager.homeManagerModules.cosmic-manager
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
             # inputs.hyprpanel.homeManagerModules.hyprpanel
             inputs.nixcord.homeModules.nixcord
