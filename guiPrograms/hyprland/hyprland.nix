@@ -38,6 +38,11 @@ in
     let
       # Scripts
 
+      # Helper function to generate the hyprctl string
+      runOrFocus = class: cmd: ''
+        exec, hyprctl clients | grep -q 'class: ${class}' && hyprctl dispatch focuswindow 'class:^(${class})$' || ${cmd}
+      '';
+
       # Cycle keyboard backlight
       cycle-kbd-backlight = pkgs.writeShellScriptBin "cycle-kbd-backlight" ''
         #!${pkgs.stdenv.shell}
@@ -50,6 +55,19 @@ in
         next=$(( (current + 1) % (max + 1) ))
         $BRIGHTNESSCTL -d tpacpi::kbd_backlight set $next
       '';
+
+      # If app is open, focuses it; if not, launch the app.
+      # run-or-focus = pkgs.writeShellScriptBin "run-or-focus" ''
+        # !${pkgs.stdenv.shell}
+      #   CLASS=$1
+      #   COMMAND=$2
+      #
+      #   if hyprctl clients | grep -q "class: $CLASS"; then
+      #     hyprctl dispatch focuswindow "class:$CLASS"
+      #   else
+      #     $COMMAND &
+      #   fi
+      # '';
 
       # Toggle rofi
       rofi-toggle = pkgs.writeShellScriptBin "rofi-toggle" ''
@@ -118,7 +136,7 @@ in
           # hyprtrails
         ];
 
-        settings = {
+       settings = {
 
           # Fix for hyprexpo
           exec-once = [
@@ -223,8 +241,10 @@ in
             # "$mod, TAB, hyprexpo:expo, toggle"
             "$mod, C, killactive"
             "$mod, E, exec, nautilus"
-            "$mod, F, exec, firefox"
+            "$mod, F, ${runOrFocus "firefox" "firefox"}"
+            "$mod SHIFT, F, exec, firefox"
             "$mod, K, exec, kitty"
+            "$mod SHIFT, K, ${runOrFocus "kitty" "kitty"}"
             "$mod, L, exec, pidof hyprlock || hyprlock"
             "$mod, M, exit"
             "$mod, R, exec, hyprctl reload"
@@ -366,3 +386,4 @@ in
     }
   );
 }
+
