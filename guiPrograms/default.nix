@@ -16,6 +16,7 @@
 {
   # GUI programs to import
   imports = [
+    ./cosmic.nix
     ./feh.nix
     ./flatpak.nix
     ./freetube.nix
@@ -62,6 +63,7 @@
     ];
 
     # Desktop environments
+    cosmic.enable = lib.mkDefault true;
     gnome_config.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
     plasma.enable = lib.mkDefault false;
