@@ -18,9 +18,9 @@ Catppuccin themed.
   config = lib.mkIf config.zed-editor.enable {
     programs.zed-editor = {
       enable = true;
-      extensions = [ ];
-      userKeymaps = { };
-      userSettings = { };
+      # extensions = [ ];
+      # userKeymaps = { };
+      # userSettings = { };
     };
     catppuccin.zed.enable = true;
   };
