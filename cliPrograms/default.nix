@@ -18,10 +18,12 @@
     ./bash.nix
     ./bat.nix
     ./bottom.nix
+    ./broot.nix
     ./btop.nix
     ./carapace.nix
     ./cava.nix
     ./direnv.nix
+    ./doom-emacs.nix
     ./eza.nix
     ./fastfetch.nix
     ./fish.nix
@@ -97,10 +99,12 @@
     bash.enable = lib.mkDefault true;
     bat.enable = lib.mkDefault true;
     bottom.enable = lib.mkDefault true;
+    broot.enable = lib.mkDefault true;
     btop.enable = lib.mkDefault true;
     carapace.enable = lib.mkDefault true;
     cava.enable = lib.mkDefault true;
     direnv.enable = lib.mkDefault true;
+    doom-emacs.enable = lib.mkDefault true;
     eza.enable = lib.mkDefault true;
     fastfetch.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
