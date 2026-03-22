@@ -4,18 +4,22 @@
   ...
 }:
 {
+  imports = [ ../noctalia.nix ];
+
   options = {
     hypridle.enable = lib.mkEnableOption "enables hypridle";
   };
 
   config = lib.mkIf config.hypridle.enable {
-    
+
+    noctalia.enable = true;
+
     services.hypridle = {
 
       enable = true;
 
       settings.general = {
-        lock_cmd = "pidof hyprlock || hyprlock"; # Command to lock the session
+        lock_cmd = "noctalia-shell ipc call lockScreen lock"; # "pidof hyprlock || hyprlock"; # Command to lock the session
         before_sleep_cmd = "loginctl lock-session"; # Sleep command. `loginctl lock-session` notifies other applications
         after_sleep_cmd = "hyprctl dispatch dpms on"; # Wake command
         inhibit_sleep = 2; # 1 ?, 2 auto, 3 wait until lock
@@ -33,7 +37,7 @@
         # Lock after 30 seconds
         {
           timeout = 20 * 60; # in seconds
-          on-timeout = "pidof hyprlock || hyprlock"; # Lock session
+          on-timeout = "loginctl lock-session"; #"pidof hyprlock || hyprlock"; # Lock session
         }
 
         # Sleep after 60 seconds (30 seconds after lock)

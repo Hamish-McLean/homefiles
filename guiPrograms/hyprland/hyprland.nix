@@ -24,6 +24,7 @@ in
     ./hyprlock.nix
     ./hyprpanel.nix
     ./hyprpaper.nix
+    ../noctalia.nix
     ./rofi.nix
     # ./waybar.nix
     ./wlogout.nix
@@ -96,8 +97,9 @@ in
       # hyprland-virtual-desktops.enable = true;
       hypridle.enable = true;
       hyprlock.enable = true;
-      hyprpanel.enable = true;
-      hyprpaper.enable = true;
+      hyprpanel.enable = false;
+      hyprpaper.enable = false; # wallpapers now handled by noctalia
+      noctalia.enable = true;
       rofi.enable = true;
       # waybar.enable = true;
       wlogout.enable = true;
@@ -133,6 +135,7 @@ in
           # borders-plus-plus
           hyprexpo
           # hyprspace
+          hyprsplit
           # hyprtrails
         ];
 
@@ -140,7 +143,9 @@ in
 
           # Fix for hyprexpo
           exec-once = [
+            "hyprpm reload"
             "hyprctl plugin load ${pkgs.hyprlandPlugins.hyprexpo}/lib/libhyprexpo.so"
+            # "noctalia-shell kill; noctalia-shell"
           ];
 
           # Monitor config looks like: "name, resolution, position, scale"
@@ -162,7 +167,7 @@ in
             "col.active_border" = accent;
             "col.inactive_border" = surface0;
             gaps_in = 5;
-            gaps_out = 10;
+            gaps_out = 5;
             resize_on_border = true;
             snap.enabled = true;
           };
@@ -193,14 +198,15 @@ in
           ];
 
           # Plugins
-          # plugin = {
-          #   # borders-plus-plus = {
-          #   #   add_borders = 0;
-          #   #   natural_rounding = "yes";
-          #   # };
-          #   # hyprspace # nix instruction at "https://github.com/KZDKM/Hyprspace"
-          #   # hyprtrails.color = accent;
-          # };
+          plugin = {
+            # borders-plus-plus = {
+            #   add_borders = 0;
+            #   natural_rounding = "yes";
+            # };
+            # hyprspace # nix instruction at "https://github.com/KZDKM/Hyprspace"
+            hyprsplit.num_workspaces = 10;
+            # hyprtrails.color = accent;
+          };
 
           # Hyprspace
           # "plugin:overview:autodrag" = true; # Drag windows between workspaces
@@ -236,20 +242,22 @@ in
           "$mod" = "SUPER";
           bind = [
             # "$mod, exec, rofi -show drun, release"
-            "$mod, SPACE, exec, rofi-toggle" # rofi -show drun"
+            # "$mod, SPACE, exec, rofi-toggle" # rofi -show drun"
+            "$mod, SPACE, exec, noctalia-shell ipc call launcher toggle" # rofi -show drun"
             # "$mod, TAB, exec, hyprctl dispatch overview:toggle"
             # "$mod, TAB, hyprexpo:expo, toggle"
-            "$mod, C, killactive"
+            "$mod, Q, killactive"
             "$mod, E, exec, nautilus"
-            "$mod, F, ${runOrFocus "firefox" "firefox"}"
-            "$mod SHIFT, F, exec, firefox"
-            "$mod, K, exec, kitty"
-            "$mod SHIFT, K, ${runOrFocus "kitty" "kitty"}"
-            "$mod, L, exec, pidof hyprlock || hyprlock"
+            "$mod, I, ${runOrFocus "firefox" "firefox"}"
+            "$mod SHIFT, I, exec, firefox"
+            "$mod, T, exec, kitty"
+            "$mod SHIFT, T, ${runOrFocus "kitty" "kitty"}"
+            "$mod, L, exec, noctalia-shell ipc call lockScreen lock" #pidof hyprlock || hyprlock"
             "$mod, M, exit"
             "$mod, R, exec, hyprctl reload"
             "$mod, V, exec, codium"
             ", Print, exec, grimblast copy area"
+            "ALT, SPACE, exec, walker"
 
             # Hyprexpo
             "$mod, TAB, hyprexpo:expo, toggle"
@@ -271,6 +279,8 @@ in
             "$mod CTRL, down, movewindow, d"
             "$mod SHIFT, left, movetoworkspace, -1"
             "$mod SHIFT, right, movetoworkspace, +1"
+            # "$mod SHIFT, left, split:movetomonitor, l"
+            # "$mod SHIFT, right, split:movetomonitor, r"
             "$mod, COMMA, togglesplit"
             "$mod, PERIOD, togglefloating"
 
@@ -329,7 +339,7 @@ in
             "$mod, mouse:273, resizewindow"
           ];
           bindr = [
-            "$mod, SUPER_L, exec, rofi-toggle" # killall rofi || rofi -show drun"
+            "$mod, SUPER_L, exec, noctalia-shell ipc call launcher toggle" # rofi-toggle" # killall rofi || rofi -show drun"
           ];
 
           # Hyprexpo submap

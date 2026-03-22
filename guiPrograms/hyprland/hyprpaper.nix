@@ -11,7 +11,7 @@
   config = lib.mkIf config.hyprpaper.enable {
     services.hyprpaper =
       let
-        wallpaper = ./../../wallpapers/catppuccin-sparkles.jpg;
+        wallpaper = ./../../wallpapers/catppuccin-nix-nineish-alt.svg;
       in
       {
         enable = true;
