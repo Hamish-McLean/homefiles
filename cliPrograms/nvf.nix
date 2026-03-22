@@ -59,6 +59,19 @@
 
         lsp.enable = true;
 
+        notes.obsidian = {
+          enable = true;
+          setupOpts = {
+            completion.nvim_cmp = true;
+            workspaces = [
+              {
+                name = "Obsidian";
+                path = "~/Obsidian";
+              }
+            ];
+          };
+        };
+
         options = {
           tabstop = 2;
           shiftwidth = 0; # set to 0 to use tabstop
