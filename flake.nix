@@ -12,22 +12,23 @@
     };
 
     # Packages
-    catppuccin.url = "github:catppuccin/nix"; # Update version
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     cosmic-manager = {
       url = "github:HeitorAugustoLN/cosmic-manager";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     catppuccin-cosmic = {
       url = "github:catppuccin/cosmic-desktop";
       flake = false;
     };
-    # helix = {
-    #   url = "github:helix-editor/helix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    doom-emacs = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       url = "github:hyprwm/Hyprland"; # Switched to nixpkgs version for now
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +46,10 @@
     #   url = "github:Jas-SinghFSU/HyprPanel";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -83,11 +88,21 @@
       url = "github:FedericoBruzzone/tgt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # zen-browser = {
-    #   url = "github:MarceColl/zen-browser-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    # Walker
+    elephant = {
+      url = "github:abenz1267/elephant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -105,13 +120,15 @@
         system: hostname: username:
         let
           pkgs = import nixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
-              # packageOverrides = pkgs: {
-              #   wrapGAppsHook = pkgs.wrapGAppsHook3;
-              # };
-            };
+            localSystem = { inherit system; };
+            config.allowUnfree = true;
+            # This overlay adds an 'unstable' attribute to pkgs,
+            overlays = [ (final: prev: {
+              unstable = import nixpkgs-unstable {
+                localSystem = { inherit system; };
+                config.allowUnfree = true; # Allow unfree in unstable pkgs as well
+              };
+            })];
           };
         in
         home-manager.lib.homeManagerConfiguration {
@@ -130,24 +147,20 @@
           };
           modules = [
             # Allow unfree packages
-            {
-              nixpkgs.config.allowUnfree = true;
-              # Overlay to make unstable packages available as `pkgs.unstable.<package>`
-              nixpkgs.overlays = [
-                # This overlay adds an 'unstable' attribute to pkgs,
-                # which contains packages from the nixpkgs-unstable input.
-                (final: prev: {
-                  unstable = import nixpkgs-unstable {
-                    inherit system;
-                    config.allowUnfree = true; # Allow unfree in unstable pkgs as well
-                  };
-                })
-                # (final: prev: {
-                #   wrapGAppsHook = prev.wrapGAppsHook3;
-                # })
-                # inputs.hyprpanel.overlay
-              ];
-            }
+            # {
+            #   nixpkgs.hostPlatform = system;
+            #   nixpkgs.config.allowUnfree = true;
+            #   # Overlay to make unstable packages available as `pkgs.unstable.<package>`
+            #   nixpkgs.overlays = [
+            #     # This overlay adds an 'unstable' attribute to pkgs,
+            #     (final: prev: {
+            #       unstable = import nixpkgs-unstable {
+            #         localSystem = { inherit system; };
+            #         config.allowUnfree = true; # Allow unfree in unstable pkgs as well
+            #       };
+            #     })
+            #   ];
+            # }
             ./hosts/${hostname}.nix
             inputs.catppuccin.homeModules.catppuccin
             inputs.cosmic-manager.homeManagerModules.cosmic-manager
