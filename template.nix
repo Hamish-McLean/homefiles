@@ -8,7 +8,7 @@
 }:
 {
   options = {
-    x.enable = lib.mkEnableOption "enables x";
+    x.enable = lib.mkEnableOption "enable x";
   };
 
   config = lib.mkIf config.x.enable {
@@ -17,3 +17,4 @@
     };
   };
 }
+
