@@ -10,12 +10,12 @@
   lib,
   pkgs,
   system,
-  # unstablePkgs,
   ...
 }:
 {
   # GUI programs to import
   imports = [
+    ./anyrun.nix
     ./cosmic.nix
     ./feh.nix
     ./flatpak.nix
@@ -26,14 +26,17 @@
     ./hyprland/hyprland.nix
     ./kitty.nix
     ./librewolf.nix
+    ./niri.nix
     ./nixcord.nix
     ./plasma.nix
     ./qt.nix
     ./spicetify.nix
+    ./tailscale-gui.nix
     ./vscodium.nix
+    ./walker.nix
     ./zathura.nix
     ./zed-editor.nix
-    # ./zen.nix
+    ./zen.nix
   ];
 
   # Option to enable all guiPrograms modules
@@ -59,13 +62,16 @@
       zotero
 
       # Unstable packages
+      unstable.popcorntime # Torrent streaming client
+      # unstable.stremio # CVEs detected
       # unstable.nmgui # Network manager gui
     ];
 
     # Desktop environments
-    cosmic.enable = lib.mkDefault true;
+    cosmic.enable = lib.mkDefault false;
     gnome_config.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
+    niri.enable = lib.mkDefault true;
     plasma.enable = lib.mkDefault false;
 
     # GUI libraries
@@ -73,18 +79,21 @@
     qt_config.enable = lib.mkDefault false;
 
     # Programs
+    anyrun.enable = lib.mkDefault false;
     feh.enable = lib.mkDefault true;
     flatpak.enable = lib.mkDefault true;
     freetube.enable = lib.mkDefault true;
     ghostty.enable = lib.mkDefault true;
-    librewolf.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
+    librewolf.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
-    vscodium.enable = lib.mkDefault true;
     spicetify.enable = lib.mkDefault true;
+    tailscale-gui.enable = lib.mkDefault true;
+    vscodium.enable = lib.mkDefault true;
+    walker.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
     zed-editor.enable = lib.mkDefault true;
-    # zen.enable = lib.mkDefault true;
+    zen.enable = lib.mkDefault true;
 
     # Themes
     catppuccin.cursors = {
