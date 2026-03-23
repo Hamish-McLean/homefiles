@@ -50,6 +50,7 @@
       calibre # ebook manager
       endless-sky # Space game
       nmgui # Network manager GUI
+      opensnitch-ui # Application firewall
       resources # Task manager GUI
       rpi-imager # Raspberry pi imager
       runelite # Runescape client
@@ -62,9 +63,7 @@
       zotero
 
       # Unstable packages
-      unstable.popcorntime # Torrent streaming client
       # unstable.stremio # CVEs detected
-      # unstable.nmgui # Network manager gui
     ];
 
     # Desktop environments
@@ -94,6 +93,9 @@
     zathura.enable = lib.mkDefault true;
     zed-editor.enable = lib.mkDefault true;
     zen.enable = lib.mkDefault true;
+
+    # Services
+    services.opensnitch-ui.enable = lib.mkDefault true;
 
     # Themes
     catppuccin.cursors = {
