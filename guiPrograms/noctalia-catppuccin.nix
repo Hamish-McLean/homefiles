@@ -102,10 +102,10 @@ let
       };
     };
   };
-in {
+in
+{
   config = lib.mkIf config.noctalia.enable {
-    xdg.configFile."noctalia/colorschemes/Catppuccin Custom/Catppuccin Custom.json".text = 
+    xdg.configFile."noctalia/colorschemes/Catppuccin Custom/Catppuccin Custom.json".text =
       builtins.toJSON customCatppuccin;
   };
 }
-
