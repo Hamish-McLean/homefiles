@@ -36,9 +36,9 @@
           betterSettings.enable = true;
           betterUploadButton.enable = true;
           biggerStreamPreview.enable = true;
-          clearUrLs.enable = true;
+          # clearUrLs.enable = true; # Option no longer exists
           copyFileContents.enable = true;
-          copyUserUrLs.enable = true;
+          # copyUserUrLs.enable = true; # Option no longer exists
           crashHandler.enable = true;
           decor.enable = true;
           openInApp.enable = true;
