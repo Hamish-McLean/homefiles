@@ -46,6 +46,7 @@
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix
+    ./syncthing.nix
     ./tealdeer.nix
     ./tgt.nix
     ./tmux.nix
@@ -75,7 +76,7 @@
       impala # wifi tui
       mosh # mobile shell (ssh replacement)
       prettyping # prettier ping
-      progress  # progress bars
+      progress # progress bars
       ripgrep # better grep
       sl # steam locomotive
       terminal-toys # terminal screensaver animations

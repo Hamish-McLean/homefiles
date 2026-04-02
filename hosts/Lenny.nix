@@ -24,10 +24,24 @@
   hyprland.enable = true;
   rbw.enable = true; # Bitwarden CLI
 
+  # Syncthing
+  syncthing.enable = true;
+  services.syncthing.settings.folders = {
+    Obsidian = {
+      devices = [
+        "Pixel7"
+        "Roger"
+      ];
+      id = "y8yy4-zven7";
+      path = "~/Obsidian";
+    };
+  };
+
   services.kdeconnect = {
     enable = true;
     indicator = true;
   };
+
   # Extra programs
   home.packages = with pkgs; [
     gimp
