@@ -114,7 +114,7 @@
     }@inputs:
     let
       # renameOverlay = (final: prev: {
-      #   wrapGAppsHook = prev.wrapGAppsHook3 or null; 
+      #   wrapGAppsHook = prev.wrapGAppsHook3 or null;
       # });
       homeSystem =
         system: hostname: username:
@@ -123,12 +123,14 @@
             localSystem = { inherit system; };
             config.allowUnfree = true;
             # This overlay adds an 'unstable' attribute to pkgs,
-            overlays = [ (final: prev: {
-              unstable = import nixpkgs-unstable {
-                localSystem = { inherit system; };
-                config.allowUnfree = true; # Allow unfree in unstable pkgs as well
-              };
-            })];
+            overlays = [
+              (final: prev: {
+                unstable = import nixpkgs-unstable {
+                  localSystem = { inherit system; };
+                  config.allowUnfree = true; # Allow unfree in unstable pkgs as well
+                };
+              })
+            ];
           };
         in
         home-manager.lib.homeManagerConfiguration {
@@ -143,7 +145,7 @@
               hostname
               username
               ;
-              # wrapGAppsHook = pkgs.wrapGAppsHook3;
+            # wrapGAppsHook = pkgs.wrapGAppsHook3;
           };
           modules = [
             # Allow unfree packages
@@ -180,6 +182,7 @@
     {
       homeConfigurations = {
         # NixOS hosts
+        "cycad@Radagast" = homeSystem "x86_64-linux" "Radagast" "cycad";
         "cycad@Lenny" = homeSystem "x86_64-linux" "Lenny" "cycad";
         "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
 
