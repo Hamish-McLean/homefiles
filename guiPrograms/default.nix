@@ -68,7 +68,7 @@
 
     # Desktop environments
     cosmic.enable = lib.mkDefault false;
-    gnome_config.enable = lib.mkDefault true;
+    gnome_config.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     niri.enable = lib.mkDefault true;
     plasma.enable = lib.mkDefault false;
