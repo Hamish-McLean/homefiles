@@ -90,7 +90,7 @@
       };
       input.focus-follows-mouse.enable = true;
       layout = {
-        # default-column-width.proportion = 1.0 / 2.0;
+        # default-column-width = { proportion = 1.0 / 2.0; };
         focus-ring = {
           active.color = "#74c7ec";
           inactive.color = "#181825";
@@ -135,6 +135,16 @@
               bottom-left = r;
               bottom-right = r;
             };
+        }
+        {
+          matches = [ { app-id = "^firefox$"; } ];
+          focus-ring.active.color = "#fab387"; # peach
+          default-column-width.proportion = 2.0 / 3.0;
+        }
+        {
+          matches = [ { app-id = "^obsidian$"; } ];
+          focus-ring.active.color = "#cba6f7"; # mauve
+          default-column-width.proportion = 2.0 / 3.0;
         }
       ];
     };
