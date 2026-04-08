@@ -19,7 +19,6 @@
     };
 
     programs.nvf.settings.vim = {
-
       autocomplete.blink-cmp = {
         enable = true;
         friendly-snippets.enable = true;
@@ -49,9 +48,6 @@
           enable = true;
           format.type = [ "nixfmt" ];
           lsp.servers = [ "nixd" ];
-          format.enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
         };
         nu.enable = true;
         python.enable = true;
@@ -63,6 +59,7 @@
       lsp = {
         enable = true;
         formatOnSave = true;
+        inlayHints.enable = true;
         lightbulb.enable = true;
         lspkind.enable = true;
         # lspSignature.enable = true; # incompatible with blink-cmp
@@ -106,6 +103,8 @@
         name = "catppuccin";
         style = "mocha";
       };
+
+      treesitter.enable = true;
 
       ui = {
         borders.enable = true;
@@ -159,7 +158,6 @@
         indent-blankline.enable = true;
         nvim-web-devicons.enable = true;
       };
-
     };
   };
 }
