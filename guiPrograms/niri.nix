@@ -3,6 +3,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -50,8 +51,10 @@
         # Movement
         "Mod+Ctrl+Left".action.move-column-left = [ ];
         "Mod+Ctrl+H".action.move-column-left = [ ];
+        "Mod+Ctrl+WheelScrollUp".action.move-column-left = [ ];
         "Mod+Ctrl+Right".action.move-column-right = [ ];
         "Mod+Ctrl+L".action.move-column-right = [ ];
+        "Mod+Ctrl+WheelScrollDown".action.move-column-right = [ ];
         "Mod+Ctrl+Up".action.move-window-up = [ ];
         "Mod+Ctrl+J".action.move-window-up = [ ];
         "Mod+Ctrl+Down".action.move-window-down = [ ];
@@ -88,7 +91,10 @@
         "XF86MonBrightnessUp".action.spawn-sh = "brightnessctl set 10%+";
         "XF86Tools".action.spawn-sh = "noctalia-shell ipc call settings toggle";
       };
-      input.focus-follows-mouse.enable = true;
+      input = {
+        focus-follows-mouse.enable = true;
+        keyboard.xkb.layout = "gb";
+      };
       layout = {
         # default-column-width = { proportion = 1.0 / 2.0; };
         focus-ring = {
@@ -109,8 +115,16 @@
         };
       };
       outputs = {
+        "HDMI-A-1" = {
+          scale = 1;
+          # transform = "90";
+        };
+        "HDMI-A-2".scale = 1;
+        "DP-2" = {
+          scale = 0.9;
+          variable-refresh-rate = true;
+        };
         "eDP-1".scale = 1; # Laptop screen
-        "HDMI-A-2".scale = 1; # External screen
       };
       overview.backdrop-color = "#11111b"; # Mocha crust
       prefer-no-csd = true; # no client-side decorations
@@ -147,6 +161,8 @@
           default-column-width.proportion = 2.0 / 3.0;
         }
       ];
+      xwayland-satellite.enable = true;
+      xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
     };
   };
 }
