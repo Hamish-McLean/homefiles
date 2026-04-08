@@ -31,6 +31,8 @@
       devices = [
         "Pixel7"
         "Roger"
+        "Radagast"
+        "NixBerry"
       ];
       id = "y8yy4-zven7";
       path = "~/Obsidian";

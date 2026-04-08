@@ -15,6 +15,21 @@
 
   # Disable specific modules
 
+  # Syncthing
+  syncthing.enable = true;
+  services.syncthing.settings.folders = {
+    Obsidian = {
+      devices = [
+        "Lenny"
+        "Pixel7"
+        "Roger"
+        "Radagast"
+      ];
+      id = "y8yy4-zven7";
+      path = "~/Obsidian";
+    };
+  };
+
   # Workaround for "unable to download 'https://git.sr.ht/~rycee"
   # https://github.com/nix-community/home-manager/issues/4879
   manual = {

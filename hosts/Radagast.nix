@@ -25,17 +25,19 @@
   rbw.enable = true; # Bitwarden CLI
 
   # Syncthing
-  # syncthing.enable = true;
-  # services.syncthing.settings.folders = {
-  #   Obsidian = {
-  #     devices = [
-  #       "Pixel7"
-  #       "Roger"
-  #     ];
-  #     id = "y8yy4-zven7";
-  #     path = "~/Obsidian";
-  #   };
-  # };
+  syncthing.enable = true;
+  services.syncthing.settings.folders = {
+    Obsidian = {
+      devices = [
+        "Lenny"
+        "Pixel7"
+        "Roger"
+        "NixBerry"
+      ];
+      id = "y8yy4-zven7";
+      path = "~/Obsidian";
+    };
+  };
 
   services.kdeconnect = {
     enable = true;
