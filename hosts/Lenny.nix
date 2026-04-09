@@ -23,6 +23,7 @@
   # Custom options
   hyprland.enable = true;
   rbw.enable = true; # Bitwarden CLI
+  vscodium.enable = false; # Disable due to build issues
 
   # Syncthing
   syncthing.enable = true;
