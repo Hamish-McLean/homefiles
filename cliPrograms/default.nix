@@ -105,7 +105,7 @@
     carapace.enable = lib.mkDefault true;
     cava.enable = lib.mkDefault true;
     direnv.enable = lib.mkDefault true;
-    doom-emacs.enable = lib.mkDefault true;
+    doom-emacs.enable = lib.mkDefault false;
     eza.enable = lib.mkDefault true;
     fastfetch.enable = lib.mkDefault true;
     fish.enable = lib.mkDefault true;
