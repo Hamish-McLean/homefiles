@@ -19,6 +19,7 @@
     enable = true;
     flavor = "mocha";
     accent = "sapphire";
+    # opencode.enable = false; # Fix for rebuild issue
   };
 
   home = {
