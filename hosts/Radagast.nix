@@ -45,9 +45,10 @@
   };
 
   # Extra programs
-  # home.packages = with pkgs; [
-  #   gimp
-  #   inkscape
-  #   # dwarf-fortress-packages.dwarf-fortress-full
-  # ];
+  home.packages = with pkgs; [
+    # dwarf-fortress-packages.dwarf-fortress-full
+    gimp
+    inkscape
+    unstable.modrinth-app
+  ];
 }
