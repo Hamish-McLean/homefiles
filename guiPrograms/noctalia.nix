@@ -17,7 +17,6 @@
 
   config = lib.mkIf config.noctalia.enable {
     programs.noctalia-shell.enable = true;
-    programs.noctalia-shell.systemd.enable = true;
 
     # Settings
     programs.noctalia-shell.settings = {
@@ -99,7 +98,7 @@
       ui.panelBackgroundOpacity = 1;
       wallpaper = {
         enabled = true;
-        directory = toString ../wallpapers;
+        directory = toString /home/cycad/wallpapers;
         automationEnabled = true;
         randomIntervalSec = 3600;
       };

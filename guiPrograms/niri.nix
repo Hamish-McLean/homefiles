@@ -115,6 +115,7 @@
         };
       };
       outputs = {
+        "eDP-1".scale = 1; # Laptop screen
         "HDMI-A-1" = {
           scale = 1;
           # transform = "90";
@@ -124,12 +125,11 @@
           scale = 0.9;
           variable-refresh-rate = true;
         };
-        "eDP-1".scale = 1; # Laptop screen
       };
       overview.backdrop-color = "#11111b"; # Mocha crust
       prefer-no-csd = true; # no client-side decorations
       spawn-at-startup = [
-        # { command = [ "noctalia-shell" ]; }
+        { command = [ "noctalia-shell" ]; }
       ];
       # switch-events = {
       #   lid-open.action = sh "notify-send lid-open";

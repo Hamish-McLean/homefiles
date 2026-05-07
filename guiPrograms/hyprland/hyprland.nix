@@ -145,14 +145,16 @@ in
         exec-once = [
           "hyprpm reload"
           "hyprctl plugin load ${pkgs.hyprlandPlugins.hyprexpo}/lib/libhyprexpo.so"
-          # "noctalia-shell kill; noctalia-shell"
+          "noctalia-shell kill; noctalia-shell"
         ];
 
         # Monitor config looks like: "name, resolution, position, scale"
         # List available monitors with `hyprctl monitors all`
         monitor = [
-          "eDP-1, preferred, 0x0, 1" # Scaling for laptop screen
-          "HDMI-A-2, preferred, auto, 1" # Scaling for external monitor
+          "eDP-1, preferred, 0x0, 1" # Laptop screen
+          "DP-2, preferred, 0x0, 1" # DisplayPort monitor
+          "HDMI-A-1, preferred, auto, 1" # HDMI monitor 1
+          "HDMI-A-2, preferred, auto, 1" # HDMI monitor 2
         ];
 
         input = {
