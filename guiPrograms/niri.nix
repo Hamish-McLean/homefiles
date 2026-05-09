@@ -150,15 +150,32 @@
               bottom-right = r;
             };
         }
+        # Firefox
         {
           matches = [ { app-id = "^firefox$"; } ];
+          excludes = [ { title = "^Extension:"; } ];
           focus-ring.active.color = "#fab387"; # peach
           default-column-width.proportion = 2.0 / 3.0;
         }
+        # Obsidian
         {
           matches = [ { app-id = "^obsidian$"; } ];
           focus-ring.active.color = "#cba6f7"; # mauve
           default-column-width.proportion = 2.0 / 3.0;
+        }
+        # Bitwarden
+        {
+          matches = [
+            {
+              app-id = "^firefox$";
+              title = "Bitwarden";
+            }
+          ];
+          focus-ring.active.color = "#89b4fa"; # blue
+          open-floating = true; # Floating doesn't work but the blue focus ring does work...
+          default-column-width.proportion = 1.0 / 3.0;
+          default-window-height.proportion = 2.0 / 3.0;
+          # default-floating-position = {};
         }
       ];
       xwayland-satellite.enable = true;
