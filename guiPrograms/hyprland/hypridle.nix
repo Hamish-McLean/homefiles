@@ -37,14 +37,14 @@
         # Lock after 30 seconds
         {
           timeout = 20 * 60; # in seconds
-          on-timeout = "loginctl lock-session"; #"pidof hyprlock || hyprlock"; # Lock session
+          on-timeout = "loginctl lock-session"; # "pidof hyprlock || hyprlock"; # Lock session
         }
 
         # Sleep after 60 seconds (30 seconds after lock)
-        {
-          timeout = 60 * 60; # in seconds
-          on-timeout = "systemctl suspend"; # Command to put the system to sleep
-        }
+        # {
+        #   timeout = 60 * 60; # in seconds
+        #   on-timeout = "systemctl suspend"; # Command to put the system to sleep
+        # }
       ];
     };
   };

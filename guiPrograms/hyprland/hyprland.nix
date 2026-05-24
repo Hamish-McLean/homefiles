@@ -141,6 +141,11 @@ in
 
       wayland.windowManager.hyprland.settings = {
 
+        env = [
+          "QT_QPA_PLATFORMTHEME,qt5ct"
+          "QT_QPA_PLATFORM,wayland;xcb"
+        ];
+
         # Fix for hyprexpo
         exec-once = [
           "hyprpm reload"
@@ -165,11 +170,11 @@ in
         };
 
         general = {
-          border_size = 1;
+          border_size = 2;
           "col.active_border" = accent;
           "col.inactive_border" = surface0;
           gaps_in = 5;
-          gaps_out = 5;
+          gaps_out = 10;
           resize_on_border = true;
           snap.enabled = true;
         };
@@ -185,7 +190,7 @@ in
             ignore_opacity = true;
           };
           shadow = {
-            enabled = true;
+            enabled = false;
             range = 5;
             render_power = 3; # 1000;
             color = accent;
@@ -243,6 +248,7 @@ in
 
         "$mod" = "SUPER";
         bind = [
+          # General
           # "$mod, exec, rofi -show drun, release"
           # "$mod, SPACE, exec, rofi-toggle" # rofi -show drun"
           "$mod, SPACE, exec, noctalia-shell ipc call launcher toggle" # rofi -show drun"
@@ -271,27 +277,67 @@ in
           # ", swipe:4:u, exec, hyprctl dispatch hyprexpo:expo toggle; hyprctl dispatch submap expo"
           # "$mod CTRL, Escape, submap, reset"
 
-          # Windows
+          # Navigation
+          # Change focus
+          # Mod + arrow/vim keys/mouse scroll
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
           "$mod, up, movefocus, u"
           "$mod, down, movefocus, d"
+          "$mod, H, movefocus, l"
+          "$mod, L, movefocus, r"
+          "$mod, J, movefocus, u"
+          "$mod, K, movefocus, d"
+          "$mod, mouse_up, movefocus, u"
+          "$mod, mouse_down, movefocus, d"
+          # Change workspace
+          # Mod + Alt + arrow/vim keys/mouse scroll
+          "$mod ALT, left, workspace, r-1"
+          "$mod ALT, right, workspace, r+1"
+          "$mod ALT, up, workspace, r-1"
+          "$mod ALT, down, workspace, r+1"
+          "$mod ALT, H, workspace, r-1"
+          "$mod ALT, L, workspace, r+1"
+          "$mod ALT, J, workspace, r-1"
+          "$mod ALT, K, workspace, r+1"
+          "$mod ALT, mouse_up, workspace, r-1"
+          "$mod ALT, mouse_down, workspace, r+1"
+          # Move windows within a workspace
+          # Mod + Ctrl + arrow/vim keys
           "$mod CTRL, left, movewindow, l"
           "$mod CTRL, right, movewindow, r"
           "$mod CTRL, up, movewindow, u"
           "$mod CTRL, down, movewindow, d"
-          "$mod SHIFT, left, movetoworkspace, -1"
-          "$mod SHIFT, right, movetoworkspace, +1"
-          # "$mod SHIFT, left, split:movetomonitor, l"
-          # "$mod SHIFT, right, split:movetomonitor, r"
+          "$mod CTRL, H, movewindow, l"
+          "$mod CTRL, L, movewindow, r"
+          "$mod CTRL, J, movewindow, u"
+          "$mod CTRL, K, movewindow, d"
+          # Move windows between workspaces
+          # Mod + Shift + arrow/vim keys
+          "$mod SHIFT, left, movetoworkspace, r-1"
+          "$mod SHIFT, right, movetoworkspace, r+1"
+          "$mod SHIFT, up, movetoworkspace, r-1"
+          "$mod SHIFT, down, movetoworkspace, r+1"
+          "$mod SHIFT, H, movetoworkspace, r-1"
+          "$mod SHIFT, L, movetoworkspace, r+1"
+          "$mod SHIFT, J, movetoworkspace, r-1"
+          "$mod SHIFT, K, movetoworkspace, r+1"
+          # Move windows between monitors
+          # Mod + Ctrl + Shift + arrow/vim keys
+          "$mod CTRL SHIFT, left, movewindow, mon:l"
+          "$mod CTRL SHIFT, right, movewindow, mon:r"
+          "$mod CTRL SHIFT, up, movewindow, mon:u"
+          "$mod CTRL SHIFT, down, movewindow, mon:d"
+          "$mod CTRL SHIFT, H, movewindow, mon:l"
+          "$mod CTRL SHIFT, L, movewindow, mon:r"
+          "$mod CTRL SHIFT, J, movewindow, mon:u"
+          "$mod CTRL SHIFT, K, movewindow, mon:d"
+
+          # Layout controls
           "$mod, COMMA, togglesplit"
           "$mod, PERIOD, togglefloating"
-
-          # Workspaces
-          # "$mod, tab, workspace, e+1"
-          # "$mod SHIFT, tab, workspace, e-1"
-          "$mod, mouse_up, workspace, e+1"
-          "$mod, mouse_down, workspace, e-1"
+          "$mod, F, fullscreen, 0" # Fullscreen
+          "$mod SHIFT, F, fullscreen, 1" # Maximise
 
           # Media
           ", XF86AudioPlay, exec, playerctl play-pause"
