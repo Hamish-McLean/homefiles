@@ -91,6 +91,10 @@
         "XF86MonBrightnessUp".action.spawn-sh = "brightnessctl set 10%+";
         "XF86Tools".action.spawn-sh = "noctalia-shell ipc call settings toggle";
       };
+      environment = {
+        "QT_QPA_PLATFORMTHEME" = "qt5ct";
+        "QT_QPA_PLATFORM" = "wayland";
+      };
       input = {
         focus-follows-mouse.enable = true;
         keyboard.xkb.layout = "gb";
@@ -115,16 +119,38 @@
         };
       };
       outputs = {
-        "eDP-1".scale = 1; # Laptop screen
+        "eDP-1" = {
+          backdrop-color = "#11111b";
+          position = {
+            x = 0;
+            y = 0;
+          };
+          scale = 1;
+        };
+        "DP-2" = {
+          backdrop-color = "#11111b";
+          position = {
+            x = 1920;
+            y = 0;
+          };
+          scale = 0.9; # resulting logical size = 2133x1200
+          variable-refresh-rate = true;
+        };
         "HDMI-A-1" = {
+          backdrop-color = "#11111b";
+          position = {
+            x = 4053;
+            y = 0;
+          };
           scale = 1;
           # transform = "90";
         };
-        "HDMI-A-2".scale = 1;
-        "DP-2" = {
-          scale = 0.9;
-          variable-refresh-rate = true;
-        };
+        # "HDMI-A-2" = {
+        #   position = {
+        #     right-of = "HDMI-A-1";
+        #   };
+        #   scale = 1;
+        # };
       };
       overview.backdrop-color = "#11111b"; # Mocha crust
       prefer-no-csd = true; # no client-side decorations
@@ -177,9 +203,17 @@
           default-window-height.proportion = 2.0 / 3.0;
           # default-floating-position = {};
         }
+        # Steam
+        {
+          matches = [
+            { app-id = "^gamescope$"; }
+            { app-id = "^steam_app_"; }
+          ];
+          open-fullscreen = true;
+        }
       ];
       xwayland-satellite.enable = true;
-      xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+      xwayland-satellite.path = lib.getExe pkgs.unstable.xwayland-satellite;
     };
   };
 }
