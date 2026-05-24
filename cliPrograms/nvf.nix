@@ -1,7 +1,8 @@
 {
-  inputs,
   config,
+  inputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -24,10 +25,21 @@
         friendly-snippets.enable = true;
       };
 
+      autopairs.nvim-autopairs.enable = true;
+
+      bell = "on";
+
       binds = {
         cheatsheet.enable = true;
         whichKey.enable = true;
       };
+
+      clipboard = {
+        enable = true;
+        providers.wl-copy.enable = true;
+      };
+
+      comments.comment-nvim.enable = true;
 
       filetree.neo-tree.enable = true;
 
@@ -36,7 +48,7 @@
       languages = {
         bash.enable = true;
         enableFormat = true;
-        enableTreesitter = true;
+        enableTreesitter = false;
         go.enable = true;
         julia.enable = true;
         lua.enable = true;
@@ -53,6 +65,7 @@
         python.enable = true;
         r.enable = true;
         rust.enable = true;
+        tex.enable = true;
         yaml.enable = true;
       };
 
@@ -80,7 +93,7 @@
 
       options = {
         expandtab = true; # Ensure spaces are used instead of tabs
-        shiftwidth = 2; # set to 0 to use tabstop
+        shiftwidth = 0; # set to 0 to use tabstop
         tabstop = 2;
       };
 
@@ -104,7 +117,25 @@
         style = "mocha";
       };
 
-      treesitter.enable = true;
+      treesitter = {
+        addDefaultGrammars = false;
+        enable = true;
+        # grammars = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
+        grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          bash
+          go
+          julia
+          lua
+          markdown
+          nix
+          nu
+          python
+          r
+          rust
+          latex
+          yaml
+        ];
+      };
 
       ui = {
         borders.enable = true;
@@ -123,7 +154,19 @@
         noice.enable = true;
         nvim-highlight-colors.enable = true;
         #nvim-ufo.enable = true; # code folding, learn how to use first
-        smartcolumn.enable = true;
+        smartcolumn = {
+          enable = true;
+          setupOpts.custom_colorcolumn = {
+            julia = "92";
+            nix = [
+              "100"
+              "120"
+            ];
+            python = "88";
+            R = "80";
+            rust = "100";
+          };
+        };
       };
 
       utility = {
@@ -159,5 +202,29 @@
         nvim-web-devicons.enable = true;
       };
     };
+
+    programs.nvf.settings.vim.autocmds = [
+      {
+        enable = true;
+        event = [ "BufEnter" ];
+        pattern = [ "*" ];
+        command = "setlocal indentexpr=nvim_treesitter#indent()";
+      }
+    ];
+
+    # programs.nvf.settings.vim.extraPackages = with pkgs; [
+    #   gcc
+    #   tree-sitter
+    #   # vimPlugins.nvim-treesitter.withAllGrammars
+    # ];
+
+    # programs.nvf.settings.vim.extraPlugins = {
+    #   treesitter-grammars = {
+    #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+    #     # Ensure it doesn't run a separate plugin setup function
+    #     # that clashes with the core treesitter module
+    #     # setupModule = null;
+    #   };
+    # };
   };
 }
