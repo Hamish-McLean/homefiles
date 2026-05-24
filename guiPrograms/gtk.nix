@@ -11,6 +11,7 @@
   config = lib.mkIf config.gtk_config.enable {
     gtk = {
       enable = true;
+      colorScheme = "dark";
       theme = {
         package = pkgs.magnetic-catppuccin-gtk;
         name = "Catppuccin-GTK-Dark";

@@ -10,15 +10,6 @@
   };
 
   config = lib.mkIf config.qt_config.enable {
-    home.packages = with pkgs; [
-      # (catppuccin-kvantum.override {
-      #   variant = "mocha";
-      #   accent = "sapphire";
-      # })
-      # libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5ct
-      # catppuccin-cursors.mochaSapphire
-    ];
     # GTK QT
     # qt = {
     #   enable = true;
@@ -30,8 +21,8 @@
     # Catppuccin qt via kvantum
     qt = {
       enable = true;
-      # platformTheme.name = "kvantum";
-      # style.name = "kvantum";
+      platformTheme.name = "qtct";
+      style.name = "kvantum";
     };
     # environment.variables = {
     #   QT_QPA_PLATFORMTHEME = "qt5ct";
@@ -40,5 +31,19 @@
     #   enable = true;
     #   apply = true;
     # };
+    # home.sessionVariables = {
+    #   # QT_STYLE_OVERRIDE = "kvantum";
+    #   QT_QPA_PLATFORMTHEME = "qtct";
+    # };
+    home.packages = with pkgs; [
+      # (catppuccin-kvantum.override {
+      #   variant = "mocha";
+      #   accent = "sapphire";
+      # })
+      kdePackages.qtstyleplugin-kvantum
+      kdePackages.qt6ct
+      libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
+    ];
   };
 }
