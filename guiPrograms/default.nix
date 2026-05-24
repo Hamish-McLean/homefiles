@@ -26,12 +26,14 @@
     ./hyprland/hyprland.nix
     ./kitty.nix
     ./librewolf.nix
+    ./mangohud.nix
     ./niri.nix
     ./nixcord.nix
     ./plasma.nix
     ./qt.nix
     ./spicetify.nix
     ./tailscale-gui.nix
+    ./thunderbird.nix
     ./vscodium.nix
     ./walker.nix
     ./zathura.nix
@@ -54,13 +56,18 @@
       resources # Task manager GUI
       rpi-imager # Raspberry pi imager
       runelite # Runescape client
-      # spotify
       superTuxKart
       qalculate-gtk # Calculator
       qbittorrent # Torrent client
       wasistlos # Whatsapp client
+      wl-clipboard
       zapzap # Whatsapp client
       zotero
+
+      # File managers
+      lxqt.pcmanfm-qt
+      nautilus
+      xfce.thunar
 
       # Unstable packages
       # unstable.stremio # CVEs detected
@@ -75,7 +82,7 @@
 
     # GUI libraries
     gtk_config.enable = lib.mkDefault true;
-    qt_config.enable = lib.mkDefault false;
+    qt_config.enable = lib.mkDefault true;
 
     # Programs
     anyrun.enable = lib.mkDefault false;
@@ -85,9 +92,11 @@
     ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     librewolf.enable = lib.mkDefault true;
+    mangohud.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
     spicetify.enable = lib.mkDefault true;
     tailscale-gui.enable = lib.mkDefault true;
+    thunderbird.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
     walker.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
