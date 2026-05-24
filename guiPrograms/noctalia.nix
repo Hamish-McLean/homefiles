@@ -20,7 +20,11 @@
 
     # Settings
     programs.noctalia-shell.settings = {
-      appLauncher.position = "top_center";
+      appLauncher = {
+        enableClipboardHistory = true;
+        position = "top_center";
+        terminalCommand = "kitty -e";
+      };
       bar.showCapsule = false;
       bar.widgets = {
         left = [
@@ -86,21 +90,31 @@
         animationDisabled = false;
         clockFormat = "hh:mm\nyyyy-MM-dd";
         compactLockScreen = false;
+        enableLockScreenCountdown = false;
         enableLockScreenMediaControls = true;
         enableShadows = true;
         forceBlackScreenCorners = true;
+        lockScreenAnimations = true;
+        lockScreenMonitors = [
+          "eDP1"
+          "DP2"
+        ];
         passwordChars = true;
         screenRadiusRatio = 0.8;
         showHibernateOnLockScreen = true;
         showScreenCorners = true;
       };
       location.name = "Totnes";
+      sessionMenu.enableCountdown = false;
       ui.panelBackgroundOpacity = 1;
       wallpaper = {
-        enabled = true;
-        directory = toString /home/cycad/wallpapers;
         automationEnabled = true;
+        directory = toString /home/cycad/Pictures/wallpapers;
+        enabled = true;
+        fillColor = "#11111b";
         randomIntervalSec = 3600;
+        skipStartupTransition = true;
+        solidColor = "#11111b";
       };
     };
 
