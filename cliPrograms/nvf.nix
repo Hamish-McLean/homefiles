@@ -48,8 +48,9 @@
       languages = {
         bash.enable = true;
         enableFormat = true;
-        enableTreesitter = false;
+        enableTreesitter = false; # HACK: disable automatic treesitter grammars
         go.enable = true;
+        html.enable = true;
         julia.enable = true;
         lua.enable = true;
         markdown = {
@@ -74,21 +75,32 @@
         formatOnSave = true;
         inlayHints.enable = true;
         lightbulb.enable = true;
+        lspconfig.enable = true;
         lspkind.enable = true;
+        lspsaga.enable = true;
         # lspSignature.enable = true; # incompatible with blink-cmp
+        # mappings = { }; # configure lsp keybinds "<leader>l"
+        nvim-docs-view.enable = true; # hover docs in side panel
+        otter-nvim.enable = true; # lsp features for code within other documents
+        trouble.enable = true; # diagnostics panel
       };
 
-      notes.obsidian = {
-        enable = true;
-        setupOpts = {
-          completion.nvim_cmp = true;
-          workspaces = [
-            {
-              name = "Obsidian";
-              path = "~/Obsidian";
-            }
-          ];
+      mini.icons.enable = true;
+
+      notes = {
+        obsidian = {
+          enable = true;
+          setupOpts = {
+            completion.nvim_cmp = true;
+            workspaces = [
+              {
+                name = "Obsidian";
+                path = "~/Obsidian";
+              }
+            ];
+          };
         };
+        todo-comments.enable = true;
       };
 
       options = {
@@ -97,13 +109,16 @@
         tabstop = 2;
       };
 
+      projects.project-nvim.enable = true;
+
       statusline.lualine.enable = true;
 
-      tabline.nvimBufferline.enable = true;
+      tabline.nvimBufferline.enable = true; # tabs "<leader>b"
 
-      telescope.enable = true;
+      # telescope.enable = true;
 
       terminal.toggleterm = {
+        # terminal "<c-t>"
         enable = true;
         lazygit = {
           enable = true;
@@ -115,15 +130,19 @@
         enable = true;
         name = "catppuccin";
         style = "mocha";
+        transparent = true;
       };
 
+      # HACK: manually add treesitter grammars due to issues with the automatic system
       treesitter = {
         addDefaultGrammars = false;
         enable = true;
         # grammars = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
         grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           bash
+          bibtex
           go
+          html
           julia
           lua
           markdown
@@ -131,6 +150,7 @@
           nu
           python
           r
+          regex
           rust
           latex
           yaml
@@ -139,9 +159,13 @@
 
       ui = {
         borders.enable = true;
-        breadcrumbs.enable = true;
+        breadcrumbs = {
+          enable = true;
+          navbuddy.enable = true;
+        };
         colorful-menu-nvim.enable = true;
-        illuminate.enable = true; # illuminates other uses of a word
+        fastaction.enable = true; # code actions
+        # illuminate.enable = true; # replaced by snacks words
         modes-nvim = {
           enable = true; # highlights lines based on mode
           setupOpts.colors = {
@@ -187,7 +211,23 @@
         nix-develop.enable = true;
         nvim-biscuits.enable = true;
         #preview.markdownPreview # settings for markdownPreview here
-        #snacks.nvim # collection of small QoL plugins
+        snacks-nvim = {
+          # collection of small QoL plugins
+          enable = true;
+          setupOpts = {
+            bigfile.enable = true;
+            dashboard = {
+              enabled = true;
+            };
+            dim.enabled = true;
+            input.enabled = true;
+            notifier.enabled = true;
+            picker.enabled = true;
+            scroll.enabled = true;
+            terminal.enabled = true;
+            words.enabled = true;
+          };
+        };
         #surround.enable = true; # for surrounding delimiters, seems overly complicated
         #undotree # to navigate undo history trees
         #yanky-nvim # for better yank and put, seems complicated
@@ -203,6 +243,7 @@
       };
     };
 
+    # HACK: fixes broken auto indentation
     programs.nvf.settings.vim.autocmds = [
       {
         enable = true;
@@ -212,19 +253,10 @@
       }
     ];
 
-    # programs.nvf.settings.vim.extraPackages = with pkgs; [
-    #   gcc
-    #   tree-sitter
-    #   # vimPlugins.nvim-treesitter.withAllGrammars
-    # ];
+    programs.nvf.settings.vim.extraPackages = with pkgs; [
+      gcc
+      tree-sitter
+    ];
 
-    # programs.nvf.settings.vim.extraPlugins = {
-    #   treesitter-grammars = {
-    #     package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-    #     # Ensure it doesn't run a separate plugin setup function
-    #     # that clashes with the core treesitter module
-    #     # setupModule = null;
-    #   };
-    # };
   };
 }
