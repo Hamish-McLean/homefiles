@@ -4,16 +4,16 @@
   inputs = {
 
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11"; # Update version
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05"; # Update version
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11"; # Update version
+      url = "github:nix-community/home-manager/release-26.05"; # Update version
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Packages
     catppuccin = {
-      url = "github:catppuccin/nix/release-25.11";
+      url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cosmic-manager = {

@@ -27,6 +27,7 @@
         require("starship"):setup()
       '';
       # settings = {};
+      shellWrapperName = "y";
     };
     catppuccin.yazi.enable = true;
   };

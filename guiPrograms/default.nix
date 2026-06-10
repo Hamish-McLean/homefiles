@@ -48,18 +48,18 @@
   config = lib.mkIf config.guiPrograms.enable {
 
     home.packages = with pkgs; [
-      blueberry # Bluetooth config tool
+      blueman # Bluetooth config tool
       calibre # ebook manager
       endless-sky # Space game
+      karere # Whatsapp client
       nmgui # Network manager GUI
       opensnitch-ui # Application firewall
       resources # Task manager GUI
       rpi-imager # Raspberry pi imager
       runelite # Runescape client
-      superTuxKart
+      supertuxkart
       qalculate-gtk # Calculator
       qbittorrent # Torrent client
-      wasistlos # Whatsapp client
       wl-clipboard
       zapzap # Whatsapp client
       zotero
@@ -67,7 +67,7 @@
       # File managers
       lxqt.pcmanfm-qt
       nautilus
-      xfce.thunar
+      thunar
 
       # Unstable packages
       # unstable.stremio # CVEs detected
@@ -101,7 +101,7 @@
     walker.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
     zed-editor.enable = lib.mkDefault true;
-    zen.enable = lib.mkDefault true;
+    zen.enable = lib.mkDefault false;
 
     # Services
     services.opensnitch-ui.enable = lib.mkDefault true;
