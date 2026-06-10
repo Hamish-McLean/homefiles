@@ -95,6 +95,7 @@
         "QT_QPA_PLATFORMTHEME" = "qt5ct";
         "QT_QPA_PLATFORM" = "wayland";
       };
+      hotkey-overlay.skip-at-startup = true;
       input = {
         focus-follows-mouse.enable = true;
         keyboard.xkb.layout = "gb";
@@ -133,13 +134,13 @@
             x = 1920;
             y = 0;
           };
-          scale = 0.9; # resulting logical size = 2133x1200
+          scale = 1;
           variable-refresh-rate = true;
         };
         "HDMI-A-1" = {
           backdrop-color = "#11111b";
           position = {
-            x = 4053;
+            x = 3840;
             y = 0;
           };
           scale = 1;
