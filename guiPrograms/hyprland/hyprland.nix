@@ -1,6 +1,5 @@
 {
   config,
-  # hyprland-plugins,
   inputs,
   lib,
   pkgs,
@@ -83,7 +82,8 @@ in
     in
     {
 
-      # Hyprland cachix so hyprland and dependencies don't have to be compiled
+      # Hyprland cachix so hyprland and dependencies don't have to be compiled.
+      # Incompatible with overriding Hyprland's `nixpkgs` input.
       # https://wiki.hyprland.org/Nix/Cachix/
       # nix.settings = {
       #   substituters = ["https://hyprland.cachix.org"];
@@ -124,19 +124,19 @@ in
 
       wayland.windowManager.hyprland = {
         enable = true;
-        # package = inputs.hyprland.packages.${system}.hyprland;
-        # package = inputs.hyprland.packages.${system}.hyprland; # ${pkgs.stdenv.hostPlatform.system}
+        # configType = "lua"; # TODO: change to "lua" when possible
         # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
-        systemd.enable = true;
-        # plugins = with inputs.hyprland-plugins.packages."${system}"; [
-        # plugins = with inputs.hyprland-plugins.packages.${system}; [
-        plugins = with pkgs.hyprlandPlugins; [
-          # borders-plus-plus
-          hyprexpo
-          # hyprspace
-          hyprsplit
-          # hyprtrails
-        ];
+        # systemd.enable = true; # Not required with UWSM
+        # TODO: hyprspace https://github.com/KZDKM/Hyprspace
+        plugins =
+          (with pkgs.hyprlandPlugins; [
+            # hyprspace
+            # hyprsplit
+            # hyprtrails
+          ])
+          ++ (with inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
+            hyprfocus
+          ]);
       };
 
       wayland.windowManager.hyprland.settings = {
@@ -146,10 +146,8 @@ in
           "QT_QPA_PLATFORM,wayland;xcb"
         ];
 
-        # Fix for hyprexpo
         exec-once = [
           "hyprpm reload"
-          "hyprctl plugin load ${pkgs.hyprlandPlugins.hyprexpo}/lib/libhyprexpo.so"
           "noctalia-shell kill; noctalia-shell"
         ];
 
@@ -201,7 +199,6 @@ in
         # gestures.workspace_swipe = true;
         gesture = [
           "3, horizontal, workspace" # Workspace swipe
-          # "3, up, hyprexpo:expo, toggle" # Overview swipe
         ];
 
         # Plugins
@@ -211,7 +208,7 @@ in
           #   natural_rounding = "yes";
           # };
           # hyprspace # nix instruction at "https://github.com/KZDKM/Hyprspace"
-          hyprsplit.num_workspaces = 10;
+          # hyprsplit.num_workspaces = 5;
           # hyprtrails.color = accent;
         };
 
@@ -233,19 +230,7 @@ in
         # Blacklist specific workspaces from showing in the overview
         # "plugin:overview:blacklistedWorkspaces" = [ "special" "10" ]; # Example
 
-        # Hyprexpo
-        "plugin:hyprexpo" = {
-          # columns = 3;
-          # gap_size = 5;
-          bg_col = surface0;
-          workspace_method = "center current"; # centers on current workspace or "first 1" for static grid
-          enable_gesture = true;
-          gesture_fingers = 3;
-          gesture_distance = 300;
-        };
-
-        # keybinds
-
+        # Keybinds
         "$mod" = "SUPER";
         bind = [
           # General
@@ -253,7 +238,6 @@ in
           # "$mod, SPACE, exec, rofi-toggle" # rofi -show drun"
           "$mod, SPACE, exec, noctalia-shell ipc call launcher toggle" # rofi -show drun"
           # "$mod, TAB, exec, hyprctl dispatch overview:toggle"
-          # "$mod, TAB, hyprexpo:expo, toggle"
           "$mod, Q, killactive"
           "$mod, E, exec, nautilus"
           "$mod, I, ${runOrFocus "firefox" "firefox"}"
@@ -267,15 +251,6 @@ in
           "$mod, F1, exec, noctalia-shell ipc call plugin:keybind-cheatsheet toggle"
           ", Print, exec, grimblast copy area"
           "ALT, SPACE, exec, walker"
-
-          # Hyprexpo
-          "$mod, TAB, hyprexpo:expo, toggle"
-          # "$mod, TAB, submap, expo" # Triggers submap
-          # "$mod, TAB, exec, hyprctl dispatch hyprexpo:expo toggle; hyprctl dispatch submap expo; sleep 10 && hyprctl dispatch submap reset"
-          # ", swipe:3:u, hyprexpo:expo, toggle"
-          # ", swipe:3:u, submap, expo"
-          # ", swipe:4:u, exec, hyprctl dispatch hyprexpo:expo toggle; hyprctl dispatch submap expo"
-          # "$mod CTRL, Escape, submap, reset"
 
           # Navigation
           # Change focus
@@ -334,7 +309,7 @@ in
           "$mod CTRL SHIFT, K, movewindow, mon:d"
 
           # Layout controls
-          "$mod, COMMA, togglesplit"
+          "$mod, COMMA, layoutmsg, togglesplit"
           "$mod, PERIOD, togglefloating"
           "$mod, F, fullscreen, 0" # Fullscreen
           "$mod SHIFT, F, fullscreen, 1" # Maximise
@@ -392,35 +367,6 @@ in
           "$mod, SUPER_L, exec, noctalia-shell ipc call launcher toggle" # rofi-toggle" # killall rofi || rofi -show drun"
         ];
 
-        # Hyprexpo submap
-        # submap.expo.bind = [
-        #   # Navigation (Arrow keys)
-        #   ",  right, movefocus, r"
-        #   ",  left,  movefocus, l"
-        #   ",  up,    movefocus, u"
-        #   ",  down,  movefocus, d"
-
-        #   # Navigation (Vim keys)
-        #   # ",  L,     movefocus, r"
-        #   # ",  H,     movefocus, l"
-        #   # ",  K,     movefocus, u"
-        #   # ",  J,     movefocus, d"
-
-        #   # Confirm and Exit
-        #   # ",  Return, hyprexpo:expo, toggle"
-        #   # ",  Return, submap, reset"
-        #   # ",  Escape, hyprexpo:expo, toggle"
-        #   # ",  Escape, submap, reset"
-        #   ", Return, exec, hyprctl dispatch hyprexpo:expo off; hyprctl dispatch submap reset"
-        #   ", Escape, exec, hyprctl dispatch hyprexpo:expo off; hyprctl dispatch submap reset"
-
-        #   # Gesture exit
-        #   # ", swipe:3:d, hyprexpo:expo, off"
-        #   # ", swipe:3:d, submap, reset"
-        #   ", swipe:4:u, exec, hyprctl dispatch hyprexpo:expo toggle; hyprctl dispatch submap expo"
-
-        #   "$mod CTRL, Escape, submap, reset"
-        # ];
       };
     }
   );
