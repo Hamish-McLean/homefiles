@@ -1,0 +1,3 @@
+2026-06-13 Add cachix for noctalia, niri, hyprland, etc
+2026-06-13 Update to noctalia v5 when released
+2026-06-13 Sync with noctalia greeter in v5 
