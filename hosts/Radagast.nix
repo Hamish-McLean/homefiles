@@ -49,6 +49,6 @@
     # dwarf-fortress-packages.dwarf-fortress-full
     gimp
     inkscape
-    unstable.modrinth-app
+    # unstable.modrinth-app
   ];
 }

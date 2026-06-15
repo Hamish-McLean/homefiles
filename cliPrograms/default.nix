@@ -92,6 +92,7 @@
 
       # Unstable packages
       unstable.gemini-cli # gemini
+      unstable.tuxedo # tui for todo.txt
     ];
 
     # Custom options
