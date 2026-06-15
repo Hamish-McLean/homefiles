@@ -28,17 +28,19 @@
       audio.enable_sounds = true;
       # bar.showCapsule = false;
       bar.widgets = {
-        capsule_group = {
-          fill = "surface_variant";
-          id = "g1";
-          members = [
-            "cpu"
-            "temp"
-            "ram"
-          ];
-          opacity = 1.0;
-          padding = 6.0;
-        };
+        capsule_group = [
+          {
+            fill = "surface_variant";
+            id = "g1";
+            members = [
+              "cpu"
+              "temp"
+              "ram"
+            ];
+            opacity = 1.0;
+            padding = 6.0;
+          }
+        ];
         center = [
           "clock"
           "date"
