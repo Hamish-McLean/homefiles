@@ -16,138 +16,131 @@
   };
 
   config = lib.mkIf config.noctalia.enable {
-    programs.noctalia-shell.enable = true;
+    programs.noctalia.enable = true;
 
     # Settings
-    programs.noctalia-shell.settings = {
-      appLauncher = {
-        enableClipboardHistory = true;
-        position = "top_center";
-        terminalCommand = "kitty -e";
-      };
-      bar.showCapsule = false;
+    programs.noctalia.settings = {
+      # appLauncher = {
+      #   enableClipboardHistory = true;
+      #   position = "top_center";
+      #   terminalCommand = "kitty -e";
+      # };
+      audio.enable_sounds = true;
+      # bar.showCapsule = false;
       bar.widgets = {
-        left = [
-          {
-            id = "ControlCenter";
-            useDistroLogo = true;
-          }
-          # { id = "Launcher"; }
-          { id = "plugin:workspace-overview"; }
-          {
-            id = "Workspace";
-            showApplications = true;
-          }
-          # { id = "ActiveWindow"; }
-        ];
+        capsule_group = {
+          fill = "surface_variant";
+          id = "g1";
+          members = [
+            "cpu"
+            "temp"
+            "ram"
+          ];
+          opacity = 1.0;
+          padding = 6.0;
+        };
         center = [
-          {
-            id = "Clock";
-            formatHorizontal = "HH:mm ddd yyyy-MM-dd";
-            tooltipFormat = "HH:mm ddd yyyy-MM-dd";
-          }
-          { id = "plugin:weather-indicator"; }
-          # {
-          #   id = "MediaMini";
-          #   hideMode = "idle";
-          # }
+          "clock"
+          "date"
+          "weather"
         ];
-        right = [
-          { id = "plugin:catwalk"; }
-          { id = "SystemMonitor"; }
-          { id = "Spacer"; }
-          {
-            id = "NotificationHistory";
-            hideWhenZero = true;
-          }
-          { id = "Tray"; }
-          { id = "plugin:kde-connect"; }
-          { id = "plugin:tailscale"; }
-          { id = "plugin:syncthing-status"; }
-          { id = "Network"; }
-          { id = "Bluetooth"; }
-          {
-            id = "Battery";
-            displayMode = "graphic";
-            hideIfIdle = false;
-            showNoctaliaPerformance = true;
-            showPowerProfiles = true;
-          }
-          {
-            id = "CustomButton";
-            icon = "settings";
-            leftClickExec = "noctalia-shell ipc call settings toggle";
-          }
+        end = [
+          "audio_visualizer"
+          "media"
+          "spacer_3"
+          "group:g1"
+          "cat"
+          "tray"
+          "notifications"
+          "clipboard"
+          "bluetooth"
+          "network"
+          "battery"
+          "wallpaper"
+          "session"
         ];
+        margin_ends = 10;
+        start = [
+          "control-center"
+          "launcher"
+          "workspaces"
+          "spacer_2"
+          "active_window"
+        ];
+        widget_spacing = 10;
       };
-      colorSchemes.predefinedScheme = "Catppuccin Custom"; # switch to custom theme with accent
+      # colorSchemes.predefinedScheme = "Catppuccin Custom"; # switch to custom theme with accent
+      control-center.sidebar_section = "none";
       dock = {
-        enabled = true;
+        auto_hide = true;
+        background_opacity = 1.0;
         dockType = "attached";
-        showLauncherIcon = true;
+        enabled = true;
+        icon_size = 40;
+        launcher_position = "start";
+        reserve_space = false;
+        # showLauncherIcon = true;
       };
-      general = {
-        animationDisabled = false;
-        clockFormat = "hh:mm\nyyyy-MM-dd";
-        compactLockScreen = false;
-        enableLockScreenCountdown = false;
-        enableLockScreenMediaControls = true;
-        enableShadows = true;
-        forceBlackScreenCorners = true;
-        lockScreenAnimations = true;
-        lockScreenMonitors = [
-          "eDP1"
-          "DP2"
+      idle = {
+        behavior_order = [
+          "lock"
+          "screen-off"
+          "lock-and-suspend"
         ];
-        passwordChars = true;
-        screenRadiusRatio = 0.8;
-        showHibernateOnLockScreen = true;
-        showScreenCorners = true;
+        behavior.lock = {
+          action = "lock";
+          enabled = true;
+          timeout = 600;
+        };
+        behavior.screen-off = {
+          action = "screen-off";
+          enabled = true;
+          timeout = 660;
+        };
       };
-      location.name = "Totnes";
-      sessionMenu.enableCountdown = false;
-      ui.panelBackgroundOpacity = 1;
+      location.address = "Totnes";
+      nightlight.enabled = true;
+      plugins.enabled = [ "noctalia/bongocat" ];
+      # sessionMenu.enableCountdown = false;
+      shell = {
+        font_family = "JetBrainsMono Nerd Font";
+        niri_overview_type_to_launch_enabled = true;
+        password_style = "random";
+      };
+      shell.panel = {
+        launcher_placement = "attached";
+        open_near_click_control_center = true;
+        open_near_click_launcher = true;
+      };
+      theme = {
+        community_palette = "Catppuccin Lavender";
+        source = "community";
+      };
+      # ui.panelBackgroundOpacity = 1;
       wallpaper = {
-        automationEnabled = true;
+        # automationEnabled = true;
         directory = toString /home/cycad/Pictures/wallpapers;
         enabled = true;
-        fillColor = "#11111b";
-        randomIntervalSec = 3600;
-        skipStartupTransition = true;
-        solidColor = "#11111b";
+        fill_color = "#11111b";
+        # randomIntervalSec = 3600;
+        # skipStartupTransition = true;
+        # solidColor = "#11111b";
       };
-    };
-
-    # Plugins
-    programs.noctalia-shell.plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        battery-actions.enabled = true;
-        catwalk.enabled = true;
-        keybind-cheatsheet.enabled = true;
-        kde-connect.enabled = true;
-        niri-overview-launcher.enabled = true;
-        syncthing-status.enabled = true;
-        tailscale.enabled = true;
-        weather-indicator.enabled = true;
-        workspace-overview.enabled = true;
-      };
-      version = 2;
-    };
-    programs.noctalia-shell.pluginSettings = {
-      battery-actions = {
-        onBatteryScript = "noctalia-shell ipc call powerProfile set \"balanced\"";
-        pluggedInScript = "noctalia-shell ipc call powerProfile set \"performance\"";
-      };
-      tailscale = {
-        compactMode = true;
-        terminalCommand = "kitty";
+      widget = {
+        cat = {
+          audio_spectrum = true;
+          tappy_mode = true;
+          type = "noctalia/bongocat:cat";
+        };
+        cpu.show_label = false;
+        date.format = "{:%a %Y-%m-%d}";
+        media.hide_when_no_media = true;
+        ram.show_label = false;
+        spacer_2.type = "spacer";
+        spacer_3.type = "spacer";
+        temp.show_label = false;
+        tray.drawer = true;
+        weather.show_condition = false;
       };
     };
   };

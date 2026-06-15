@@ -21,20 +21,20 @@
     programs.niri.enable = true;
 
     programs.niri.settings = {
-      #mod-key-rebind = [ "noctalia-shell" "ipc" "call" "launcher" "toggle" ]; doesn't work
+      #mod-key-rebind = [ "noctalia" "ipc" "call" "launcher" "toggle" ]; doesn't work
       binds = {
         # General
         "Mod+T".action.spawn = "kitty";
         "Mod+I".action.spawn = "firefox";
         "Mod+Q".action.close-window = [ ];
-        "Mod+Alt+L".action.spawn-sh = "noctalia-shell ipc call lockScreen lock";
-        "Mod+S".action.spawn-sh = "noctalia-shell ipc call settings toggle";
+        "Mod+Alt+L".action.spawn-sh = "noctalia msg session lock";
+        "Mod+S".action.spawn-sh = "noctalia msg settings-toggle";
         "Mod+Space".action.toggle-column-tabbed-display = [ ];
         "Mod+Tab".action.focus-window-down-or-column-right = [ ];
         "Mod+Shift+Tab".action.focus-window-up-or-column-left = [ ];
-        "Mod+F1".action.spawn-sh = "noctalia-shell ipc call plugin:keybind-cheatsheet toggle";
+        "Mod+F1".action.spawn-sh = "noctalia ipc call plugin:keybind-cheatsheet toggle";
         "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
-        "Mod+Alt+Space".action.spawn-sh = "noctalia-shell ipc call launcher toggle";
+        "Mod+Alt+Space".action.spawn-sh = "noctalia msg panel-toggle launcher";
 
         # Navigation
         # Focus
@@ -83,13 +83,13 @@
 
         # Buttons
         "XF86AudioMute".action.spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        "XF86AudioLowerVolume".action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+        "XF86AudioLowerVolume".action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-";
         "Ctrl+XF86AudioLowerVolume".action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01-";
-        "XF86AudioRaiseVolume".action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
+        "XF86AudioRaiseVolume".action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+";
         "Ctrl+XF86AudioRaiseVolume".action.spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+";
         "XF86MonBrightnessDown".action.spawn-sh = "brightnessctl set 10%-";
         "XF86MonBrightnessUp".action.spawn-sh = "brightnessctl set 10%+";
-        "XF86Tools".action.spawn-sh = "noctalia-shell ipc call settings toggle";
+        "XF86Tools".action.spawn-sh = "noctalia msg settings-toggle";
       };
       environment = {
         "QT_QPA_PLATFORMTHEME" = "qt5ct";
@@ -156,7 +156,7 @@
       overview.backdrop-color = "#11111b"; # Mocha crust
       prefer-no-csd = true; # no client-side decorations
       spawn-at-startup = [
-        { command = [ "noctalia-shell" ]; }
+        { command = [ "noctalia" ]; }
       ];
       # switch-events = {
       #   lid-open.action = sh "notify-send lid-open";
