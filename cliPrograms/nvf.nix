@@ -45,6 +45,11 @@
 
       git.enable = true;
 
+      globals = {
+        vim_markdown_folding_disable = true;
+        vim_markdown_folding_level = 99;
+      };
+
       languages = {
         bash.enable = true;
         enableFormat = true;
@@ -105,11 +110,14 @@
 
       options = {
         expandtab = true; # Ensure spaces are used instead of tabs
+        foldlevel = 99;
+        foldlevelstart = 99;
+        scrolloff = 999; # keep current line centered
         shiftwidth = 0; # set to 0 to use tabstop
         tabstop = 2;
       };
 
-      projects.project-nvim.enable = true;
+      # projects.project-nvim.enable = true; replaced by snacks.picker
 
       statusline.lualine.enable = true;
 
@@ -213,32 +221,86 @@
         #preview.markdownPreview # settings for markdownPreview here
         snacks-nvim = {
           # collection of small QoL plugins
+          # TODO: keybinds for snacks
           enable = true;
           setupOpts = {
-            bigfile.enable = true;
+            animate.enabled = true; # animations
+            bigfile.enabled = true; # optimisation for big files
+            bufdelete.enabled = true; # delete buffers safely
             dashboard = {
-              enabled = true;
+              enabled = true; # dashboard
+              # TODO: configure layout
+              # (examples at https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
+              sections = [
+                { section = "header"; }
+                {
+                  icon = " ";
+                  title = "Keymaps";
+                  section = "keys";
+                  indent = 2;
+                  padding = 1;
+                }
+                {
+                  icon = " ";
+                  title = "Recent Files";
+                  section = "recent_files";
+                  indent = 2;
+                  padding = 1;
+                }
+                {
+                  icon = " ";
+                  title = "Projects";
+                  section = "projects";
+                  indent = 2;
+                  padding = 1;
+                }
+                # { section = "startup"; }
+              ];
+              # sections = [
+              #   { section = "header"; }
+              #   {
+              #     section = "keys";
+              #     gap = 1;
+              #     padding = 1;
+              #   }
+              #   # { section = "footer"; }
+              # ];
+              # preset = {
+              #   header = null;
+              #   keys = null;
+              # };
             };
-            dim.enabled = true;
-            input.enabled = true;
-            notifier.enabled = true;
-            picker.enabled = true;
-            scroll.enabled = true;
-            terminal.enabled = true;
-            words.enabled = true;
+            dim.enabled = true; # dim context outside of scope
+            explorer.enabled = true; # file manager, could replace neotree
+            git.enabled = true; # git tools
+            image.enabled = true; # images in files using kitty protocol
+            indent.enabled = true; # indentation lines
+            input.enabled = true; # command window
+            keymap.enabled = true; # keybind extensions
+            lazygit.enabled = true; # lazygit window
+            # notifier.enabled = true; # notifications, currently handled by noice
+            picker.enabled = true; # fuzzy finder, needs keybinds
+            scope.enabled = true; # identify code scopes
+            scroll.enabled = true; # scrolling animations
+            statuscolumn.enabled = true; # side-gutters with git signs, symbols, and line numbers
+            terminal.enabled = true; # togglable terminal
+            toggle.enabled = true; # unifies status toggles in WhichKey
+            words.enabled = true; # highlights matching words
           };
         };
         #surround.enable = true; # for surrounding delimiters, seems overly complicated
         #undotree # to navigate undo history trees
         #yanky-nvim # for better yank and put, seems complicated
-        yazi-nvim.enable = true;
+        yazi-nvim.enable = true; # <leader>cw or <c-up>
       };
 
       viAlias = true;
       vimAlias = true;
 
       visuals = {
-        indent-blankline.enable = true;
+        # cinnamon-nvim.enable = true; # replaced with snacks.scroll
+        # indent-blankline.enable = true; # replaced with snacks.indent
+        nvim-scrollbar.enable = true;
         nvim-web-devicons.enable = true;
       };
     };
