@@ -41,7 +41,7 @@
 
       comments.comment-nvim.enable = true;
 
-      filetree.neo-tree.enable = true;
+      # filetree.neo-tree.enable = true; # replaced with snacks explorer
 
       git.enable = true;
 
@@ -49,6 +49,8 @@
         vim_markdown_folding_disable = true;
         vim_markdown_folding_level = 99;
       };
+
+      keymaps = import ./keymaps.nix { };
 
       languages = {
         bash.enable = true;
@@ -79,10 +81,33 @@
         enable = true;
         formatOnSave = true;
         inlayHints.enable = true;
-        lightbulb.enable = true;
+        # lightbulb = {
+        #   enable = true;
+        #   setupOpts = {
+        #     autocmd = {
+        #       enabled = true;
+        #       events = [
+        #         "CursorHold"
+        #         "CursorHoldI"
+        #         "BufEnter"
+        #       ];
+        #     };
+        #     code_lenses = true;
+        #     virtual_text = {
+        #       enabled = false;
+        #     };
+        #   };
+        # };
         lspconfig.enable = true;
         lspkind.enable = true;
-        lspsaga.enable = true;
+        lspsaga = {
+          # Popup windows for code actions etc. Could replace with snacks
+          enable = true;
+          setupOpts = {
+            lightbulb.virtual_text = false;
+            finder.enable = false;
+          };
+        };
         # lspSignature.enable = true; # incompatible with blink-cmp
         # mappings = { }; # configure lsp keybinds "<leader>l"
         nvim-docs-view.enable = true; # hover docs in side panel
@@ -125,14 +150,14 @@
 
       # telescope.enable = true;
 
-      terminal.toggleterm = {
-        # terminal "<c-t>"
-        enable = true;
-        lazygit = {
-          enable = true;
-          package = null; # null to use PATH
-        };
-      };
+      # terminal.toggleterm = { # replaced with snacks terminal and lazygit
+      #   # terminal "<c-t>"
+      #   enable = true;
+      #   lazygit = {
+      #     enable = true;
+      #     package = null; # null to use PATH
+      #   };
+      # };
 
       theme = {
         enable = true;
@@ -213,7 +238,7 @@
             };
           };
           #leap.enable = true;
-          precognition.enable = true; # motion hints, has various config options
+          # precognition.enable = true; # motion hints, has various config options
         };
         multicursors.enable = true;
         nix-develop.enable = true;
