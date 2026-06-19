@@ -17,9 +17,10 @@
   ];
 
   catppuccin = {
+    accent = "sapphire";
+    cache.enable = true;
     enable = true;
     flavor = "mocha";
-    accent = "sapphire";
     # opencode.enable = false; # Fix for rebuild issue
   };
 
