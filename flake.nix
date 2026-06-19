@@ -163,6 +163,7 @@
             #     })
             #   ];
             # }
+            { nix.package = pkgs.nix; }
             ./hosts/${hostname}.nix
             inputs.catppuccin.homeModules.catppuccin
             inputs.cosmic-manager.homeManagerModules.cosmic-manager
