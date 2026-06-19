@@ -39,10 +39,11 @@
     ./nh.nix
     ./nixvim-config.nix
     ./nushell.nix
-    ./nvf.nix
+    ./nvf
     ./pandoc.nix
     ./pay-respects.nix
     ./rbw.nix
+    ./shell-aliases.nix
     ./skim.nix
     ./spotify-player.nix
     ./starship.nix
@@ -113,7 +114,7 @@
     fuzzel.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
     gh.enable = lib.mkDefault true;
-    # gh-dash.enable = lib.mkDefault true;
+    gh-dash.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     gitui.enable = lib.mkDefault true;
     # helix.enable = lib.mkDefault true;
@@ -125,6 +126,7 @@
     nvf.enable = lib.mkDefault true;
     pandoc.enable = lib.mkDefault true;
     pay-respects.enable = lib.mkDefault true;
+    shell-aliases.enable = lib.mkDefault true;
     skim.enable = lib.mkDefault true;
     spotify-player.enable = lib.mkDefault true;
     starship.enable = lib.mkDefault true;
