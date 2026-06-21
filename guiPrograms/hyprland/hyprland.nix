@@ -124,6 +124,7 @@ in
 
       wayland.windowManager.hyprland = {
         enable = true;
+        package = pkgs.hyprland;
         # configType = "lua"; # TODO: change to "lua" when possible
         # portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
         # systemd.enable = true; # Not required with UWSM

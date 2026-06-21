@@ -21,7 +21,7 @@
   guiPrograms.enable = true;
 
   # Custom options
-  hyprland.enable = true;
+  hyprland.enable = false;
   rbw.enable = true; # Bitwarden CLI
   vscodium.enable = false; # Disable due to build issues
 
