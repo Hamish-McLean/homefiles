@@ -20,13 +20,7 @@
 
     # Settings
     programs.noctalia.settings = {
-      # appLauncher = {
-      #   enableClipboardHistory = true;
-      #   position = "top_center";
-      #   terminalCommand = "kitty -e";
-      # };
       audio.enable_sounds = true;
-      # bar.showCapsule = false;
       bar.widgets = {
         capsule_group = [
           {
@@ -59,19 +53,22 @@
           "network"
           "battery"
           "wallpaper"
+          "settings"
           "session"
         ];
         margin_ends = 10;
         start = [
           "control-center"
           "launcher"
-          "workspaces"
+          "taskbar"
           "spacer_2"
           "active_window"
         ];
         widget_spacing = 10;
       };
       # colorSchemes.predefinedScheme = "Catppuccin Custom"; # switch to custom theme with accent
+      brightness.enable_ddcutil = true;
+      calendar.enable = true;
       control-center.sidebar_section = "none";
       dock = {
         auto_hide = true;
@@ -95,7 +92,7 @@
           timeout = 600;
         };
         behavior.screen-off = {
-          action = "screen-off";
+          action = "screen_off";
           enabled = true;
           timeout = 660;
         };
@@ -105,9 +102,13 @@
       plugins.enabled = [ "noctalia/bongocat" ];
       # sessionMenu.enableCountdown = false;
       shell = {
+        date_format = "%Y-%m-%d";
         font_family = "JetBrainsMono Nerd Font";
         niri_overview_type_to_launch_enabled = true;
         password_style = "random";
+        polkit_agent = true;
+        screen_time_enabled = true;
+        telemetry_enabled = true;
       };
       shell.panel = {
         launcher_placement = "attached";
@@ -116,19 +117,19 @@
       };
       theme = {
         community_palette = "Catppuccin Lavender";
+        mode = "dark";
         source = "community";
       };
       # ui.panelBackgroundOpacity = 1;
       wallpaper = {
-        # automationEnabled = true;
         directory = toString /home/cycad/Pictures/wallpapers;
         enabled = true;
         fill_color = "#11111b";
-        # randomIntervalSec = 3600;
-        # skipStartupTransition = true;
-        # solidColor = "#11111b";
+        transition_on_startup = true;
       };
       widget = {
+        audio_visualizer.color_2 = "tertiary";
+        battery.display_mode = "graphic";
         cat = {
           audio_spectrum = true;
           tappy_mode = true;
@@ -137,9 +138,14 @@
         cpu.show_label = false;
         date.format = "{:%a %Y-%m-%d}";
         media.hide_when_no_media = true;
+        network.show_label = false;
         ram.show_label = false;
         spacer_2.type = "spacer";
         spacer_3.type = "spacer";
+        taskbar = {
+          group_by_workspace = true;
+          group_single_icon_per_app = true;
+        };
         temp.show_label = false;
         tray.drawer = true;
         weather.show_condition = false;
