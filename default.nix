@@ -46,12 +46,6 @@
       sansSerif = [ "JetBrainsMono Nerd Font" ];
       serif = [ "JetBrainsMono Nerd Font" ];
     };
-    # defaultFonts = {
-    #   emoji = [ "jetbrains-mono" ];
-    #   monospace = [ "jetbrains-mono" ];
-    #   sansSerif = [ "jetbrains-mono" ];
-    #   serif = [ "jetbrains-mono" ];
-    # };
   };
 
   sops = {

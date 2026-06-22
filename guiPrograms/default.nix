@@ -6,10 +6,8 @@
 */
 {
   config,
-  inputs,
   lib,
   pkgs,
-  system,
   ...
 }:
 {
@@ -27,6 +25,7 @@
     ./kitty.nix
     ./librewolf.nix
     ./mangohud.nix
+    ./mime-defaults.nix
     ./niri.nix
     ./nixcord.nix
     ./plasma.nix
@@ -93,6 +92,7 @@
     kitty.enable = lib.mkDefault true;
     librewolf.enable = lib.mkDefault true;
     mangohud.enable = lib.mkDefault true;
+    mime-defaults.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
     spicetify.enable = lib.mkDefault true;
     tailscale-gui.enable = lib.mkDefault true;

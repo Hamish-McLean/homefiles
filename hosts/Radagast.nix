@@ -44,6 +44,13 @@
     indicator = true;
   };
 
+  home.sessionVariables = {
+    BROWSER = "firefox";
+    EDITOR = "nvim";
+    TERMINAL = "kitty";
+    TERM = "kitty";
+  };
+
   # Extra programs
   home.packages = with pkgs; [
     # dwarf-fortress-packages.dwarf-fortress-full
