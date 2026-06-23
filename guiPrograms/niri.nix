@@ -25,7 +25,7 @@
       binds = {
         # General
         "Mod+T".action.spawn-sh = "$TERMINAL";
-        "Mod+I".action.spawn = "$BROWSER";
+        "Mod+I".action.spawn-sh = "$BROWSER";
         "Mod+Q".action.close-window = [ ];
         "Mod+Alt+L".action.spawn-sh = "noctalia msg session lock";
         "Mod+S".action.spawn-sh = "noctalia msg settings-toggle";
