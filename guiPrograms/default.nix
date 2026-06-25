@@ -28,6 +28,7 @@
     ./mime-defaults.nix
     ./niri.nix
     ./nixcord.nix
+    ./obsidian.nix
     ./plasma.nix
     ./qt.nix
     ./spicetify.nix
@@ -51,6 +52,7 @@
       calibre # ebook manager
       endless-sky # Space game
       karere # Whatsapp client
+      libreoffice-qt-fresh # QT version of libreoffice
       nmgui # Network manager GUI
       opensnitch-ui # Application firewall
       resources # Task manager GUI
@@ -94,6 +96,7 @@
     mangohud.enable = lib.mkDefault true;
     mime-defaults.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
+    obsidian.enable = lib.mkDefault true;
     spicetify.enable = lib.mkDefault true;
     tailscale-gui.enable = lib.mkDefault true;
     thunderbird.enable = lib.mkDefault true;
