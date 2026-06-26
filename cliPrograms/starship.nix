@@ -9,7 +9,6 @@
   };
   config = lib.mkIf config.starship.enable {
     programs.starship = {
-
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
@@ -18,16 +17,16 @@
       settings = {
         add_newline = true;
         format = "$os$all";
-
         os = {
           symbols.NixOS = "[  ](sapphire)";
           # style = "sapphire";
           disabled = false;
         };
         nix_shell = {
-          format = "(via [$symbol$state]($style) [\($name\)]($style) )"; # "via [$symbol$state( \($name\))]($style) "
-          symbol = "󱄅 ";
+          format = "via [$symbol]($style)[\($name\)]($style) ";
           heuristic = true;
+          impure_msg = "";
+          symbol = "󱄅 ";
         };
         # direnv.disabled = false;
         shell = {
