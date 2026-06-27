@@ -171,7 +171,6 @@
             # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
             # inputs.hyprpanel.homeManagerModules.hyprpanel
             inputs.nixcord.homeModules.nixcord
-            inputs.nix-flatpak.homeManagerModules.nix-flatpak
             inputs.plasma-manager.homeModules.plasma-manager
             # inputs.rofi-applets.homeManagerModules.default
             inputs.sops-nix.homeManagerModules.sops
