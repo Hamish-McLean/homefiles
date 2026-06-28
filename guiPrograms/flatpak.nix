@@ -36,19 +36,27 @@
       "com.modrinth.ModrinthApp" = {
         Environment.NIXOS_OZONE_WL = "1";
         Context = {
-          filesystems = [
-            "/data/games/minecraft/modrinth"
-          ];
-          sockets = [
-            "x11"
-            "wayland"
-            "fallback-x11"
-          ];
           devices = [
             "dri" # Direct Rendering Infrastructure (Crucial for GPU acceleration)
           ];
           features = [
             "gstreamer"
+          ];
+          filesystems = [
+            "/data/games/minecraft/modrinth"
+            "xdg-config/gtk-3.0:ro" # Feeds host GTK settings
+            "xdg-config/gtk-4.0:ro"
+            "/usr/share/icons:ro" # Ensures it can find Adwaita/fallback icons
+          ];
+          sockets = [
+            "fallback-x11"
+            "session-bus"
+            "wayland"
+            "x11"
+          ];
+          talk-name = [
+            "org.freedesktop.portal.Documents"
+            "org.freedesktop.portal.Flatpak"
           ];
         };
       };

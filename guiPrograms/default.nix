@@ -26,6 +26,7 @@
     ./librewolf.nix
     ./mangohud.nix
     ./mime-defaults.nix
+    ./minecraft.nix
     ./niri.nix
     ./nixcord.nix
     ./obsidian.nix
@@ -88,13 +89,14 @@
     # Programs
     anyrun.enable = lib.mkDefault false;
     feh.enable = lib.mkDefault true;
-    flatpak.enable = lib.mkDefault true;
+    # flatpak.enable = lib.mkDefault true;
     freetube.enable = lib.mkDefault true;
     ghostty.enable = lib.mkDefault true;
     kitty.enable = lib.mkDefault true;
     librewolf.enable = lib.mkDefault true;
     mangohud.enable = lib.mkDefault true;
     mime-defaults.enable = lib.mkDefault true;
+    minecraft.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
     obsidian.enable = lib.mkDefault true;
     spicetify.enable = lib.mkDefault true;
