@@ -52,8 +52,6 @@
           "bluetooth"
           "network"
           "battery"
-          "wallpaper"
-          "settings"
           "session"
         ];
         margin_ends = 10;
