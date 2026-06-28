@@ -27,7 +27,7 @@
     ./mangohud.nix
     ./mime-defaults.nix
     ./minecraft.nix
-    ./niri.nix
+    ./niri
     ./nixcord.nix
     ./obsidian.nix
     ./plasma.nix
