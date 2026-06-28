@@ -23,7 +23,7 @@
           disabled = false;
         };
         nix_shell = {
-          format = "via [$symbol]($style)[\($name\)]($style) ";
+          format = "(via [$symbol]($style)[\($name\)]($style)) ";
           heuristic = true;
           impure_msg = "";
           symbol = "󱄅 ";
