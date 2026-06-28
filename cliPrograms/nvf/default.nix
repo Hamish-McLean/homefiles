@@ -228,6 +228,10 @@
 
       utility = {
         #images.image-nvim.enable = true; # didn't work
+        oil-nvim = {
+          enable = true;
+          gitStatus.enable = true;
+        };
         outline.aerial-nvim.enable = true;
         motion = {
           flash-nvim = {
