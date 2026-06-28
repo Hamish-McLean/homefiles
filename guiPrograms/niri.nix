@@ -141,10 +141,10 @@
           backdrop-color = "#11111b";
           position = {
             x = 3840;
-            y = 0;
+            y = -600;
           };
           scale = 1;
-          # transform = "90";
+          transform.rotation = 90;
         };
         # "HDMI-A-2" = {
         #   position = {
