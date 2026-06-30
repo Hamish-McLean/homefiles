@@ -36,7 +36,7 @@
     ./tailscale-gui.nix
     ./thunderbird.nix
     ./vscodium.nix
-    ./walker.nix
+    ./walker
     ./zathura.nix
     ./zed-editor.nix
     ./zen.nix
