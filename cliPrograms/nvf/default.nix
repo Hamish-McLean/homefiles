@@ -227,6 +227,7 @@
       };
 
       utility = {
+        direnv.enable = true;
         #images.image-nvim.enable = true; # didn't work
         oil-nvim = {
           enable = true;
