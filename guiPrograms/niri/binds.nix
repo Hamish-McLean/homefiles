@@ -1,18 +1,26 @@
 { ... }:
 {
   # General
-  "Mod+T".action.spawn-sh = "$TERMINAL";
-  "Mod+I".action.spawn-sh = "$BROWSER";
   "Mod+Q".action.close-window = [ ];
-  "Mod+Alt+L".action.spawn-sh = "noctalia msg session lock";
-  "Mod+S".action.spawn-sh = "noctalia msg settings-toggle";
-  "Mod+V".action.spawn-sh = "noctalia msg panel-toggle clipboard";
   "Mod+Space".action.toggle-column-tabbed-display = [ ];
   "Mod+Tab".action.focus-window-down-or-column-right = [ ];
   "Mod+Shift+Tab".action.focus-window-up-or-column-left = [ ];
-  "Mod+F1".action.spawn-sh = "noctalia ipc call plugin:keybind-cheatsheet toggle";
   "Mod+Shift+Slash".action.show-hotkey-overlay = [ ];
-  "Mod+Alt+Space".action.spawn-sh = "noctalia msg panel-toggle launcher";
+
+  # Launch apps
+  "Mod+Alt+T".action.spawn-sh = "$TERMINAL";
+  "Mod+Alt+I".action.spawn-sh = "$BROWSER";
+  "Mod+Alt+S".action.spawn = "steam";
+  "Mod+Alt+Space".action.spawn = "walker";
+
+  # Noctalia
+  "Mod+Ctrl+Alt+L".action.spawn-sh = "noctalia msg session lock";
+  "Mod+Ctrl+Alt+S".action.spawn-sh = "noctalia msg settings-toggle";
+  "Mod+Ctrl+Alt+C".action.spawn-sh = "noctalia msg caffeine-toggle";
+  "Mod+Shift+Escape".action.spawn-sh = "noctalia msg panel-toggle session";
+  "Mod+V".action.spawn-sh = "noctalia msg panel-toggle clipboard";
+  # "Mod+F1".action.spawn-sh = "noctalia ipc call plugin:keybind-cheatsheet toggle";
+  # "Mod+Alt+Space".action.spawn-sh = "noctalia msg panel-toggle launcher";
 
   # Navigation
   # Focus
@@ -26,6 +34,8 @@
   "Mod+Shift+Right".action.focus-monitor-right = [ ];
   "Mod+Page_Up".action.focus-workspace-up = [ ];
   "Mod+Page_Down".action.focus-workspace-down = [ ];
+  "Mod+Shift+WheelScrollUp".action.focus-workspace-up = [ ];
+  "Mod+Shift+WheelScrollDown".action.focus-workspace-down = [ ];
   # Movement
   "Mod+Ctrl+Left".action.move-column-left = [ ];
   "Mod+Ctrl+H".action.move-column-left = [ ];
