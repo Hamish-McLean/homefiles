@@ -14,7 +14,7 @@
     # Packages
     catppuccin = {
       url = "github:catppuccin/nix/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     cosmic-manager = {
       url = "github:HeitorAugustoLN/cosmic-manager";
@@ -86,12 +86,12 @@
     # Walker
     elephant = {
       url = "github:abenz1267/elephant";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     walker = {
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -99,10 +99,12 @@
     extra-substituters = [
       "https://hyprland.cachix.org"
       "https://noctalia.cachix.org"
+      "https://walker.cachix.org"
     ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
     ];
   };
 
