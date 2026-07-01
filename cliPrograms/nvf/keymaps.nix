@@ -59,7 +59,7 @@
 
   # Snacks Git
   {
-    key = "<leader>gg";
+    key = "<leader>lg";
     action = "<cmd>lua Snacks.lazygit()<CR>";
     mode = [ "n" ];
     desc = "Lazygit";

@@ -43,7 +43,10 @@
 
       # filetree.neo-tree.enable = true; # replaced with snacks explorer
 
-      git.enable = true;
+      git = {
+        enable = true;
+        neogit.enable = true;
+      };
 
       globals = {
         vim_markdown_folding_disable = true;
