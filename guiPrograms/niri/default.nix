@@ -76,7 +76,7 @@
             y = -600;
           };
           scale = 1;
-          transform.rotation = 90;
+          transform.rotation = 270;
         };
         # "HDMI-A-2" = {
         #   position = {
