@@ -69,7 +69,7 @@
       dust # disk utility
       dysk # filesystem overview
       fd # better find
-      # gemini-cli # gemini
+      # antigravity-cli # gemini
       github-copilot-cli
       gping # ping with graph
       has # check presence of tool in path
@@ -92,7 +92,7 @@
       vitetris # tetris or try nixpkgs#tetris
 
       # Unstable packages
-      unstable.gemini-cli # gemini
+      # unstable.antigravity-cli # gemini
       unstable.tuxedo # tui for todo.txt
     ];
 

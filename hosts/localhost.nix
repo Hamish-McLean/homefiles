@@ -21,17 +21,17 @@
 
   home.stateVersion = "24.05";
   home = {
-    username = username;
+    inherit username;
     homeDirectory = /data/data/com.termux.nix/files/home;
   };
   # Fonts
   # home.packages = with pkgs; [
-    # (nerdfonts.override {
-    #   fonts = [
-    #     "FiraCode"
-    #     "JetBrainsMono"
-    #   ];
-    # })
+  # (nerdfonts.override {
+  #   fonts = [
+  #     "FiraCode"
+  #     "JetBrainsMono"
+  #   ];
+  # })
   # ];
 
   home.packages = with pkgs.nerd-fonts; [

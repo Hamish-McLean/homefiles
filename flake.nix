@@ -4,6 +4,7 @@
   inputs = {
 
     # Nix
+    flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05"; # Update version
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -109,60 +110,68 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      nixpkgs-unstable,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      homeSystem =
-        system: hostname: username:
-        let
-          pkgs = import nixpkgs {
-            localSystem = { inherit system; };
-            config.allowUnfree = true;
-            # This overlay adds an 'unstable' attribute to pkgs,
-            overlays = [
-              (final: prev: {
-                unstable = import nixpkgs-unstable {
-                  localSystem = { inherit system; };
-                  config.allowUnfree = true; # Allow unfree in unstable pkgs as well
-                };
-              })
-            ];
-          };
-        in
-        home-manager.lib.homeManagerConfiguration {
-          # pkgs = nixpkgs.legacyPackages.${system};
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit
-              inputs
-              system
-              hostname
-              username
-              ;
-          };
-          modules = [
-            { nix.package = pkgs.nix; }
-            ./hosts/${hostname}.nix
-          ];
-        };
-
-    in
-    {
-      homeConfigurations = {
-        # NixOS hosts
-        "cycad@Radagast" = homeSystem "x86_64-linux" "Radagast" "cycad";
-        "cycad@Lenny" = homeSystem "x86_64-linux" "Lenny" "cycad";
-        "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
-
-        # NixOS-WSL hosts
-        "cycad@Roger" = homeSystem "x86_64-linux" "Roger" "cycad";
-
-        # nix-on-droid hosts
-        "nix-on-droid@localhost" = homeSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid
-      };
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      imports = [ ./parts ];
     };
+  # {
+  #   nixpkgs,
+  #   nixpkgs-unstable,
+  #   home-manager,
+  #   ...
+  # }@inputs:
+  # let
+  #   homeSystem =
+  #     system: hostname: username:
+  #     let
+  #       pkgs = import nixpkgs {
+  #         localSystem = { inherit system; };
+  #         config.allowUnfree = true;
+  #         # This overlay adds an 'unstable' attribute to pkgs,
+  #         overlays = [
+  #           (final: prev: {
+  #             unstable = import nixpkgs-unstable {
+  #               localSystem = { inherit system; };
+  #               config.allowUnfree = true; # Allow unfree in unstable pkgs as well
+  #             };
+  #           })
+  #         ];
+  #       };
+  #     in
+  #     home-manager.lib.homeManagerConfiguration {
+  #       # pkgs = nixpkgs.legacyPackages.${system};
+  #       inherit pkgs;
+  #       extraSpecialArgs = {
+  #         inherit
+  #           inputs
+  #           system
+  #           hostname
+  #           username
+  #           ;
+  #       };
+  #       modules = [
+  #         { nix.package = pkgs.nix; }
+  #         ./hosts/${hostname}.nix
+  #       ];
+  #     };
+  #
+  # in
+  # {
+  #   homeConfigurations = {
+  #     # NixOS hosts
+  #     "cycad@Radagast" = homeSystem "x86_64-linux" "Radagast" "cycad";
+  #     "cycad@Lenny" = homeSystem "x86_64-linux" "Lenny" "cycad";
+  #     "cycad@NixBerry" = homeSystem "aarch64-linux" "NixBerry" "cycad";
+  #
+  #     # NixOS-WSL hosts
+  #     "cycad@Roger" = homeSystem "x86_64-linux" "Roger" "cycad";
+  #
+  #     # nix-on-droid hosts
+  #     "nix-on-droid@localhost" = homeSystem "aarch64-linux" "localhost" "nix-on-droid"; # Username must be set to nix-on-droid
+  #   };
+  # };
 }

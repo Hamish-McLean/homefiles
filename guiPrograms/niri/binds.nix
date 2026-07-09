@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   # General
   "Mod+Q".action.close-window = [ ];
   "Mod+Space".action.toggle-column-tabbed-display = [ ];

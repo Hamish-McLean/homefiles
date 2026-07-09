@@ -4,7 +4,7 @@ default:
 
 # Build home-manager configuration
 build:
-    nh home-manager build .
+    nh home build .
 
 # Check code-quality and validate flake evaluation
 check:
@@ -20,9 +20,13 @@ diff:
 fmt:
     nix fmt
 
+# Inspect flake
+inspect:
+  nix-inspect --expr 'builtins.getFlake "{{justfile_directory()}}"'
+
 # Switch to new home-manager configuration
 switch:
-    nh home-manager switch .
+    nh home switch .
 
 # Update all flake inputs and test evaluation
 update:

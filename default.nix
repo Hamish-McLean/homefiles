@@ -1,8 +1,8 @@
 # Cycad's default home manager module which imports other home manager modules
 {
+  inputs,
   pkgs,
   username,
-  inputs,
   ...
 }:
 {
@@ -26,7 +26,7 @@
   };
 
   home = {
-    username = username;
+    inherit username;
     homeDirectory = /home/${username};
   };
 
