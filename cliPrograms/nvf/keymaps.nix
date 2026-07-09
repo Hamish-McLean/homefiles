@@ -1,5 +1,4 @@
-{ ... }:
-[
+_: [
   # Snacks Explorer
   {
     key = "<leader>e";

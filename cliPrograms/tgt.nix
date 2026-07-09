@@ -1,9 +1,9 @@
 /*
-tgt
+  tgt
 
-tgt is a terminal user interface for Telegram, written in Rust.
+  tgt is a terminal user interface for Telegram, written in Rust.
 
-https://github.com/FedericoBruzzone/tgt?ref=terminaltrove
+  https://github.com/FedericoBruzzone/tgt?ref=terminaltrove
 */
 {
   config,
@@ -19,7 +19,7 @@ https://github.com/FedericoBruzzone/tgt?ref=terminaltrove
 
   config = lib.mkIf config.tgt.enable {
     home.packages = [
-      (inputs.tgt.packages.${pkgs.unstable.system}.default)
+      inputs.tgt.packages.${pkgs.unstable.system}.default
     ];
   };
 }

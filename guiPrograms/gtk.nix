@@ -19,6 +19,7 @@
       # gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
       # gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
     };
+    gtk.gtk4.theme = config.gtk.theme; # Now defaults to `null`
 
     # Now symlink the `~/.config/gtk-4.0/` folder declaratively:
     xdg.configFile = {
