@@ -2,7 +2,7 @@
 {
   pkgs,
   username,
-  # inputs,
+  inputs,
   ...
 }:
 {
@@ -13,7 +13,8 @@
   imports = [
     # ./cliPrograms # These are now imported in host
     # ./guiPrograms
-    # inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   catppuccin = {

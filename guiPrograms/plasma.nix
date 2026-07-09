@@ -4,15 +4,13 @@
 */
 {
   config,
+  inputs,
   lib,
   pkgs,
-  # plasma-manager,
   ...
 }:
 {
-  # imports = [
-  #   plasma-manager.homeManagerModules.plasma-manager
-  # ];
+  imports = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
 
   options = {
     plasma.enable = lib.mkEnableOption "enables plasma";

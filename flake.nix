@@ -116,9 +116,6 @@
       ...
     }@inputs:
     let
-      # renameOverlay = (final: prev: {
-      #   wrapGAppsHook = prev.wrapGAppsHook3 or null;
-      # });
       homeSystem =
         system: hostname: username:
         let
@@ -142,41 +139,14 @@
           extraSpecialArgs = {
             inherit
               inputs
-              # pkgs
-              # unstablePkgs
               system
               hostname
               username
               ;
-            # wrapGAppsHook = pkgs.wrapGAppsHook3;
           };
           modules = [
-            # Allow unfree packages
-            # {
-            #   nixpkgs.hostPlatform = system;
-            #   nixpkgs.config.allowUnfree = true;
-            #   # Overlay to make unstable packages available as `pkgs.unstable.<package>`
-            #   nixpkgs.overlays = [
-            #     # This overlay adds an 'unstable' attribute to pkgs,
-            #     (final: prev: {
-            #       unstable = import nixpkgs-unstable {
-            #         localSystem = { inherit system; };
-            #         config.allowUnfree = true; # Allow unfree in unstable pkgs as well
-            #       };
-            #     })
-            #   ];
-            # }
             { nix.package = pkgs.nix; }
             ./hosts/${hostname}.nix
-            inputs.catppuccin.homeModules.catppuccin
-            inputs.cosmic-manager.homeManagerModules.cosmic-manager
-            # inputs.hyprland.homeManagerModules.default # Switched to nixpkgs version for now
-            # inputs.hyprpanel.homeManagerModules.hyprpanel
-            inputs.nixcord.homeModules.nixcord
-            inputs.plasma-manager.homeModules.plasma-manager
-            # inputs.rofi-applets.homeManagerModules.default
-            inputs.sops-nix.homeManagerModules.sops
-            inputs.spicetify-nix.homeManagerModules.default
           ];
         };
 

@@ -9,6 +9,8 @@
   ...
 }:
 {
+  imports = [ inputs.cosmic-manager.homeManagerModules.cosmic-manager ];
+
   options = {
     cosmic.enable = lib.mkEnableOption "enables cosmic";
   };
@@ -37,4 +39,3 @@
     };
   };
 }
-

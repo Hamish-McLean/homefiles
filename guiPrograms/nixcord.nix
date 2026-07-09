@@ -5,10 +5,13 @@
 */
 {
   config,
+  inputs,
   lib,
   ...
 }:
 {
+  imports = [ inputs.nixcord.homeModules.nixcord ];
+
   options = {
     nixcord.enable = lib.mkEnableOption "enables nixcord";
   };
