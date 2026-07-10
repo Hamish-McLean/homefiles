@@ -14,6 +14,12 @@
     ../guiPrograms
   ];
 
+  # Custom profiles
+  custom.homeProfiles = {
+    core.enable = true;
+    desktop.enable = true;
+  };
+
   # Enable all cliPrograms modules
   cliPrograms.enable = true;
 
@@ -21,7 +27,6 @@
   guiPrograms.enable = true;
 
   # Custom options
-  hyprland.enable = false;
   rbw.enable = true; # Bitwarden CLI
   vscodium.enable = false; # Disable due to build issues
 

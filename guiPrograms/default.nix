@@ -13,30 +13,20 @@
 {
   # GUI programs to import
   imports = [
-    ./anyrun.nix
-    ./cosmic.nix
     ./feh.nix
     ./flatpak.nix
     ./freetube.nix
     ./ghostty.nix
-    ./gnome.nix
-    ./gtk.nix
-    ./hyprland/hyprland.nix
     ./kitty.nix
     ./librewolf.nix
     ./mangohud.nix
-    ./mime-defaults.nix
     ./minecraft.nix
-    ./niri
     ./nixcord.nix
     ./obsidian.nix
-    ./plasma.nix
-    ./qt.nix
     ./spicetify.nix
     ./tailscale-gui.nix
     ./thunderbird.nix
     ./vscodium.nix
-    ./walker
     ./zathura.nix
     ./zed-editor.nix
     ./zen.nix
@@ -75,19 +65,7 @@
       # unstable.stremio # CVEs detected
     ];
 
-    # Desktop environments
-    cosmic.enable = lib.mkDefault false;
-    gnome_config.enable = lib.mkDefault false;
-    hyprland.enable = lib.mkDefault true;
-    niri.enable = lib.mkDefault true;
-    plasma.enable = lib.mkDefault false;
-
-    # GUI libraries
-    gtk_config.enable = lib.mkDefault true;
-    qt_config.enable = lib.mkDefault true;
-
     # Programs
-    anyrun.enable = lib.mkDefault false;
     feh.enable = lib.mkDefault true;
     # flatpak.enable = lib.mkDefault true;
     freetube.enable = lib.mkDefault true;
@@ -95,7 +73,6 @@
     kitty.enable = lib.mkDefault true;
     librewolf.enable = lib.mkDefault true;
     mangohud.enable = lib.mkDefault true;
-    mime-defaults.enable = lib.mkDefault true;
     minecraft.enable = lib.mkDefault true;
     nixcord.enable = lib.mkDefault true;
     obsidian.enable = lib.mkDefault true;
@@ -103,16 +80,12 @@
     tailscale-gui.enable = lib.mkDefault true;
     thunderbird.enable = lib.mkDefault true;
     vscodium.enable = lib.mkDefault true;
-    walker.enable = lib.mkDefault true;
     zathura.enable = lib.mkDefault true;
     zed-editor.enable = lib.mkDefault true;
     zen.enable = lib.mkDefault false;
 
     # Services
     services.opensnitch-ui.enable = lib.mkDefault true;
-
-    # Themes
-    custom.homeModules.core.catppuccin.cursors.enable = lib.mkDefault true;
   };
 
 }
