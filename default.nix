@@ -11,19 +11,11 @@
   programs.home-manager.enable = true;
 
   imports = [
-    # ./cliPrograms # These are now imported in host
-    # ./guiPrograms
-    inputs.catppuccin.homeModules.catppuccin
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  catppuccin = {
-    accent = "sapphire";
-    cache.enable = true;
-    enable = true;
-    flavor = "mocha";
-    # opencode.enable = false; # Fix for rebuild issue
-  };
+  # Custom modules
+  custom.homeModules.core.catppuccin.enable = true;
 
   home = {
     inherit username;

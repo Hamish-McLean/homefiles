@@ -112,11 +112,7 @@
     services.opensnitch-ui.enable = lib.mkDefault true;
 
     # Themes
-    catppuccin.cursors = {
-      enable = true;
-      flavor = "mocha";
-      accent = "sapphire";
-    };
+    custom.homeModules.core.catppuccin.cursors.enable = lib.mkDefault true;
   };
 
 }
