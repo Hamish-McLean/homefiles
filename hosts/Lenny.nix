@@ -3,15 +3,10 @@
   This imports Cycad's default home manager module which imports the other modules.
   Modules can be enabled or disabled here.
 */
-{
-  pkgs,
-  ...
-}:
-{
+_: {
   imports = [
     ../default.nix
     ../cliPrograms
-    ../guiPrograms
   ];
 
   # Custom profiles
@@ -22,9 +17,6 @@
 
   # Enable all cliPrograms modules
   cliPrograms.enable = true;
-
-  # Enable all guiPrograms modules
-  guiPrograms.enable = true;
 
   # Custom options
   rbw.enable = true; # Bitwarden CLI
@@ -50,18 +42,4 @@
     indicator = true;
   };
 
-  home.sessionVariables = {
-    BROWSER = "firefox";
-    EDITOR = "nvim";
-    TERMINAL = "kitty";
-    TERM = "kitty";
-  };
-
-  # Extra programs
-  home.packages = with pkgs; [
-    # dwarf-fortress-packages.dwarf-fortress-full
-    gimp
-    inkscape
-    moonlight-qt
-  ];
 }
