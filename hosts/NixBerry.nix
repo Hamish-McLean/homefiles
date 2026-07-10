@@ -7,16 +7,12 @@
 {
   imports = [
     ../default.nix
-    ../cliPrograms
   ];
 
   # Custom profiles
   custom.homeProfiles = {
     core.enable = true;
   };
-
-  # Enable all cliPrograms modules
-  cliPrograms.enable = true;
 
   # Disable specific modules
 

@@ -2,6 +2,7 @@ _: {
   imports = [
     ./anyrun.nix
     ./cosmic.nix
+    ./fuzzel.nix
     ./gnome.nix
     ./gtk.nix
     ./hyprland/hyprland.nix

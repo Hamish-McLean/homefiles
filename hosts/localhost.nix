@@ -9,13 +9,6 @@
   ...
 }:
 {
-  imports = [
-    ../cliPrograms
-  ];
-
-  # Enable all cliPrograms modules
-  cliPrograms.enable = true;
-
   # Disable specific modules
   bash.enable = false;
 

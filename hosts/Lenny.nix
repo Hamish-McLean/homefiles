@@ -6,7 +6,6 @@
 _: {
   imports = [
     ../default.nix
-    ../cliPrograms
   ];
 
   # Custom profiles
@@ -14,9 +13,6 @@ _: {
     core.enable = true;
     desktop.enable = true;
   };
-
-  # Enable all cliPrograms modules
-  cliPrograms.enable = true;
 
   # Custom options
   rbw.enable = true; # Bitwarden CLI
