@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./devshells.nix
-    ./hosts.nix
+    ./homes.nix
     ./overlays.nix
   ];
 }

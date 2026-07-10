@@ -15,7 +15,7 @@ let
           # { nixpkgs.pkgs = pkgs; }
           { nix.package = pkgs.nix; }
           ../hosts/${hostname}.nix
-          # ../modules
+          ../homeModules
           # ../profiles
         ];
       }
