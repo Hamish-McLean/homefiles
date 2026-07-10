@@ -6,6 +6,7 @@
   config = lib.mkIf config.zoxide.enable {
     programs.zoxide = {
       enable = true;
+      enableBashIntegration = true;
       enableFishIntegration = true;
       enableNushellIntegration = true;
     };

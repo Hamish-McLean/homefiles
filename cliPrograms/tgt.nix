@@ -10,6 +10,7 @@
   inputs,
   lib,
   pkgs,
+  stdenv,
   ...
 }:
 {
@@ -19,7 +20,7 @@
 
   config = lib.mkIf config.tgt.enable {
     home.packages = [
-      inputs.tgt.packages.${pkgs.unstable.system}.default
+      inputs.tgt.packages.${pkgs.unstable.${stdenv.hostPlatform.system}}.default
     ];
   };
 }

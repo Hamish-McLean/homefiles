@@ -15,6 +15,7 @@
 
   config = lib.mkIf config.shell-aliases.enable {
     home.shellAliases = {
+      cd = "z";
       lss = "ls -ls size"; # list long sort by size
       pping = "prettyping --nolegend";
       speedtest = "cfspeedtest";
