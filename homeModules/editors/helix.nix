@@ -6,7 +6,7 @@
   config = lib.mkIf config.helix.enable {
     programs.helix = {
       enable = true;
-      catppuccin.enable = true;
+      # catppuccin.enable = true;
       languages.language = [
         {
           name = "nix";

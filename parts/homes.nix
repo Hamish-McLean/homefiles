@@ -16,7 +16,7 @@ let
           { nix.package = pkgs.nix; }
           ../hosts/${hostname}.nix
           ../homeModules
-          # ../profiles
+          ../homeProfiles
         ];
       }
     );

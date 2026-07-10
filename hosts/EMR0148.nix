@@ -9,12 +9,6 @@
     ../default.nix
   ];
 
-  # Enable all cliPrograms modules
-  cliPrograms.enable = true;
-
-  # Enable all guiPrograms modules
-  guiPrograms.enable = false;
-
   # Disable specific modules
 
 }

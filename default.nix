@@ -14,9 +14,6 @@
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  # Custom modules
-  custom.homeModules.core.catppuccin.enable = true;
-
   home = {
     inherit username;
     homeDirectory = /home/${username};
