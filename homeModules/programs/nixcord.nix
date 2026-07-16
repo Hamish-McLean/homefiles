@@ -53,6 +53,10 @@
           youtubeAdblock.enable = true;
         };
       };
+      discord = {
+        # vencord.enable = true;
+        equicord.enable = true;
+      };
       vesktop.enable = true;
     };
   };
