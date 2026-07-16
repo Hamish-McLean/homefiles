@@ -5,107 +5,131 @@
 }:
 
 let
-  darkAccent = "#74c7ec";
-  lightAccent = "#209fb5";
+  darkFlavour = "mocha";
+  lightFlavour = "frappe";
+
+  primary = "sapphire"; # #74c7ec
+  secondary = "teal"; # #94e2d5
+  tertiary = "green"; # #a6e3a1
+
+  inherit (config.catppuccin.sources) palette;
+  paletteJSON = (lib.importJSON "${palette}/palette.json");
+  darkPalette = paletteJSON.${darkFlavour}.colors;
+  lightPalette = paletteJSON.${lightFlavour}.colors;
 
   customCatppuccin = {
-    dark = {
-      mPrimary = "#74c7ec"; # sapphire
-      mOnPrimary = "#11111b";
-      mSecondary = "#94e2d5"; # teal
-      mOnSecondary = "#11111b";
-      mTertiary = "#89dceb"; # sky
-      mOnTertiary = "#11111b";
-      mError = "#f38ba8";
-      mOnError = "#11111b";
-      mSurface = "#1e1e2e";
-      mOnSurface = "#cdd6f4";
-      mSurfaceVariant = "#313244";
-      mOnSurfaceVariant = "#a3b4eb";
-      mOutline = "#4c4f69";
-      mShadow = "#11111b";
-      mHover = "#89b4fa"; # blue
-      mOnHover = "#11111b";
-      terminal = {
-        foreground = "#cdd6f4";
-        background = "#1e1e2e";
-        selectionFg = "#cdd6f4";
-        selectionBg = "#585b70";
-        cursorText = "#1e1e2e";
-        cursor = "#f5e0dc";
-        normal = {
-          black = "#45475a";
-          red = "#f38ba8";
-          green = "#a6e3a1";
-          yellow = "#f9e2af";
-          blue = "#89b4fa";
-          magenta = "#f5c2e7";
-          cyan = "#94e2d5";
-          white = "#a6adc8";
-        };
-        bright = {
-          black = "#585b70";
-          red = "#f37799";
-          green = "#89d88b";
-          yellow = "#ebd391";
-          blue = "#74a8fc";
-          magenta = "#f2aede";
-          cyan = "#6bd7ca";
-          white = "#bac2de";
-        };
-      };
-    };
-    light = {
-      mPrimary = "#209fb5"; # sapphire
-      mOnPrimary = "#eff1f5";
-      mSecondary = "#179299"; # teal
-      mOnSecondary = "#eff1f5";
-      mTertiary = "#04a5e5"; # sky
-      mOnTertiary = "#eff1f5";
-      mError = "#d20f39";
-      mOnError = "#dce0e8";
-      mSurface = "#eff1f5";
-      mOnSurface = "#4c4f69";
-      mSurfaceVariant = "#ccd0da";
-      mOnSurfaceVariant = "#6c6f85";
-      mOutline = "#a5adcb";
-      mShadow = "#dce0e8";
-      mHover = "#1e66f5"; # blue
-      mOnHover = "#eff1f5";
-      terminal = {
-        foreground = "#c6d0f5";
-        background = "#303446";
-        selectionFg = "#c6d0f5";
-        selectionBg = "#626880";
-        cursorText = "#303446";
-        cursor = "#f2d5cf";
-        normal = {
-          black = "#51576d";
-          red = "#e78284";
-          green = "#a6d189";
-          yellow = "#e5c890";
-          blue = "#8caaee";
-          magenta = "#f4b8e4";
-          cyan = "#81c8be";
-          white = "#a5adce";
-        };
-        bright = {
-          black = "#626880";
-          red = "#e67172";
-          green = "#8ec772";
-          yellow = "#d9ba73";
-          blue = "#7b9ef0";
-          magenta = "#f2a4db";
-          cyan = "#5abfb5";
-          white = "#b5bfe2";
+    dark =
+      let
+        colours = darkPalette;
+      in
+      {
+        mPrimary = colours.${primary}.hex; # sapphire #74c7ec
+        mOnPrimary = colours.mantle.hex; # #181825
+        mSecondary = colours.${secondary}.hex; # teal #94e2d5
+        mOnSecondary = colours.mantle.hex; # #181825
+        mTertiary = colours.${tertiary}.hex; # green #a6e3a1
+        mOnTertiary = colours.mantle.hex; # #181825
+        mError = colours.red.hex; # #f38ba8
+        mOnError = colours.mantle.hex; # #181825
+        mSurface = colours.base.hex; # #1e1e2e
+        mOnSurface = colours.text.hex; # #cdd6f4
+        mSurfaceVariant = colours.surface0.hex; # #313244
+        mOnSurfaceVariant = colours.blue.hex; # #89b4fa
+        mOutline = colours.surface1.hex; # #45475a
+        mShadow = colours.crust.hex; # #11111b
+        mHover = colours.blue.hex; # #89b4fa
+        mOnHover = colours.crust.hex; # #11111b
+        terminal = {
+          foreground = colours.text.hex; # #cdd6f4
+          background = colours.base.hex; # #1e1e2e
+          selectionFg = colours.text.hex; # #cdd6f4
+          selectionBg = colours.surface2.hex; # #585b70
+          cursorText = colours.base.hex; # #1e1e2e
+          cursor = colours.rosewater.hex; # #f5e0dc
+          normal = {
+            black = colours.surface1.hex; # #45475a
+            red = colours.red.hex; # #f38ba8
+            green = colours.green.hex; # #a6e3a1
+            yellow = colours.yellow.hex; # #f9e2af
+            blue = colours.blue.hex; # #89b4fa
+            magenta = colours.pink.hex; # #f5c2e7
+            cyan = colours.teal.hex; # #94e2d5
+            white = colours.text.hex; # #a6adc8
+          };
+          bright =
+            let
+              colours = paletteJSON.latte.colors;
+            in
+            {
+              black = colours.text.hex; # #4c4f69
+              red = colours.red.hex; # #d20f39
+              green = colours.green.hex; # #40a02b
+              yellow = colours.yellow.hex; # #df8e1d
+              blue = colours.blue.hex; # #1e66f5
+              magenta = colours.pink.hex; # #ea76cb
+              cyan = colours.teal.hex; # #179299
+              white = colours.text.hex; # #4c4f69
+            };
         };
       };
-    };
+    light =
+      let
+        colours = lightPalette;
+      in
+      {
+        mPrimary = colours.${primary}.hex; # sapphire #74c7ec
+        mOnPrimary = colours.mantle.hex; # #181825
+        mSecondary = colours.${secondary}.hex; # teal #94e2d5
+        mOnSecondary = colours.mantle.hex; # #181825
+        mTertiary = colours.${tertiary}.hex; # green #a6e3a1
+        mOnTertiary = colours.mantle.hex; # #181825
+        mError = colours.red.hex; # #f38ba8
+        mOnError = colours.mantle.hex; # #181825
+        mSurface = colours.base.hex; # #1e1e2e
+        mOnSurface = colours.text.hex; # #cdd6f4
+        mSurfaceVariant = colours.surface0.hex; # #313244
+        mOnSurfaceVariant = colours.blue.hex; # #89b4fa
+        mOutline = colours.surface1.hex; # #45475a
+        mShadow = colours.crust.hex; # #11111b
+        mHover = colours.blue.hex; # #89b4fa
+        mOnHover = colours.crust.hex; # #11111b
+        terminal = {
+          foreground = colours.text.hex; # #cdd6f4
+          background = colours.base.hex; # #1e1e2e
+          selectionFg = colours.text.hex; # #cdd6f4
+          selectionBg = colours.surface2.hex; # #585b70
+          cursorText = colours.base.hex; # #1e1e2e
+          cursor = colours.rosewater.hex; # #f5e0dc
+          normal = {
+            black = colours.surface1.hex; # #45475a
+            red = colours.red.hex; # #f38ba8
+            green = colours.green.hex; # #a6e3a1
+            yellow = colours.yellow.hex; # #f9e2af
+            blue = colours.blue.hex; # #89b4fa
+            magenta = colours.pink.hex; # #f5c2e7
+            cyan = colours.teal.hex; # #94e2d5
+            white = colours.text.hex; # #a6adc8
+          };
+          bright =
+            let
+              colours = paletteJSON.latte.colors;
+            in
+            {
+              black = colours.text.hex; # #4c4f69
+              red = colours.red.hex; # #d20f39
+              green = colours.green.hex; # #40a02b
+              yellow = colours.yellow.hex; # #df8e1d
+              blue = colours.blue.hex; # #1e66f5
+              magenta = colours.pink.hex; # #ea76cb
+              cyan = colours.teal.hex; # #179299
+              white = colours.text.hex; # #4c4f69
+            };
+        };
+      };
   };
 in
 {
   config = lib.mkIf config.noctalia.enable {
-    xdg.configFile."noctalia/colorschemes/Catppuccin Custom/Catppuccin Custom.json".text =
-      builtins.toJSON customCatppuccin;
+    xdg.configFile."noctalia/palettes/Catppuccin Custom.json".text = builtins.toJSON customCatppuccin;
   };
 }
