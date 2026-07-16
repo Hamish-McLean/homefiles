@@ -41,6 +41,11 @@
 
       comments.comment-nvim.enable = true;
 
+      debugger.nvim-dap = {
+        enable = true;
+        ui.enable = true;
+      }; # <leader>d...
+
       # filetree.neo-tree.enable = true; # replaced with snacks explorer
 
       git = {
@@ -57,6 +62,7 @@
 
       languages = {
         bash.enable = true;
+        enableDAP = true;
         enableFormat = true;
         enableTreesitter = false; # HACK: disable automatic treesitter grammars
         go.enable = true;
@@ -73,7 +79,17 @@
           lsp.servers = [ "nixd" ];
         };
         nu.enable = true;
-        python.enable = true;
+        python = {
+          enable = true;
+          format.type = [
+            "ruff"
+            "ruff-fix"
+          ];
+          lsp.servers = [
+            "ty" # NOTE: "ty" is in development and still WIP
+            "ruff"
+          ];
+        };
         r.enable = true;
         rust.enable = true;
         tex.enable = true;
