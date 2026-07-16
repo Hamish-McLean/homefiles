@@ -81,13 +81,13 @@
         nu.enable = true;
         python = {
           enable = true;
-          format.type = [
-            "ruff"
-            "ruff-fix"
-          ];
+          # format.type = [
+          #   "ruff"
+          #   "ruff-fix"
+          # ];
           lsp.servers = [
             "ty" # NOTE: "ty" is in development and still WIP
-            "ruff"
+            # "ruff"
           ];
         };
         r.enable = true;
