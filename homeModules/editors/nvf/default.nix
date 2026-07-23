@@ -81,10 +81,11 @@
         nu.enable = true;
         python = {
           enable = true;
-          # format.type = [
-          #   "ruff"
-          #   "ruff-fix"
-          # ];
+          format.type = [
+            "black-and-isort"
+            # "ruff"
+            # "ruff-fix"
+          ];
           lsp.servers = [
             "ty" # NOTE: "ty" is in development and still WIP
             # "ruff"
