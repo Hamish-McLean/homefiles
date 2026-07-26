@@ -6,6 +6,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -16,6 +17,17 @@
   config = lib.mkIf config.nushell.enable {
     programs.nushell = {
       enable = true;
+      extraConfig = ''
+        use ${./noctalia2nix.nu} *
+      '';
+      plugins = with pkgs.nushellPlugins; [
+        # dbus # broken
+        gstat
+        # highlight # version incompatible
+        # net # broken
+        # skim # broken
+        # units # broken
+      ];
       settings = {
         buffer_editor = "nvim";
         show_banner = false;

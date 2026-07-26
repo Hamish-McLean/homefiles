@@ -71,5 +71,7 @@ in
       progress # progress bars
       ripgrep # better grep
     ];
+
+    home.shell.enableShellIntegration = true;
   };
 }

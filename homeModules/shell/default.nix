@@ -6,7 +6,7 @@ _: {
     ./direnv.nix
     ./eza.nix
     ./fish.nix
-    ./nushell.nix
+    ./nushell
     ./shell-aliases.nix
     ./starship.nix
     ./tmux.nix
