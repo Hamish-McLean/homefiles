@@ -82,7 +82,8 @@
         python = {
           enable = true;
           format.type = [
-            "black-and-isort"
+            "black"
+            "isort"
             # "ruff"
             # "ruff-fix"
           ];

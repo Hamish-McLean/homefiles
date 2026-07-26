@@ -9,7 +9,6 @@
 {
   imports = [
     inputs.niri.homeModules.niri
-    # ../noctalia.nix
   ];
 
   options = {
@@ -62,6 +61,7 @@
         };
         "DP-2" = {
           backdrop-color = "#11111b";
+          focus-at-startup = true;
           position = {
             x = 1920;
             y = 0;
