@@ -48,6 +48,29 @@
 
       # filetree.neo-tree.enable = true; # replaced with snacks explorer
 
+      formatter.conform-nvim = {
+        enable = true;
+        setupOpts = {
+          formatters_by_ft.luau = [ "stylua" ];
+          # formatters.stylua.prepend_args = [
+          #   "--indent-type"
+          #   "Spaces"
+          #   "--indent-width"
+          #   "4"
+          #   "--column-width"
+          #   "120"
+          #   "--stdin-filepath"
+          #   "$FILENAME"
+          # ];
+          formatters.stylua.args = lib.mkForce [
+            "--search-parent-directories" # Ensures stylua searches up to find .stylua.toml
+            "--stdin-filepath"
+            "$FILENAME"
+            "-"
+          ];
+        };
+      };
+
       git = {
         enable = true;
         neogit.enable = true;
@@ -63,11 +86,14 @@
       languages = {
         bash.enable = true;
         enableDAP = true;
+        enableExtraDiagnostics = true;
         enableFormat = true;
         enableTreesitter = false; # HACK: disable automatic treesitter grammars
         go.enable = true;
         html.enable = true;
+        json.enable = true;
         julia.enable = true;
+        just.enable = true;
         lua.enable = true;
         markdown = {
           enable = true;
@@ -93,8 +119,17 @@
           ];
         };
         r.enable = true;
-        rust.enable = true;
+        rust = {
+          dap.enable = false; # Managed by rustaceanvim
+          enable = true;
+          extensions = {
+            crates-nvim.enable = true;
+            rustaceanvim.enable = true;
+          };
+          lsp.enable = false;
+        };
         tex.enable = true;
+        toml.enable = true;
         yaml.enable = true;
       };
 
@@ -142,7 +177,6 @@
         obsidian = {
           enable = true;
           setupOpts = {
-            completion.nvim_cmp = true;
             workspaces = [
               {
                 name = "Obsidian";
@@ -164,6 +198,21 @@
       };
 
       # projects.project-nvim.enable = true; replaced by snacks.picker
+
+      session.persisted = {
+        # <leader>q
+        enable = true;
+        setupOpts = {
+          autostart = true;
+          autosave = true;
+          use_git_branch = true;
+        };
+      };
+
+      spellcheck = {
+        enable = true;
+        # programmingWordlist.enable = true; # Run `:DirtytalkUpdate` on first use to download file.
+      };
 
       statusline.lualine.enable = true;
 
@@ -197,8 +246,12 @@
           bibtex
           go
           html
+          json
           julia
+          just
+          latex
           lua
+          luau
           markdown
           nix
           nu
@@ -206,7 +259,7 @@
           r
           regex
           rust
-          latex
+          toml
           yaml
         ];
       };
@@ -250,11 +303,6 @@
       utility = {
         direnv.enable = true;
         #images.image-nvim.enable = true; # didn't work
-        oil-nvim = {
-          enable = true;
-          gitStatus.enable = true;
-        };
-        outline.aerial-nvim.enable = true;
         motion = {
           flash-nvim = {
             enable = true;
@@ -269,19 +317,22 @@
         multicursors.enable = true;
         nix-develop.enable = true;
         nvim-biscuits.enable = true;
+        oil-nvim = {
+          enable = true;
+          gitStatus.enable = true;
+        };
+        outline.aerial-nvim.enable = true;
         #preview.markdownPreview # settings for markdownPreview here
         snacks-nvim = {
           # collection of small QoL plugins
-          # TODO: keybinds for snacks
           enable = true;
           setupOpts = {
             animate.enabled = true; # animations
             bigfile.enabled = true; # optimisation for big files
             bufdelete.enabled = true; # delete buffers safely
             dashboard = {
-              enabled = true; # dashboard
-              # TODO: configure layout
-              # (examples at https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
+              # examples at https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md
+              enabled = true;
               sections = [
                 { section = "header"; }
                 {
@@ -289,6 +340,14 @@
                   title = "Keymaps";
                   section = "keys";
                   indent = 2;
+                  items = [
+                    {
+                      icon = " ";
+                      key = "s";
+                      desc = "Restore Session";
+                      section = "session";
+                    }
+                  ];
                   padding = 1;
                 }
                 {
@@ -305,21 +364,15 @@
                   indent = 2;
                   padding = 1;
                 }
+                {
+                  icon = " ";
+                  title = "Sessions";
+                  section = "session";
+                  indent = 2;
+                  padding = 1;
+                }
                 # { section = "startup"; }
               ];
-              # sections = [
-              #   { section = "header"; }
-              #   {
-              #     section = "keys";
-              #     gap = 1;
-              #     padding = 1;
-              #   }
-              #   # { section = "footer"; }
-              # ];
-              # preset = {
-              #   header = null;
-              #   keys = null;
-              # };
             };
             dim.enabled = true; # dim context outside of scope
             explorer.enabled = true; # file manager, could replace neotree
@@ -331,6 +384,7 @@
             lazygit.enabled = true; # lazygit window
             # notifier.enabled = true; # notifications, currently handled by noice
             picker.enabled = true; # fuzzy finder, needs keybinds
+            rename.enabled = true; # Better file renaming
             scope.enabled = true; # identify code scopes
             scroll.enabled = true; # scrolling animations
             statuscolumn.enabled = true; # side-gutters with git signs, symbols, and line numbers
@@ -368,8 +422,40 @@
 
     programs.nvf.settings.vim.extraPackages = with pkgs; [
       gcc
+      luau-lsp
+      stylua
       tree-sitter
     ];
+
+    programs.nvf.settings.vim.extraPlugins = with pkgs.vimPlugins; {
+      luau-lsp-nvim = {
+        package = luau-lsp-nvim;
+        setup = ''
+          require('luau-lsp').setup({
+            platform = {
+              type = "standard",
+            },
+            types = {
+              definition_files = {
+                noctalia = "noctalia.d.luau",
+              },
+            },
+          })
+        '';
+      };
+    };
+
+    programs.nvf.settings.vim.luaConfigRC.luau-indent = ''
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "luau",
+        callback = function()
+          vim.opt_local.tabstop = 4
+          vim.opt_local.softtabstop = 4
+          vim.opt_local.shiftwidth = 4
+          vim.opt_local.expandtab = true
+        end,
+      })
+    '';
 
   };
 }
