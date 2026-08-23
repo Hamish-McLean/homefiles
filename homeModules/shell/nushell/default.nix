@@ -18,6 +18,7 @@
     programs.nushell = {
       enable = true;
       extraConfig = ''
+        use ${./sesh.nu} *
         use ${./noctalia2nix.nu} *
       '';
       plugins = with pkgs.nushellPlugins; [

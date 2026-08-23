@@ -41,6 +41,7 @@ in
     eza.enable = mkDefault true;
     fish.enable = mkDefault false;
     nushell.enable = mkDefault true;
+    sesh.enable = mkDefault true;
     shell-aliases.enable = mkDefault true;
     starship.enable = mkDefault true;
     tmux.enable = mkDefault true;

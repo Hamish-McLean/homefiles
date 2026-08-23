@@ -7,6 +7,7 @@ _: {
     ./eza.nix
     ./fish.nix
     ./nushell
+    ./sesh.nix
     ./shell-aliases.nix
     ./starship.nix
     ./tmux.nix
