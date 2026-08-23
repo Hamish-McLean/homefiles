@@ -13,7 +13,7 @@ let
   tertiary = "green"; # #a6e3a1
 
   inherit (config.catppuccin.sources) palette;
-  paletteJSON = (lib.importJSON "${palette}/palette.json");
+  paletteJSON = lib.importJSON "${palette}/palette.json";
   darkPalette = paletteJSON.${darkFlavour}.colors;
   lightPalette = paletteJSON.${lightFlavour}.colors;
 

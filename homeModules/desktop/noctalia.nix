@@ -3,6 +3,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -16,6 +17,12 @@
   };
 
   config = lib.mkIf config.noctalia.enable {
+    home.packages = with pkgs; [
+      glib # for phone connect plugin
+      pulseaudio
+      smartmontools # for drive health plugin
+    ];
+
     programs.noctalia.enable = true;
 
     # Settings
@@ -57,10 +64,10 @@
           "date"
           "weather"
         ];
-        dead_zone = {
-          command = "noctalia msg panel-toggle control-center";
-          middle_command = "noctalia msg settings-toggle";
-          right_command = "noctalia msg settings-toggle";
+        dead_zone.actions = {
+          left = "noctalia msg panel-toggle control-center";
+          middle = "noctalia msg settings-toggle";
+          right = "noctalia msg settings-toggle";
         };
         end = [
           "privacy"
@@ -315,7 +322,6 @@
               show_caps_lock = true;
               show_keyboard_layout = true;
               show_login_button = true;
-              show_password_hint = false;
             };
           };
           lockscreen-widget-0000000000000002 = {
@@ -478,7 +484,7 @@
         spacer_3.type = "spacer";
         sysmon = {
           show_label = false;
-          stat = "disk_pct";
+          stat = "disk_used_pct";
         };
         taskbar = {
           group_by_workspace = true;
