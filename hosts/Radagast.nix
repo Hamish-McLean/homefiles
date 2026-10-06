@@ -17,6 +17,7 @@ _: {
 
   # Custom options
   rbw.enable = true; # Bitwarden CLI
+  umbriel.enable = true;
 
   # Syncthing
   syncthing.enable = true;

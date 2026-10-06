@@ -79,6 +79,7 @@
       url = "github:FedericoBruzzone/tgt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    umbriel.url = "git+https://github.com/noctalia-dev/umbriel";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
