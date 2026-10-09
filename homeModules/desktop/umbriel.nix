@@ -46,12 +46,18 @@
         output = {
           "DP-2" = {
             hdr = "auto";
-            position = "[0, 0]";
+            position = [
+              0
+              0
+            ];
             vrr = "always"; # or "fullscreen"
           };
           "HDMI-A-1" = {
-            position = "[1920, -600]";
-            transform = 270;
+            position = [
+              1920
+              (-600)
+            ];
+            transform = "270";
           };
         };
         workspaces.back_and_forth = true;
