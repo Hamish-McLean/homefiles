@@ -214,7 +214,14 @@
         # programmingWordlist.enable = true; # Run `:DirtytalkUpdate` on first use to download file.
       };
 
-      statusline.lualine.enable = true;
+      statusline.lualine = {
+        enable = true;
+        integrations.breadcrumbs = {
+          # lspsaga.enable = true;
+          # navbuddy.enable = true;
+          nvim-navic.enable = true;
+        };
+      };
 
       tabline.nvimBufferline.enable = true; # tabs "<leader>b"
 
@@ -266,10 +273,6 @@
 
       ui = {
         borders.enable = true;
-        breadcrumbs = {
-          enable = true;
-          navbuddy.enable = true;
-        };
         colorful-menu-nvim.enable = true;
         fastaction.enable = true; # code actions
         # illuminate.enable = true; # replaced by snacks words

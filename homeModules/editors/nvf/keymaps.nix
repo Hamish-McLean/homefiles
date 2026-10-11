@@ -56,6 +56,56 @@ _: [
     desc = "Search word";
   }
 
+  # Code Actions
+  {
+    key = "<leader>ca";
+    mode = [
+      "n"
+      "v"
+    ];
+    action = "<cmd>lua Snacks.picker.lsp_actions()<CR>";
+    desc = "LSP Code Actions";
+  }
+  # Diagnostics (Workspace or Buffer)
+  {
+    key = "<leader>xx";
+    mode = [ "n" ];
+    action = "<cmd>lua Snacks.picker.diagnostics()<CR>";
+    desc = "Workspace Diagnostics";
+  }
+  {
+    key = "<leader>xX";
+    mode = [ "n" ];
+    action = "<cmd>lua Snacks.picker.diagnostics_buffer()<CR>";
+    desc = "Buffer Diagnostics";
+  }
+  # LSP Rename
+  {
+    key = "<leader>rn";
+    mode = [ "n" ];
+    action = "<cmd>lua Snacks.rename.rename()<CR>";
+    desc = "LSP Rename";
+  }
+  # Symbol Search / Navigation
+  {
+    key = "gd";
+    mode = [ "n" ];
+    action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>";
+    desc = "Goto Definition";
+  }
+  {
+    key = "gr";
+    mode = [ "n" ];
+    action = "<cmd>lua Snacks.picker.lsp_references()<CR>";
+    desc = "Goto References";
+  }
+  {
+    key = "<leader>ss";
+    mode = [ "n" ];
+    action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>";
+    desc = "Document Symbols";
+  }
+
   # Snacks Git
   {
     key = "<leader>lg";
