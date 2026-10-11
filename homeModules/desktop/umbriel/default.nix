@@ -39,12 +39,7 @@
             tap = true;
           };
         };
-        keybinds = {
-          "Mod" = "spawn:walker";
-          "Mod+Return" = "spawn:kitty";
-          "Mod+Shift+Return" = "spawn:firefox";
-          "Mod+Q" = "window-close";
-        };
+        keybinds = import ./keybinds.nix { };
         layout = {
           mode = "scrolling"; # or "dwindle"
         };

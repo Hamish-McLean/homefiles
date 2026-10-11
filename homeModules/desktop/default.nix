@@ -11,7 +11,7 @@ _: {
     ./noctalia.nix
     ./plasma.nix
     ./qt.nix
-    ./umbriel.nix
+    ./umbriel
     ./walker
   ];
 }
