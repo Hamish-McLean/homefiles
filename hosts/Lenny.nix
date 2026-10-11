@@ -16,6 +16,7 @@ _: {
 
   # Custom options
   rbw.enable = true; # Bitwarden CLI
+  umbriel.enable = true;
   vscodium.enable = false; # Disable due to build issues
 
   # Syncthing

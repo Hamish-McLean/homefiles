@@ -33,6 +33,11 @@
           focus = {
             follows_mouse = true;
           };
+          keyboard.layout = "gb";
+          touchpad = {
+            natural_scroll = true;
+            tap = true;
+          };
         };
         keybinds = {
           "Mod" = "spawn:walker";
