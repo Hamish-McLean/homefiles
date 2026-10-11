@@ -462,37 +462,37 @@
       widget = {
         audio_visualizer.color_2 = "tertiary";
         battery.display_mode = "graphic";
-        brightness.show_label = false;
-        cpu.show_label = false;
+        brightness.show_value = false;
+        cpu.show_value = false;
         date.format = "{:%A\n%Y-%m-%d}";
         media = {
           album_art_only = true;
           hide_when_no_media = true;
         };
-        network.show_label = false;
+        network.show_value = false;
         network_rx = {
           display = "graph";
-          show_label = false;
+          show_value = false;
         };
         network_tx = {
           display = "graph";
-          show_label = false;
+          show_value = false;
         };
         privacy.hide_inactive = true;
-        ram.show_label = false;
+        ram.show_value = false;
         spacer_2.type = "spacer";
         spacer_3.type = "spacer";
         sysmon = {
-          show_label = false;
+          show_value = false;
           stat = "disk_used_pct";
         };
         taskbar = {
           group_by_workspace = true;
           group_single_icon_per_app = true;
         };
-        temp.show_label = false;
+        temp.show_value = false;
         tray.drawer = true;
-        volume.show_label = false;
+        volume.show_value = false;
         weather.show_condition = false;
       };
     };
