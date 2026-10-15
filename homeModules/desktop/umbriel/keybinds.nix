@@ -2,7 +2,7 @@ _: {
   # Apps
   "Mod+Return" = "spawn:kitty";
   "Mod+Shift+Return" = "spawn:firefox";
-  "Mod+Space" = "spawn:walker";
+  # "Mod+Space" = "spawn:walker";
 
   # Noctalia
   "Mod" = "spawn:noctalia msg panel-toggle launcher";
@@ -36,6 +36,14 @@ _: {
   "Mod+F" = "window-toggle-maximize";
   "Mod+Shift+F" = "window-toggle-fullscreen";
   "Mod+Q" = "window-close";
+
+  # Scratchpad
+  "Mod+Shift+Space" = "window-move-to-scratchpad";
+  "Mod+Space" = "scratchpad-toggle";
+  "Mod+Ctrl+Space" = "window-restore-from-scratchpad";
+  "Mod+Tab" = "scratchpad-focus-next";
+  "Mod+Alt+Space" = "scratchpad-window-show-next";
+  "Mod+Alt+Shift+Space" = "scratchpad-window-show-previous";
 
   # System
   "Mod+F1" = "cheatsheet-toggle";
